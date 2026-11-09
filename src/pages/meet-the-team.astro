@@ -19,20 +19,20 @@ const staff = await getAllStaff();
 const clinicBlurbs = [
   {
     heading: "What We Stand For",
-    body: "A short paragraph on why the practice exists and what it's ultimately here to do for pets and their people goes here — replace with real client copy.",
+    body: "Our mission is to provide compassionate, comprehensive and individualized veterinary care while building lasting relationships with our clients and community, so every pet is treated like family.",
   },
   {
     heading: "Where We're Headed",
-    body: "A short paragraph on what the practice is working toward — the kind of care it wants to keep building toward over time — goes here.",
+    body: "We want to be the most trusted and welcoming veterinary practice in our community, where quality medicine meets small-town compassion and every family has a partner in their pet's lifelong health.",
   },
   {
     heading: "How We Care For Your Pet",
-    body: "A short paragraph on the practice's day-to-day philosophy of care — how appointments feel, what pet owners can expect — goes here.",
+    body: "Visits are Fear Free-focused and low stress. We listen, explain your options and build a plan that fits your pet, whether it's a routine exam, a same-day urgent visit or a farm call.",
   },
 ];
 ---
 
-<BaseLayout title="Meet the Team" description="Meet our doctors and staff.">
+<BaseLayout title="Meet the Team" description="Meet Dr. Halley Hassel, Dr. Jonathan Tenenzapf and the Lebanon Small Animal Clinic team caring for dogs, cats, exotics and farm animals in Lebanon, OH.">
   <PageHeaderBanner heading="Meet the Team" image={bannerGeneric} />
 
   {doctors.length > 0 && (
@@ -56,7 +56,7 @@ const clinicBlurbs = [
 
   <section class="page-section about-staff">
     <h2>About Our Team</h2>
-    <p class="about-staff__body">A paragraph describing the team as a whole goes here — replace with real client copy about the people behind the practice, their experience, and what pet owners can expect when they meet them.</p>
+    <p class="about-staff__body">Our team of 13 includes registered veterinary technicians, veterinary assistants and client service representatives who are fun, compassionate and knowledgeable. They take time to calm nervous pets, answer your questions and make every visit feel personal. Many of our clients ask for their favorite team member by name, and we love that.</p>
   </section>
 
   {staff.length > 0 && (

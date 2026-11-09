@@ -13,7 +13,7 @@ const services = await getAllServices();
 const faqs = services.flatMap((s) => s.data.faqs);
 ---
 
-<BaseLayout title="FAQs" description="Frequently asked questions.">
+<BaseLayout title="FAQs" description="Answers to common questions about visits, payment options, urgent care and Fear Free care at Lebanon Small Animal Clinic in Lebanon, Ohio.">
   <PageHeaderBanner heading="Frequently Asked Questions" />
   <div class="page-section">
     <FaqAccordion faqs={faqs} />

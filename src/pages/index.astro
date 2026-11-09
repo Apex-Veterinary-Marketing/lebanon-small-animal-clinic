@@ -28,11 +28,11 @@ const featuredServices = await getFeaturedServices();
 const testimonials = await getAllTestimonials();
 ---
 
-<BaseLayout title={`${site.practiceName} | Veterinary Care`} titleTemplate="full" description={`Compassionate veterinary care from ${site.practiceName}.`}>
+<BaseLayout title={`${site.practiceName} | Veterinary Care`} titleTemplate="full" description="Fear Free vet in Lebanon, OH: wellness exams, same-day urgent care, surgery and dentistry for dogs, cats, exotics and farm animals. Call (513) 932-4189.">
   <Hero
     eyebrow="Welcome to"
     heading={site.practiceName}
-    subheading="Compassionate, comprehensive care for every stage of your pet's life."
+    subheading="Small-town heart with big-city veterinary care for dogs, cats, exotics and farm animals in Lebanon, Ohio."
     ctaText={site.bookingLabel || "Book Now"}
     ctaHref={site.bookingUrl || "/contact-us"}
     secondaryCtaText="Our Services"
@@ -42,7 +42,7 @@ const testimonials = await getAllTestimonials();
 
   <div data-reveal>
     <FeatureSplit heading="About Us" ctaText="Meet the Team" ctaHref="/meet-the-team">
-      <p>A short introduction to the practice goes here — replace with real client copy about who you are, how long you've served the area, and what pet owners can expect.</p>
+      <p>For about 20 years, Lebanon Small Animal Clinic has cared for the pets of Lebanon, Mason, Springboro and the towns around them. Since 2025 the clinic has been owned by Dr. Halley Hassel, who works alongside Dr. Jonathan Tenenzapf (Dr. T) and a team that genuinely loves what they do. We see dogs and cats, plus rabbits, pocket pets, birds, reptiles and farm animals, and we take the time to get to know both the patient and the family behind it.</p>
     </FeatureSplit>
   </div>
 
@@ -57,7 +57,7 @@ const testimonials = await getAllTestimonials();
 
   <div data-reveal>
     <FeatureSplit heading="Why Choose Us" ctaText="Our Services" ctaHref="/services" reverse>
-      <p>A short paragraph about the practice's approach to care goes here — replace with real client copy.</p>
+      <p>We pair the welcome of a hometown clinic with the range of a larger hospital: wellness and preventive care, same-day urgent care, surgery, dentistry, ultrasound and chiropractic care. Visits follow a Fear Free-focused, low-stress approach. We make individualized treatment plans and explain your options clearly, so you leave feeling heard and confident. When you walk through our doors, you're part of our clinic family.</p>
     </FeatureSplit>
   </div>
 

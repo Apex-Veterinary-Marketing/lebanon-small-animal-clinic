@@ -80,32 +80,34 @@ export interface SiteInfo {
 // so components/pages have something real to render while the skeleton is
 // being built and reviewed.
 export const siteInfo: SiteInfo = {
-  practiceName: "[Practice Name]",
-  phoneNumber: "(000) 000-0000",
-  email: "hello@example.com",
-  address: "123 Main St",
-  addressLine2: "[City, ST 00000]",
-  bookingUrl: "/appointment-request",
-  bookingLabel: "Book Now",
-  cityState: "[City, ST]",
-  hours: "<p>Mon&ndash;Fri: 8am&ndash;6pm<br>Sat: 9am&ndash;1pm<br>Sun: Closed</p>",
-  // Exactly 160 characters — replace during client intake with real copy.
+  practiceName: "Lebanon Small Animal Clinic",
+  phoneNumber: "(513) 932-4189",
+  email: "LSAC@lebanonsac.com",
+  address: "1196 Oregonia Rd",
+  addressLine2: "Lebanon, OH 45036",
+  addressLocality: "Lebanon",
+  addressRegion: "OH",
+  postalCode: "45036",
+  addressLink: "https://www.google.com/maps?cid=8531316001904538955",
+  mapEmbedLink: "https://www.google.com/maps?q=Lebanon+Small+Animal+Clinic,+1196+Oregonia+Rd,+Lebanon,+OH+45036&output=embed",
+  bookingUrl: "https://portal.chckup.app/book/lebanon-small-animal-clinic?booking_source=Other",
+  bookingLabel: "Book an Appointment",
+  cityState: "Lebanon, OH",
+  serviceAreaOfCoverage:
+    "Lebanon, Mason, Maineville, West Chester, Waynesville, Springboro, South Lebanon, Centerville, Loveland, Middletown",
+  businessDescription:
+    "Lebanon Small Animal Clinic is a Fear Free-focused veterinary clinic in Lebanon, Ohio, offering wellness care, same-day urgent care, surgery and dentistry for dogs, cats, exotics and farm animals.",
+  hours:
+    "<p>Mon&ndash;Fri: 8am&ndash;6pm<br>Sat: 8am&ndash;12pm, by appointment (please call for availability)<br>Sun: Closed</p>",
+  openingHoursSpecification: [
+    { dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "08:00", closes: "18:00" },
+  ],
   footerAbout:
-    "[Practice Name] provides compassionate, high-quality veterinary care for dogs, cats, and other companion animals throughout [City, ST] and the surrounding area.",
-  // Example values — replace during client intake. Kept non-empty (same
-  // reasoning as the other placeholder fields above) so ReputationWidget's
-  // "leave a public review" stage actually has links to render instead of
-  // silently filtering all three out.
-  googleReviewsLink: "https://g.page/r/example/review",
-  facebookReviewsLink: "https://www.facebook.com/example/reviews",
-  yelpReviewLink: "https://www.yelp.com/biz/example",
-  googleRating: 4.8, // example value — matches the real V2 export's placeholder rating
-  googleReviewCount: 120, // example value only, not sourced from anywhere real
-  url: "https://example.com", // REPLACE with the real domain before launch — see the field comment above
-  // Placeholder mark + wordmark (scripts/generate-logo-placeholders.mjs) —
-  // proves Header's crossfade renders end-to-end. REPLACE both with the
-  // client's real logo files before launch (same public/ paths, or update
-  // these to point at new ones).
-  logoWhite: "/logo-white.svg",
-  logoColor: "/logo-color.svg",
+    "Small-town heart, big-city care: Lebanon Small Animal Clinic treats dogs, cats, exotics and farm animals in Lebanon, OH, with Fear Free visits and urgent care.",
+  // TODO(PM): real Google review link needs the Place ID (only the Maps CID is known).
+  googleReviewsLink: "https://www.google.com/maps?cid=8531316001904538955",
+  facebookReviewsLink: "https://www.facebook.com/LebanonSmallAnimalClinic/reviews",
+  url: "https://www.lebanonsac.com", // confirm apex vs www before launch
+  logoWhite: "/logo-white.png",
+  logoColor: "/logo-color.png",
 };
