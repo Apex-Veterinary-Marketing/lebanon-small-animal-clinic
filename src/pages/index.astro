@@ -22,7 +22,6 @@ import microscope from "../assets/site/microscope.jpg";
 import petDog from "../assets/site/dog-with-doctor.jpg";
 import petCat from "../assets/services/integrative-cat.jpg";
 import petPocket from "../assets/site/hedgehog.jpg";
-import petExotic from "../assets/site/snake.jpg";
 import petFarm from "../assets/site/goats.jpg";
 import logoCherry from "../assets/site/logo-cherry.png";
 import logoCareCredit from "../assets/site/logo-carecredit.jpg";
@@ -49,8 +48,7 @@ const highlights = [
 const pets = [
   { name: "Dogs", src: petDog, alt: "Veterinarian examining a dog" },
   { name: "Cats", src: petCat, alt: "Team member gently examining a cat" },
-  { name: "Pocket Pets", src: petPocket, alt: "Hedgehog held in a pair of hands" },
-  { name: "Exotic Pets", src: petExotic, alt: "Team member holding a snake" },
+  { name: "Exotics & Pocket Pets", src: petPocket, alt: "Hedgehog held in a pair of hands" },
   { name: "Farm Animals", src: petFarm, alt: "Team members with goats" },
 ];
 
@@ -332,7 +330,7 @@ const doctorRoles: Record<string, string> = {
   .home-hero__dot.is-active { background: var(--white); width: 1.75rem; }
 
   /* Pets */
-  .pet-row { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-lg); }
+  .pet-row { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); }
   .pet-card { display: flex; flex-direction: column; align-items: center; gap: var(--space-sm); }
   .pet-card__photo { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-card); transition: transform var(--motion-duration-base) var(--motion-ease); }
   .pet-card:hover .pet-card__photo { transform: translateY(-4px); }
@@ -365,7 +363,7 @@ const doctorRoles: Record<string, string> = {
   @media (max-width: 900px) {
     .home-split, .visit { grid-template-columns: 1fr; gap: var(--space-xl); }
     .home-split--reverse .home-split__media { order: 0; }
-    .pet-row { grid-template-columns: repeat(3, 1fr); }
+    .pet-row { grid-template-columns: repeat(2, 1fr); }
     .doc-row { grid-template-columns: 1fr; }
   }
   @media (max-width: 767px) {

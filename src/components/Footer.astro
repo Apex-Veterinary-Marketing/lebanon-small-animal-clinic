@@ -27,6 +27,8 @@ import { getAllServices, getServicesByCategory } from "../lib/data/services";
 import { getAllSocialLinks } from "../lib/data/socialLinks";
 import { SOCIAL_ICON_CLASSES, SOCIAL_LABELS } from "../lib/icons/social";
 import { phoneHref } from "../lib/utils/phone";
+import { getAllServiceCategories } from "../lib/data/serviceCategories";
+import { byCategoryOrder } from "../data/service-category-order";
 import { BLOG_BASE } from "../lib/data/blog";
 import ReviewsBand from "./ReviewsBand.astro";
 
@@ -45,6 +47,7 @@ const [dentalServices, surgeryServices, allServices] = await Promise.all([
   surgeryCategory ? getServicesByCategory("surgery") : Promise.resolve([]),
   getAllServices(),
 ]);
+const serviceCategories = (await getAllServiceCategories()).sort(byCategoryOrder);
 const generalServices = allServices.filter(
   (service) => !service.data.serviceCategory.some((ref) => DEDICATED_CATEGORY_IDS.includes(ref.id))
 );
@@ -69,6 +72,7 @@ const generalServices = allServices.filter(
           <li><a href="/meet-the-team">Our Care Team</a></li>
           <li><a href="/careers">Careers</a></li>
           <li><a href="/testimonials">Testimonials</a></li>
+          <li><a href="/community-outreach">Community Outreach</a></li>
           <li><button type="button" class="footer__link-button" data-modal-target="reputation-widget">How'd We Do?</button></li>
         </ul>
         <div class="footer__social-icons">
@@ -90,8 +94,8 @@ const generalServices = allServices.filter(
     <details class="footer__column" open>
       <summary class="footer__column-title">Pet Care</summary>
       <ul class="footer__link-list">
-        {generalServices.map((service) => (
-          <li><a href={`/services/${service.id}`}>{service.data.customName || service.data.name}</a></li>
+        {serviceCategories.map((category) => (
+          <li><a href={`/services-categories/${category.id}`}>{category.data.name}</a></li>
         ))}
         <li><a href="/services"><strong>All Pet Care</strong></a></li>
       </ul>

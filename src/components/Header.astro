@@ -24,6 +24,7 @@
 // falls back to text, which still participates in the color swap.
 import { getSiteInfo } from "../lib/data/site";
 import { getAllServiceCategories } from "../lib/data/serviceCategories";
+import { byCategoryOrder } from "../data/service-category-order";
 import { getServicesByCategory } from "../lib/data/services";
 import { getAllSocialLinks } from "../lib/data/socialLinks";
 import { SOCIAL_ICON_CLASSES, SOCIAL_LABELS } from "../lib/icons/social";
@@ -31,7 +32,7 @@ import { phoneHref } from "../lib/utils/phone";
 import { BLOG_BASE } from "../lib/data/blog";
 
 const site = await getSiteInfo();
-const categories = await getAllServiceCategories();
+const categories = (await getAllServiceCategories()).sort(byCategoryOrder);
 const servicesByCategory = await Promise.all(
   categories.map(async (category) => ({
     category,
@@ -41,7 +42,6 @@ const servicesByCategory = await Promise.all(
 const socialLinks = await getAllSocialLinks();
 // Old site keeps Pharmacy in its utility bar (external Covetrus store) — kept top level.
 const PHARMACY_URL = "https://lebanonsmallanimalclinic.covetruspharmacy.com";
-const allServices = servicesByCategory.flatMap(({ services }) => services);
 ---
 
 <header class="header" data-header>
@@ -114,14 +114,26 @@ const allServices = servicesByCategory.flatMap(({ services }) => services);
             Pet Care <span class="header__caret" aria-hidden="true"></span>
           </button>
           <ul class="header__dropdown-menu header__dropdown-menu--services">
-            {allServices.map((service) => (
-              <li><a href={`/services/${service.id}`}>{service.data.customName || service.data.name}</a></li>
+            {servicesByCategory.filter(({ services }) => services.length > 0).map(({ category, services }) => (
+              <li class="header__dropdown-item--has-submenu">
+                <button type="button" class="header__submenu-toggle" data-dropdown-toggle aria-expanded="false">
+                  {category.data.name} <span class="header__caret header__caret--side" aria-hidden="true"></span>
+                </button>
+                <ul class="header__submenu">
+                  {services.map((service) => (
+                    <li><a href={`/services/${service.id}`}>{service.data.customName || service.data.name}</a></li>
+                  ))}
+                </ul>
+              </li>
             ))}
             <li class="header__dropdown-item--all"><a href="/services">All Pet Care</a></li>
           </ul>
         </li>
 
         <li class="header__menu-item"><a class="header__menu-link" href="/wellness-plans">Wellness Plans</a></li>
+
+        {/* Client request (HubSpot ticket 2026-11-05): Community Outreach as a top-level tab. */}
+        <li class="header__menu-item"><a class="header__menu-link" href="/community-outreach">Community Outreach</a></li>
 
         <li class="header__menu-item"><a class="header__menu-link" href={BLOG_BASE}>Blog</a></li>
 
@@ -171,7 +183,7 @@ const allServices = servicesByCategory.flatMap(({ services }) => services);
   .header.is-scrolled { box-shadow: var(--shadow-header); }
 
   .header__utility { background: var(--main-dark); color: var(--white); font-size: var(--font-size-sm); }
-  .header__utility-inner { max-width: var(--container-max); margin-inline: auto; padding: var(--space-xs) var(--space-md); display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); }
+  .header__utility-inner { max-width: var(--container-max-wide); margin-inline: auto; padding: var(--space-xs) var(--space-md); display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); }
   .header__contact-info, .header__utility-actions { display: flex; align-items: center; gap: var(--space-lg); }
   .header__utility-item, .header__social-link { color: inherit; text-decoration: none; opacity: 0.9; transition: opacity var(--motion-duration-fast) var(--motion-ease); }
   .header__utility-item:hover, .header__social-link:hover { opacity: 1; }
@@ -179,7 +191,7 @@ const allServices = servicesByCategory.flatMap(({ services }) => services);
   .header__utility-item--address { white-space: nowrap; }
   .header__social-link { display: inline-flex; font-size: var(--font-size-md); }
 
-  .header__nav-inner { max-width: var(--container-max); margin-inline: auto; padding: var(--space-sm) var(--space-md); display: flex; align-items: center; gap: var(--space-lg); }
+  .header__nav-inner { max-width: var(--container-max-wide); margin-inline: auto; padding: var(--space-sm) var(--space-md); display: flex; align-items: center; gap: var(--space-lg); }
   .header__logo { display: inline-flex; margin-inline-end: auto; text-decoration: none; color: inherit; }
   .header__logo-text { font-weight: 700; font-size: var(--font-size-lg); color: inherit; }
   .header__logo-image { display: block; block-size: var(--logo-height); inline-size: auto; }
@@ -187,7 +199,7 @@ const allServices = servicesByCategory.flatMap(({ services }) => services);
   .header__menu-toggle { display: none; flex-direction: column; gap: var(--space-2xs); background: none; border: 0; cursor: pointer; padding: var(--space-xs); color: inherit; }
   .header__menu-toggle-bar { width: 1.4rem; height: 2px; background: currentColor; display: block; }
 
-  .header__menu { display: flex; align-items: center; gap: var(--space-lg); list-style: none; margin: 0; padding: 0; font-family: var(--font-heading); font-weight: 600; }
+  .header__menu { display: flex; align-items: center; gap: var(--space-md); list-style: none; margin: 0; padding: 0; font-family: var(--font-heading); font-weight: 600; font-size: var(--font-size-sm); white-space: nowrap; }
   .header__menu-link { background: none; border: 0; font: inherit; color: inherit; text-decoration: none; cursor: pointer; display: inline-flex; align-items: center; gap: 0.35em; padding: var(--space-xs) 0; transition: color var(--motion-duration-fast) var(--motion-ease); }
   .header__menu-link:hover { color: var(--main); }
   .header__caret { width: 0.45em; height: 0.45em; border-inline-end: 2px solid currentColor; border-block-end: 2px solid currentColor; transform: rotate(45deg); margin-block-start: -0.2em; }
@@ -208,12 +220,25 @@ const allServices = servicesByCategory.flatMap(({ services }) => services);
   .header__dropdown-menu a:hover,
   .header__dropdown-link-button:hover { background: var(--solid-bg); }
   .header__dropdown-item--all { border-block-start: 1px solid var(--light-grey); margin-block-start: var(--space-2xs); }
+  .header__dropdown-item--has-submenu { position: relative; }
+  .header__submenu-toggle { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: var(--space-sm); padding: var(--space-xs) var(--space-md); background: none; border: 0; font: inherit; color: var(--heading); cursor: pointer; text-align: start; transition: background-color var(--motion-duration-fast) var(--motion-ease); }
+  .header__submenu-toggle:hover { background: var(--solid-bg); }
+  .header__caret--side { transform: rotate(-45deg); margin-block-start: 0; }
+  .header__submenu { position: absolute; inset-inline-start: 100%; inset-block-start: calc(-1 * var(--space-xs)); min-width: 16rem; background: var(--white); box-shadow: var(--shadow-dropdown); border-radius: var(--radius-md); list-style: none; margin: 0; padding: var(--space-xs) 0; opacity: 0; visibility: hidden; transition: opacity var(--motion-duration-base) var(--motion-ease), visibility var(--motion-duration-base) var(--motion-ease); }
+  .header__submenu-toggle[aria-expanded="true"] + .header__submenu { opacity: 1; visibility: visible; }
+  @media (min-width: 901px) {
+    .header__dropdown-item--has-submenu:hover > .header__submenu,
+    .header__dropdown-item--has-submenu:focus-within > .header__submenu { opacity: 1; visibility: visible; }
+  }
 
   .header__mobile-call { display: none; color: inherit; }
 
   @media (max-width: 1100px) {
     .header__contact-info .header__utility-item--address { display: none; }
-    .header__menu { gap: var(--space-md); }
+    .header__menu { gap: var(--space-sm); }
+  }
+  @media (max-width: 1180px) and (min-width: 901px) {
+    .header__logo-image { block-size: calc(var(--logo-height) * 0.8); }
   }
   @media (max-width: 900px) {
     .header__menu-toggle { display: inline-flex; order: 2; }
@@ -222,6 +247,9 @@ const allServices = servicesByCategory.flatMap(({ services }) => services);
     .header__menu.is-open { transform: translateX(0); }
     .header__dropdown-menu { position: static; box-shadow: none; padding-inline-start: var(--space-md); display: none; opacity: 1; visibility: visible; transform: none; }
     .header__dropdown-toggle[aria-expanded="true"] + .header__dropdown-menu { display: block; }
+    .header__submenu { position: static; box-shadow: none; padding-inline-start: var(--space-md); display: none; opacity: 1; visibility: visible; }
+    .header__submenu-toggle[aria-expanded="true"] + .header__submenu { display: block; }
+    .header__caret--side { transform: rotate(45deg); }
     .header__menu-item--cta { margin-block-start: var(--space-sm); }
     .header__mobile-call { display: inline-flex; align-items: center; justify-content: center; order: 1; }
   }

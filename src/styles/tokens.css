@@ -136,6 +136,7 @@
 
   /* Containers */
   --container-max: 75rem;
+  --container-max-wide: 82rem; /* header rows: logo + six menu items + booking button */
   --container-max-narrow: 48rem;
 
   /*

@@ -1,0 +1,72 @@
+---
+// Community Outreach — new page requested by the client (HubSpot ticket
+// 2026-11-05: "Add a tab at the top of the website for Community Outreach").
+// AGENCY-WRITTEN, needs client review. Facts only from the client's own sources:
+// the current site's "Rooted in Community" copy (4-H Clubs, Warren County Career
+// Center, PAWS for Heroes, rescue groups) and the onboarding form (local schools,
+// school sports teams, community events). Add photos/events when the client sends them.
+import { Image } from "astro:assets";
+import ContentPage from "../layouts/ContentPage.astro";
+import banner from "../assets/site/chickens.jpg";
+import photo from "../assets/site/team-group.jpg";
+
+const causes = [
+  { name: "Local 4-H Clubs", text: "Supporting the young people raising and caring for animals across Warren County." },
+  { name: "Warren County Career Center", text: "Helping students explore careers in animal care and veterinary medicine." },
+  { name: "PAWS for Heroes", text: "Proudly supporting PAWS for Heroes and the people it serves." },
+  { name: "Animal rescue groups", text: "Giving back to rescue organizations across the region that help pets find their families." },
+  { name: "Local schools & teams", text: "Cheering on our hometown schools and the student athletes who wear our logo on their shirts." },
+  { name: "Community events", text: "Showing up at local events to meet neighbors, answer pet questions and share a few treats." },
+];
+---
+
+<ContentPage
+  title="Community Outreach"
+  description="Lebanon Small Animal Clinic gives back to 4-H Clubs, the Warren County Career Center, PAWS for Heroes, local schools and rescue groups around Lebanon, OH."
+  heading="Rooted in our community"
+  eyebrow="Community outreach"
+  intro="Caring for pets means caring for the people who love them, and for the hometown we share."
+  bannerImage={banner}
+  bannerAlt="Lebanon Small Animal Clinic team members holding chickens"
+  bannerPosition="center 30%"
+  ctaHeading="Have an event or cause we should know about?"
+  ctaText="We love hearing from neighbors. Give us a call or stop by the clinic."
+>
+  <section class="community">
+    <div class="community__inner">
+      <div class="community__intro">
+        <div class="prose">
+          <p>When you choose Lebanon Small Animal Clinic, you're supporting a practice that's deeply rooted in the community. As a hometown veterinary clinic, being part of Lebanon and the towns around it matters to us, and our relationships reach well beyond the exam room.</p>
+          <p>We proudly give back to local 4-H Clubs, the Warren County Career Center, PAWS for Heroes and animal rescue groups across the region. You'll also find us supporting local schools and sports teams and taking part in community events throughout the year.</p>
+        </div>
+        <Image class="community__photo" src={photo} alt="The Lebanon Small Animal Clinic care team" widths={[600, 1000]} sizes="(max-width: 900px) 100vw, 520px" />
+      </div>
+      <ul class="community__grid">
+        {causes.map((c) => (
+          <li class="community__card" data-reveal>
+            <h3>{c.name}</h3>
+            <p>{c.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</ContentPage>
+
+<style>
+  .community { padding-block: var(--space-section); }
+  .community__inner { max-width: var(--container-max); margin-inline: auto; padding-inline: var(--space-md); }
+  .community__intro { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: var(--space-2xl); align-items: center; margin-block-end: var(--space-2xl); }
+  .community__photo { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-float); }
+  .community__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-lg); }
+  .community__card { padding: var(--space-lg); background: var(--solid-bg); border-radius: var(--radius-lg); border-block-start: 4px solid var(--cta); }
+  .community__card h3 { margin: 0 0 var(--space-xs); font-size: var(--font-size-lg); }
+  .community__card p { margin: 0; color: var(--text-muted); }
+  @media (max-width: 900px) {
+    .community__intro { grid-template-columns: 1fr; }
+    .community__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 767px) {
+    .community__grid { grid-template-columns: 1fr; }
+  }
+</style>

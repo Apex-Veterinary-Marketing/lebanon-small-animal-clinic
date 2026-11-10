@@ -1,3 +1,0 @@
----
-name: "Wellness & Preventive Care"
----

@@ -1,15 +1,17 @@
 ---
-// ServicesSidebar mounted 2026-09-17 (direct instruction: every
-// services-related page always carries it). No active category here —
-// this page browses everything.
+// Lebanon: every service, grouped by category (35 services), each group with a jump link.
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHeaderBanner from "../../components/PageHeaderBanner.astro";
 import ServiceGrid from "../../components/ServiceGrid.astro";
-import { getAllServices } from "../../lib/data/services";
+import { getServicesByCategory } from "../../lib/data/services";
+import { getAllServiceCategories } from "../../lib/data/serviceCategories";
+import { byCategoryOrder } from "../../data/service-category-order";
 import banner from "../../assets/services/rabbit.jpg";
 import CtaBand from "../../components/CtaBand.astro";
 
-const services = await getAllServices();
+const categories = (await getAllServiceCategories()).sort(byCategoryOrder);
+const groups = (await Promise.all(categories.map(async (category) => ({ category, services: await getServicesByCategory(category.id) }))))
+  .filter((g) => g.services.length > 0);
 ---
 
 <BaseLayout title="Pet Care Services" description="Wellness exams, vaccines, diagnostics, dentistry, surgery, urgent care, house calls and more at Lebanon Small Animal Clinic in Lebanon, Ohio.">
@@ -20,15 +22,26 @@ const services = await getAllServices();
     image={banner}
     imageAlt="A rabbit resting on a cushion"
   />
-  <section class="services-index">
-    <div class="services-index__inner">
-      <ServiceGrid services={services} />
-    </div>
-  </section>
+  <nav class="services-jump" aria-label="Jump to a category">
+    {groups.map(({ category }) => <a class="pill services-jump__link" href={`#${category.id}`}>{category.data.name}</a>)}
+  </nav>
+  {groups.map(({ category, services }, i) => (
+    <section id={category.id} class:list={["services-index", i % 2 === 1 && "services-index--soft"]}>
+      <div class="services-index__inner">
+        <h2 class="services-index__heading">{category.data.name}</h2>
+        <ServiceGrid services={services} />
+      </div>
+    </section>
+  ))}
   <CtaBand heading="Not sure what your pet needs?" text="Give us a call and our team will help you choose the right visit." />
 </BaseLayout>
 
 <style>
-  .services-index { padding-block: var(--space-section); background: var(--solid-bg); }
+  .services-jump { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-xs); padding: var(--space-xl) var(--space-md) 0; }
+  .services-jump__link { background: var(--solid-bg); color: var(--main); text-decoration: none; transition: background-color var(--motion-duration-base) var(--motion-ease), color var(--motion-duration-base) var(--motion-ease); }
+  .services-jump__link:hover { background: var(--main); color: var(--on-main); }
+  .services-index { padding-block: var(--space-section); scroll-margin-top: var(--header-height); }
+  .services-index--soft { background: var(--solid-bg); }
+  .services-index__heading { font-size: var(--font-size-3xl); margin: 0 0 var(--space-lg); }
   .services-index__inner { max-width: var(--container-max); margin-inline: auto; padding-inline: var(--space-md); }
 </style>

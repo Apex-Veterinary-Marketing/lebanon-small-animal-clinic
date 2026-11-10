@@ -83,7 +83,7 @@ if (service.data.manualSchema) {
   webPage={{ mainEntity: { "@id": "#service" } }}
   breadcrumb={heading}
 >
-  <PageHeaderBanner heading={heading} eyebrow={categories.filter(Boolean)[0]?.data.name || "Pet care"} image={service.data.pageHeaderImage} imageAlt="" />
+  <PageHeaderBanner heading={heading} eyebrow={categories.filter(Boolean)[0]?.data.name || "Pet care"} image={service.data.pageHeaderImage} imageAlt={service.data.pageHeaderImageAlt || ""} />
 
   <div class="services-layout">
     <div class="service-detail">

@@ -90,7 +90,7 @@ export const siteInfo: SiteInfo = {
   postalCode: "45036",
   addressLink: "https://www.google.com/maps?cid=8531316001904538955",
   mapEmbedLink: "https://www.google.com/maps?q=Lebanon+Small+Animal+Clinic,+1196+Oregonia+Rd,+Lebanon,+OH+45036&output=embed",
-  bookingUrl: "https://portal.chckup.app/book/lebanon-small-animal-clinic?booking_source=Other",
+  bookingUrl: "https://portal.chckup.app/book/lebanon-small-animal-clinic?id=b3685bcc-df07-4c83-ac23-e05c688582ff",
   bookingLabel: "Book an Appointment",
   cityState: "Lebanon, OH",
   serviceAreaOfCoverage:

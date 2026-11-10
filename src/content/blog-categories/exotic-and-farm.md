@@ -1,3 +1,0 @@
----
-name: "Exotic & Farm Animals"
----
