@@ -2,8 +2,8 @@
 name: "Ultrasound"
 customName: "Ultrasound"
 serviceIcon: "../../assets/services/icons/ultrasounds.svg"
-pageHeaderImage: "../../assets/services/stock/service-7-cover.jpg"
-pageHeaderImageAlt: "Dachshund sitting on a yellow armchair"
+pageHeaderImage: "../../assets/gallery/ultrasound.jpg"
+pageHeaderImageAlt: "Dr. Tenenzapf performing an ultrasound"
 contentBlocks:
   - body: "<h2>Ultrasound in Lebanon, OH</h2><p>Welcome to Lebanon Small Animal Clinic, your trusted source for advanced ultrasound services in Lebanon. Our experienced veterinary team provides clear, accurate answers for your pet's health needs.</p><h2>Understanding Ultrasound</h2><p>Ultrasound is a safe, non-invasive imaging technique that uses sound waves to produce real-time images of your pet’s internal organs. This diagnostic tool allows our veterinarians to examine the heart, liver, kidneys, bladder, abdomen, and even monitor pregnancies without surgery or discomfort. Ultrasound is especially valuable for detecting internal masses, fluid buildup, organ abnormalities, and guiding biopsies or other procedures. With veterinary ultrasound, our team can quickly identify the cause of symptoms such as vomiting, weight loss, or changes in urination, helping to provide a clear diagnosis and the right treatment plan. Early, accurate diagnosis means your pet gets the care they need faster, and you have peace of mind knowing you’re making informed decisions about their health. At Lebanon Small Animal Clinic, we are committed to providing compassionate, comprehensive care using the most effective diagnostic tools available, including ultrasound for dogs, cats, and exotic pets.</p>"
     image: "../../assets/services/stock/service-7-content1.jpg"

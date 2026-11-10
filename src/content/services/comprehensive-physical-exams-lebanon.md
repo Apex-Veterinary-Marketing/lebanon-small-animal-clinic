@@ -2,8 +2,8 @@
 name: "Comprehensive Physical Exams"
 customName: "Physical Exams"
 serviceIcon: "../../assets/services/icons/examinations.svg"
-pageHeaderImage: "../../assets/services/routine-exams.jpg"
-pageHeaderImageAlt: "Veterinarian examining a cat at Lebanon Small Animal Clinic"
+pageHeaderImage: "../../assets/gallery/physical-exam.jpg"
+pageHeaderImageAlt: "Technician and veterinarian examining a dog"
 contentBlocks:
   - body: "<h2>Comprehensive Physical Exams in Lebanon, OH</h2><p>Welcome to Lebanon Small Animal Clinic, your trusted local resource for comprehensive physical exams in Lebanon, OH. Our experienced veterinary team delivers thorough, compassionate care for pets of all ages.</p><h2>Understanding Comprehensive Physical Exams</h2><p>Comprehensive physical exams are the foundation of lifelong pet wellness. During these visits, our veterinarians perform a nose-to-tail assessment that checks every aspect of your pet’s health. This proactive approach helps us catch concerns early, address subtle changes, and partner with you to provide the best possible care for your furry, feathered, or scaly family members.</p><p>At Lebanon Small Animal Clinic, our veterinary team examines your pet’s eyes, ears, mouth, skin, coat, heart, lungs, joints, and abdomen. We discuss your pet’s lifestyle, nutrition, behavior, and any recent changes or concerns you’ve noticed. By combining clinical expertise with a compassionate, Fear Free approach, we make exams as comfortable and stress-free as possible for both pets and owners.</p><p>Routine physical exams benefit pets of all species and life stages. They’re essential for puppies, kittens, adult pets, seniors, and exotic animals alike. Regular exams help us detect problems early, personalize care, and keep your pet healthy, active, and happy for years to come.</p>"
     image: "../../assets/services/stock/service-1-content1.jpg"

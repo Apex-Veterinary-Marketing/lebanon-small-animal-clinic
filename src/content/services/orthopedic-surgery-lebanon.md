@@ -2,8 +2,8 @@
 name: "Orthopedic Surgery & Care"
 customName: "Orthopedics"
 serviceIcon: "../../assets/services/icons/fractures-dislocations-01.svg"
-pageHeaderImage: "../../assets/services/stock/service-5-cover.jpg"
-pageHeaderImageAlt: "Yellow Labrador playing on a living room rug"
+pageHeaderImage: "../../assets/gallery/spaniel.jpg"
+pageHeaderImageAlt: "A spaniel at the clinic"
 contentBlocks:
   - body: "<h2>Orthopedic Surgery &amp; Care in Lebanon, OH</h2><p>Welcome to Lebanon Small Animal Clinic, your trusted partner for advanced orthopedic care in Lebanon. Our experienced veterinary team is dedicated to restoring your pet's mobility and comfort.</p><h2>Understanding Orthopedic Surgery &amp; Care</h2><p>Orthopedic care focuses on diagnosing and treating conditions affecting your pet's bones, joints, ligaments, and muscles. These issues often arise from injuries, genetic factors, developmental problems, or chronic conditions such as arthritis. Common orthopedic concerns include fractures, joint dislocations, ligament tears (like cruciate ligament injuries), and luxating patella.</p><p>At Lebanon Small Animal Clinic, our veterinarians use advanced diagnostics and surgical techniques to address orthopedic issues and help pets regain their quality of life. Timely orthopedic treatment can relieve pain, restore function, and prevent long-term complications. Whether your pet needs surgical repair, pain management, or post-operative rehabilitation, our compassionate team will create a personalized plan tailored to your pet's needs.</p><p>Orthopedic care is essential for pets of all ages and breeds, especially those who are active, aging, or prone to certain conditions. Our goal is to help your pet return to their favorite activities safely and comfortably, so you can enjoy more happy, healthy years together.</p>"
     image: "../../assets/services/stock/service-5-content1.jpg"

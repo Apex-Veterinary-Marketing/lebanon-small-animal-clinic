@@ -14,15 +14,16 @@ import { getSiteInfo } from "../lib/data/site";
 import { getAllTestimonials } from "../lib/data/testimonials";
 import { phoneHref } from "../lib/utils/phone";
 
-import heroVetDog from "../assets/site/hero-vet-with-dog.jpg";
-import heroChickens from "../assets/site/chickens.jpg";
-import heroTeam from "../assets/site/team-group.jpg";
+import heroTeam from "../assets/gallery/team-lobby.jpg";
+import heroOutdoors from "../assets/gallery/team-outdoors-with-dogs.jpg";
+import heroExam from "../assets/gallery/exam-cavalier.jpg";
+import heroHassel from "../assets/gallery/dr-hassel-with-chicken.jpg";
 import clinicExterior from "../assets/site/clinic-exterior.jpg";
-import microscope from "../assets/site/microscope.jpg";
-import petDog from "../assets/site/pets-DSC02617.jpg";
-import petCat from "../assets/site/pets-DSC02675.jpg";
+import ultrasound from "../assets/gallery/ultrasound-dr-t.jpg";
+import petDog from "../assets/gallery/dogs-on-walk.jpg";
+import petCat from "../assets/gallery/tech-with-cat.jpg";
 import petPocket from "../assets/site/hedgehog.jpg";
-import petFarm from "../assets/site/pets-DSC03361.jpg";
+import petFarm from "../assets/gallery/tech-with-goat.jpg";
 import awardBadge from "../assets/site/award-businessrate-crystal.png";
 // Official logo from catvets.com (Feline Veterinary Medical Association); the old site says its vets are Feline/Cat Friendly certified.
 import catFriendlyBadge from "../assets/site/badge-cat-friendly-veterinarian.png";
@@ -35,9 +36,10 @@ const doctors = await getHomeDoctors();
 const testimonials = await getAllTestimonials();
 
 const heroSlides = [
-  { src: heroVetDog, alt: "Lebanon Small Animal Clinic team member smiling with a golden dog", position: "70% 30%" },
-  { src: heroChickens, alt: "Two Lebanon Small Animal Clinic team members holding chickens at a farm", position: "50% 35%" },
-  { src: heroTeam, alt: "The Lebanon Small Animal Clinic care team in the clinic lobby", position: "50% 40%" },
+  { src: heroHassel, alt: "Dr. Hassel holding a chicken on a farm visit", position: "70% 30%" },
+  { src: heroExam, alt: "Dr. Tenenzapf and a technician examining a Cavalier King Charles spaniel", position: "65% 40%" },
+  { src: heroOutdoors, alt: "The care team outdoors with their dogs", position: "50% 60%" },
+  { src: heroTeam, alt: "The Lebanon Small Animal Clinic care team in the clinic lobby", position: "50% 35%" },
 ];
 
 const highlights = [
@@ -49,10 +51,10 @@ const highlights = [
 ];
 
 const pets = [
-  { name: "Dogs", src: petDog, alt: "Dr. Hassel and a team member examining two puppies" },
-  { name: "Cats", src: petCat, alt: "Team member petting a gray kitten" },
+  { name: "Dogs", src: petDog, alt: "Two dogs on a walk with the care team" },
+  { name: "Cats", src: petCat, alt: "Technician smiling with a fluffy cat on the exam table" },
   { name: "Exotics & Pocket Pets", src: petPocket, alt: "Hedgehog held in a pair of hands" },
-  { name: "Farm Animals", src: petFarm, alt: "Two team members holding baby goats in the hay" },
+  { name: "Farm Animals", src: petFarm, alt: "Team member hugging a young goat" },
 ];
 
 const doctorRoles: Record<string, string> = {
@@ -170,7 +172,7 @@ const doctorRoles: Record<string, string> = {
   <section class="home-section home-section--dark">
     <div class="home-container home-split home-split--reverse">
       <div class="home-split__media" data-reveal="right">
-        <Image src={microscope} alt="Lebanon Small Animal Clinic team member reviewing a sample under the microscope" class="home-photo" widths={[600, 900]} sizes="(max-width: 900px) 100vw, 560px" />
+        <Image src={ultrasound} alt="Dr. Tenenzapf performing an ultrasound with a technician" class="home-photo" widths={[600, 900]} sizes="(max-width: 900px) 100vw, 560px" />
       </div>
       <div class="home-split__copy" data-reveal="left">
         <p class="eyebrow eyebrow--light">PAWS wellness plans</p>

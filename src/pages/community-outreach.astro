@@ -7,8 +7,8 @@
 // school sports teams, community events). Add photos/events when the client sends them.
 import { Image } from "astro:assets";
 import ContentPage from "../layouts/ContentPage.astro";
-import banner from "../assets/site/chickens.jpg";
-import photo from "../assets/site/team-group.jpg";
+import banner from "../assets/gallery/team-at-the-barn.jpg";
+import photo from "../assets/gallery/team-with-dogs-outside.jpg";
 
 const causes = [
   { name: "Local 4-H Clubs", text: "Supporting the young people raising and caring for animals across Warren County." },
@@ -27,7 +27,7 @@ const causes = [
   eyebrow="Community outreach"
   intro="Caring for pets means caring for the people who love them, and for the hometown we share."
   bannerImage={banner}
-  bannerAlt="Lebanon Small Animal Clinic team members holding chickens"
+  bannerAlt="Team members walking dogs outside a barn"
   bannerPosition="center 30%"
   ctaHeading="Have an event or cause we should know about?"
   ctaText="We love hearing from neighbors. Give us a call or stop by the clinic."
@@ -39,7 +39,7 @@ const causes = [
           <p>When you choose Lebanon Small Animal Clinic, you're supporting a practice that's deeply rooted in the community. As a hometown veterinary clinic, being part of Lebanon and the towns around it matters to us, and our relationships reach well beyond the exam room.</p>
           <p>We proudly give back to local 4-H Clubs, the Warren County Career Center, PAWS for Heroes and animal rescue groups across the region. You'll also find us supporting local schools and sports teams and taking part in community events throughout the year.</p>
         </div>
-        <Image class="community__photo" src={photo} alt="The Lebanon Small Animal Clinic care team" widths={[600, 1000]} sizes="(max-width: 900px) 100vw, 520px" />
+        <Image class="community__photo" src={photo} alt="Team members greeting dogs outdoors" widths={[600, 1000]} sizes="(max-width: 900px) 100vw, 520px" />
       </div>
       <ul class="community__grid">
         {causes.map((c) => (

@@ -2,8 +2,8 @@
 name: "In-Home Euthanasia"
 customName: "In-Home Euthanasia"
 serviceIcon: "../../assets/services/icons/euthanasia.svg"
-pageHeaderImage: "../../assets/services/hospice.jpg"
-pageHeaderImageAlt: "A pug and a cat napping together"
+pageHeaderImage: "../../assets/gallery/comfort-room.jpg"
+pageHeaderImageAlt: "The clinic's quiet comfort room"
 contentBlocks:
   - body: "<h2>In-Home Euthanasia in Lebanon, OH</h2><p>Saying goodbye to a beloved pet is one of the hardest parts of loving an animal. At Lebanon Small Animal Clinic, we're here to walk that road with you, with compassion, honesty and care focused on your pet's comfort every step of the way.</p><p>When the time comes, our team can come to your home so your pet can rest somewhere calm and familiar, surrounded by the people who love them, without the stress of travel or a clinic visit.</p>"
     image: "../../assets/services/stock/service-15-content1.jpg"

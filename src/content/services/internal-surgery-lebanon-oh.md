@@ -2,8 +2,8 @@
 name: "Internal Surgery"
 customName: "Internal Surgery"
 serviceIcon: "../../assets/services/icons/surgery2.svg"
-pageHeaderImage: "../../assets/services/stock/service-15-cover.jpg"
-pageHeaderImageAlt: "German shepherd outdoors"
+pageHeaderImage: "../../assets/gallery/surgery-prep.jpg"
+pageHeaderImageAlt: "The team preparing a patient for surgery"
 contentBlocks:
   - body: "<h2>Internal Surgery in Lebanon, OH</h2><p>Trust Lebanon Small Animal Clinic for advanced internal surgery in Lebanon. Our experienced veterinary team provides compassionate, skilled surgical care for your pet’s health and well-being.</p><h2>Understanding Internal Surgery</h2><p>Internal surgery refers to surgical procedures performed within the chest, abdomen, or other internal structures to diagnose or treat a variety of conditions. These surgeries can address issues such as gastrointestinal blockages, tumor removal, bladder stone extraction, organ repair, and more. Internal surgery is sometimes necessary to resolve life-threatening emergencies or chronic medical problems that cannot be managed with medication alone.</p><p>At Lebanon Small Animal Clinic, our veterinary professionals use advanced surgical techniques and modern equipment to ensure the safest possible outcomes. Internal surgery can restore comfort, improve quality of life, and, in many cases, provide a cure for serious medical conditions. Our team is committed to minimizing stress for both pets and owners, focusing on pain management, clear communication, and individualized care before, during, and after every procedure.</p><p>If your pet has been diagnosed with a condition requiring surgery, or if you notice sudden changes in their health, our team is here to guide you through every step of the process.</p>"
     image: "../../assets/services/stock/service-15-content1.jpg"

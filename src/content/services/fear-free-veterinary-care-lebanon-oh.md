@@ -2,8 +2,8 @@
 name: "Fear Free-Focused Veterinary Care"
 customName: "Fear Free Care"
 serviceIcon: "../../assets/services/icons/behavior-consultations.svg"
-pageHeaderImage: "../../assets/site/hero-vet-with-dog.jpg"
-pageHeaderImageAlt: "Team member smiling with a golden dog"
+pageHeaderImage: "../../assets/gallery/calming-room-dog.jpg"
+pageHeaderImageAlt: "Team member with a dog in the clinic's calming room"
 contentBlocks:
   - body: "<h2>Fear Free-Focused Veterinary Care in Lebanon, OH</h2><p>At Lebanon Small Animal Clinic, we lead the way in Fear Free-focused veterinary care, ensuring every pet’s visit is as stress-free and comfortable as possible.</p><h2>Understanding Fear Free Veterinary Care</h2><p>Fear Free veterinary care is a compassionate approach designed to reduce fear, anxiety, and stress for pets during every visit. Our team at Lebanon Small Animal Clinic is trained and certified in Fear Free techniques, which means we prioritize both your pet's emotional and physical wellbeing. This approach involves gentle handling, positive reinforcement, calming pheromones, and a welcoming environment tailored to each pet’s unique needs.</p><p>By focusing on your pet’s comfort, we help prevent negative associations with the veterinary clinic. This not only makes future visits easier for your pet but also allows our team to provide more thorough care. Our goal is for every pet, whether a dog, cat, exotic species, or farm animal, to feel safe and cared for at every appointment. Fear Free care also supports early detection of health concerns, since pets are less likely to hide symptoms when they feel at ease. We believe veterinary visits should be positive experiences for both pets and their families.</p>"
     image: "../../assets/services/stock/service-9-content1.jpg"

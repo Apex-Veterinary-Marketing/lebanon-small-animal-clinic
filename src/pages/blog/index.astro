@@ -3,7 +3,7 @@
 // the page shows a "coming soon" note instead of an empty grid.
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHeaderBanner from "../../components/PageHeaderBanner.astro";
-import blogBanner from "../../assets/site/staff-with-dog.jpg";
+import blogBanner from "../../assets/gallery/golden-dog-outside.jpg";
 import BlogGrid from "../../components/BlogGrid.astro";
 import { getAllPosts } from "../../lib/data/blog";
 
@@ -11,7 +11,7 @@ const posts = await getAllPosts();
 ---
 
 <BaseLayout title="Blog" description="Pet care tips, seasonal safety and clinic news from the Lebanon Small Animal Clinic team in Lebanon, Ohio.">
-  <PageHeaderBanner heading="Pet care tips & clinic news" eyebrow="Blog" image={blogBanner} imageAlt="Team member with a happy dog" />
+  <PageHeaderBanner heading="Pet care tips & clinic news" eyebrow="Blog" image={blogBanner} imageAlt="A golden dog outdoors with the care team" />
   <div class="page-section">
     {posts.length > 0 ? (
       <BlogGrid posts={posts} />

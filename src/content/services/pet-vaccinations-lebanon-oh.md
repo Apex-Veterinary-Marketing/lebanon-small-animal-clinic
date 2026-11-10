@@ -2,8 +2,8 @@
 name: "Vaccinations"
 customName: "Vaccinations"
 serviceIcon: "../../assets/services/icons/vaccinations.svg"
-pageHeaderImage: "../../assets/services/vaccines.jpg"
-pageHeaderImageAlt: "Team member with a happy dog on the exam table"
+pageHeaderImage: "../../assets/gallery/cavalier-exam-table.jpg"
+pageHeaderImageAlt: "A Cavalier King Charles spaniel on the exam table"
 contentBlocks:
   - body: "<h2>Vaccinations in Lebanon, OH</h2><p>Protect your pet with expert vaccinations at Lebanon Small Animal Clinic. Our experienced veterinary team delivers personalized, compassionate care for every pet and family we serve.</p><h2>Understanding Vaccinations</h2><p>Vaccinations are a cornerstone of preventative veterinary care, protecting your pet from dangerous and potentially life-threatening diseases. By creating immunity against common viruses and bacteria, vaccines help keep your pet healthy and reduce the spread of illness within the community.</p><p>At Lebanon Small Animal Clinic, we tailor vaccination plans to each pet’s lifestyle, age, and risk factors. Our veterinarians use the latest vaccine protocols, ensuring your dog, cat, or exotic pet receives only what they need, never more, never less. Vaccines are crucial for preventing illnesses like rabies, distemper, parvovirus, feline leukemia, and more.</p><p>Pets of all ages benefit from timely vaccinations. Whether you have a new puppy, kitten, or an adult pet, our team will guide you through the best schedule for protection. Vaccinating your pet not only helps them live a longer, healthier life but also safeguards your family and the Lebanon community by reducing the risk of zoonotic diseases.</p>"
     image: "../../assets/services/stock/service-2-content1.jpg"

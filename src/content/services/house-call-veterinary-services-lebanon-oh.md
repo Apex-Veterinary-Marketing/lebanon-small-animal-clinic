@@ -2,8 +2,8 @@
 name: "House Call Veterinary Services"
 customName: "House Calls"
 serviceIcon: "../../assets/services/icons/boarding.svg"
-pageHeaderImage: "../../assets/site/chickens.jpg"
-pageHeaderImageAlt: "Two team members holding chickens on a farm visit"
+pageHeaderImage: "../../assets/gallery/team-at-the-barn.jpg"
+pageHeaderImageAlt: "Team members walking dogs outside a barn"
 contentBlocks:
   - body: "<h2>House Call Options in Lebanon, OH</h2><p>Lebanon Small Animal Clinic proudly offers house call veterinary services in Lebanon, OH, providing compassionate, professional care where your pet feels most comfortable, your home.</p><h2>Understanding House Call Veterinary Services</h2><p>House call veterinary services bring the expertise and care of Lebanon Small Animal Clinic directly to your doorstep. Our veterinary team understands that some pets become anxious or stressed when traveling to a clinic, and some owners face mobility or transportation challenges. By offering house call options in Lebanon, we help reduce stress for pets and owners alike, making veterinary care accessible and convenient.</p><p>During a house call, our veterinarians perform many of the same exams, vaccinations, and basic treatments available in the clinic. Pets receive attentive, individualized care in a familiar setting, which can be especially helpful for elderly pets, multi-pet households, or those with anxiety. House calls also allow our team to observe your pet’s natural behavior and environment, leading to more personalized recommendations for their health and comfort. Our goal is to make veterinary care less stressful and more accessible for families in Lebanon and surrounding communities.</p>"
     image: "../../assets/services/stock/service-10-content1.jpg"

@@ -10,7 +10,7 @@ import cats from "../data/pages/pets-cats.html?raw";
 import pocket from "../data/pages/pets-pocket-pets.html?raw";
 import exotic from "../data/pages/pets-exotic-pets.html?raw";
 import farm from "../data/pages/pets-farm-animals.html?raw";
-import banner from "../assets/site/goats.jpg";
+import banner from "../assets/gallery/goats-in-grass.jpg";
 import imgDogs from "../assets/site/pets-DSC02617.jpg";
 import imgCats from "../assets/site/pets-DSC02675.jpg";
 import imgPocket from "../assets/site/hedgehog.jpg";
@@ -31,7 +31,7 @@ const pets = [
   eyebrow="Patient resources"
   intro="Whether they bark, meow, squeak, slither or cluck, every patient gets gentle, knowledgeable care."
   bannerImage={banner}
-  bannerAlt="Team members with young goats"
+  bannerAlt="Two young goats in the grass"
 >
   <nav class="pets-jump" aria-label="Jump to an animal">
     {pets.map((p) => <a class="pill pets-jump__link" href={`#${p.id}`}>{p.name}</a>)}

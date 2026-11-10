@@ -9,7 +9,7 @@ import Modal from "../components/Modal.astro";
 import CtaBand from "../components/CtaBand.astro";
 import { getAllDoctors } from "../lib/data/doctors";
 import { getAllStaff } from "../lib/data/staff";
-import banner from "../assets/site/team-group.jpg";
+import banner from "../assets/gallery/team-hearts.jpg";
 
 const doctors = await getAllDoctors();
 const staff = await getAllStaff();
@@ -41,7 +41,7 @@ const clinicBlurbs = [
     eyebrow="About us"
     intro="Fun, compassionate and knowledgeable people who treat every patient like their own."
     image={banner}
-    imageAlt="The Lebanon Small Animal Clinic care team in the clinic lobby"
+    imageAlt="The Lebanon Small Animal Clinic care team making heart shapes with their hands"
   />
 
   <section class="team-section">

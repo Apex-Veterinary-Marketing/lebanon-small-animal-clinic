@@ -2,8 +2,8 @@
 name: "Digital Radiology"
 customName: "Digital Radiology"
 serviceIcon: "../../assets/services/icons/radiology.svg"
-pageHeaderImage: "../../assets/services/stock/service-5-cover.jpg"
-pageHeaderImageAlt: "Yellow Labrador playing on a living room rug"
+pageHeaderImage: "../../assets/gallery/x-ray.jpg"
+pageHeaderImageAlt: "Technicians positioning a dog for digital x-rays"
 contentBlocks:
   - body: "<h2>Digital Radiology in Lebanon, OH</h2><p>Lebanon Small Animal Clinic provides advanced digital radiology for pets, combining expertise and compassion to deliver fast, accurate diagnoses for your pet’s health and comfort.</p><h2>Understanding Digital Radiology</h2><p>Digital radiology, or digital X-ray, is a modern imaging technique that allows our veterinary team to view high-resolution images of your pet’s bones and internal organs in seconds. Unlike traditional X-rays, digital radiographs produce clearer images, require less radiation, and can be easily enhanced for more precise diagnosis.</p><p>This technology helps us quickly identify injuries, fractures, tumors, foreign bodies, heart and lung conditions, and many other concerns. Because images are available immediately, our veterinarians can make prompt, informed decisions about your pet’s treatment. Digital radiology is comfortable for most pets and is used for dogs, cats, and exotic animals alike.</p><p>At Lebanon Small Animal Clinic, we use digital radiology to support wellness exams, urgent care, and surgical planning, ensuring every patient receives the safest, most effective care possible. Accurate imaging leads to better outcomes and peace of mind for you.</p>"
     image: "../../assets/services/stock/service-5-content1.jpg"

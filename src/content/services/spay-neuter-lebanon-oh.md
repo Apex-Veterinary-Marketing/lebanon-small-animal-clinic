@@ -2,8 +2,8 @@
 name: "Spay & Neuter"
 customName: "Spay & Neuter"
 serviceIcon: "../../assets/services/icons/spay-neuter.svg"
-pageHeaderImage: "../../assets/services/stock/service-13-cover.jpg"
-pageHeaderImageAlt: "Pomeranian smiling outdoors"
+pageHeaderImage: "../../assets/gallery/post-op-care.jpg"
+pageHeaderImageAlt: "Technician comforting a patient after surgery"
 contentBlocks:
   - body: "<h2>Spay &amp; Neuter in Lebanon, OH</h2><p>Welcome to Lebanon Small Animal Clinic, your trusted resource for spay and neuter in Lebanon, OH. Our experienced veterinary team is dedicated to keeping your pets healthy and happy.</p><h2>Understanding Spay &amp; Neuter</h2><p>Spaying and neutering are surgical procedures that prevent pets from reproducing. Spaying removes the ovaries and uterus in female pets; neutering removes the testicles in males. These safe and routine surgeries have important health and behavioral benefits for both cats and dogs.</p><p>Spay and neuter in Lebanon, OH helps reduce the risk of certain cancers and infections, eliminates unwanted litters, and can decrease problematic behaviors such as roaming, marking, and aggression. For our community, responsible sterilization also helps prevent pet overpopulation and supports local animal welfare.</p><p>Our veterinary team uses modern techniques and a compassionate approach to ensure your pet’s comfort and safety. At Lebanon Small Animal Clinic, we believe in educating pet owners about the lifelong benefits of these procedures. Our goal is to make your pet’s spay or neuter experience as stress-free as possible, so you can feel confident in your decision and your pet’s wellbeing.</p>"
     image: "../../assets/services/stock/service-13-content1.jpg"

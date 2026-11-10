@@ -2,8 +2,8 @@
 name: "Urgent Care"
 customName: "Urgent Care"
 serviceIcon: "../../assets/services/icons/pet-emergency.svg"
-pageHeaderImage: "../../assets/services/stock/service-13-cover.jpg"
-pageHeaderImageAlt: "Pomeranian smiling outdoors"
+pageHeaderImage: "../../assets/gallery/urgent-care-visit.jpg"
+pageHeaderImageAlt: "Team members caring for a dog during a visit"
 contentBlocks:
   - body: "<h2>Urgent Care in Lebanon, OH</h2><p>When your pet needs immediate attention, Lebanon Small Animal Clinic is here with trusted urgent care in Lebanon, OH. Our team provides prompt, compassionate support for pets and owners.</p><h2>Understanding Urgent Care</h2><p>Veterinary urgent care addresses unexpected illnesses, injuries, or sudden changes in your pet’s health that require prompt evaluation but are not life-threatening emergencies. Our urgent care services fill the gap between routine appointments and after-hours emergencies, offering same-day access to our experienced veterinary team. We treat issues such as vomiting, diarrhea, limping, minor wounds, allergic reactions, coughing, and sudden behavioral changes. Timely attention helps relieve discomfort, prevent complications, and give you peace of mind. Choosing urgent care at Lebanon Small Animal Clinic means your pet receives skillful, individualized care in a welcoming, low-stress environment. We are proud to serve Lebanon and surrounding communities with accessible, expert veterinary support when your pet needs it most. If you’re unsure whether your pet’s situation is urgent, please call us; our team will help guide you to the right next step.</p>"
     image: "../../assets/services/stock/service-13-content1.jpg"

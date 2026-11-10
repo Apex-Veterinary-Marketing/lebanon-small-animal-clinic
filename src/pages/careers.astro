@@ -3,7 +3,7 @@
 import ContentPage from "../layouts/ContentPage.astro";
 import GravityFormEmbed from "../components/GravityFormEmbed.astro";
 import html from "../data/pages/careers.html?raw";
-import banner from "../assets/site/team-group.jpg";
+import banner from "../assets/gallery/team-lobby.jpg";
 import { getSiteInfo } from "../lib/data/site";
 import { phoneHref } from "../lib/utils/phone";
 const site = await getSiteInfo();
@@ -15,7 +15,7 @@ const site = await getSiteInfo();
   heading="Join our clinic family"
   eyebrow="Careers"
   bannerImage={banner}
-  bannerAlt="The Lebanon Small Animal Clinic care team"
+  bannerAlt="The Lebanon Small Animal Clinic care team in the clinic lobby"
   html={html}
   ctaHeading="Questions about working with us?"
   ctaText="Give us a call or stop by. We'd love to meet you."

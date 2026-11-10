@@ -2,8 +2,8 @@
 name: "Exotic and Farm Animal Medicine"
 customName: "Exotic & Farm Animal Medicine"
 serviceIcon: "../../assets/services/icons/bird.svg"
-pageHeaderImage: "../../assets/services/rabbit.jpg"
-pageHeaderImageAlt: "A rabbit resting on a cushion"
+pageHeaderImage: "../../assets/gallery/chickens-in-barn.jpg"
+pageHeaderImageAlt: "Chickens in a barn"
 contentBlocks:
   - body: "<h2>Exotic and Farm Animal Medicine in Lebanon, OH</h2><p>Welcome to Lebanon Small Animal Clinic, your trusted source for expert exotic and farm animal medicine in Lebanon. Our veterinary team delivers compassionate, skilled care for every species.</p><h2>Understanding Exotic and Farm Animal Medicine</h2><p>Exotic and farm animal medicine covers veterinary care for species beyond traditional dogs and cats. This includes birds, reptiles, pocket pets, rabbits, goats, sheep, pigs, chickens, and more. These animals have unique health needs and require specialized knowledge and equipment.</p><p>At Lebanon Small Animal Clinic, our veterinarians are trained and experienced in diagnosing, treating, and preventing illness in a wide variety of species. We understand how important your non-traditional pets and farm animals are to your family or business. Our comprehensive care helps ensure their health, comfort, and longevity.</p><p>From routine wellness exams and vaccinations to urgent care, nutritional counseling, and treatment of complex medical issues, we tailor our approach to each animal's species, environment, and lifestyle. Our goal is to keep all your animals healthy and thriving, whether they're cherished companions or essential members of your farm.</p>"
     image: "../../assets/services/stock/service-7-content1.jpg"

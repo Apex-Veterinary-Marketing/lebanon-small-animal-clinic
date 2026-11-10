@@ -2,8 +2,8 @@
 name: "Heartworm Testing"
 customName: "Heartworm Testing"
 serviceIcon: "../../assets/services/icons/heartworm.svg"
-pageHeaderImage: "../../assets/services/stock/service-3-cover.jpg"
-pageHeaderImageAlt: "Small tan dog looking up on a wooden deck"
+pageHeaderImage: "../../assets/gallery/exam-team.jpg"
+pageHeaderImageAlt: "Technicians caring for a dog in the treatment area"
 contentBlocks:
   - body: "<h2>Heartworm Testing in Lebanon, OH</h2><p>Lebanon Small Animal Clinic provides expert heartworm testing to keep your pets safe and healthy year-round. Trust our veterinary team for compassionate, thorough preventative care.</p><h2>Understanding Heartworm Testing</h2><p>Heartworm testing is a vital part of your pet's preventative health plan. Heartworm disease is a serious, potentially fatal condition caused by parasitic worms transmitted by mosquitoes. Early detection through heartworm testing allows for timely treatment and prevents long-term organ damage in your dog or cat.</p><p>Our veterinary professionals use advanced diagnostic tests to accurately detect heartworm infection before symptoms appear. This proactive approach protects your pet’s heart and lungs, ensuring a longer, healthier life. Even pets on year-round preventive medication should be tested regularly, as no prevention method is 100% effective. At Lebanon Small Animal Clinic, we believe in making heartworm testing easy and stress-free, supporting your pet’s health and your peace of mind every step of the way.</p>"
     image: "../../assets/services/stock/service-3-content1.jpg"

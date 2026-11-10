@@ -2,8 +2,8 @@
 name: "Knee Cap Dislocation Surgery"
 customName: "Knee Cap Dislocation"
 serviceIcon: "../../assets/services/icons/knee-cap-dislocation-01.svg"
-pageHeaderImage: "../../assets/services/stock/service-18-cover.jpg"
-pageHeaderImageAlt: "French bulldog napping"
+pageHeaderImage: "../../assets/gallery/golden-dog-walking.jpg"
+pageHeaderImageAlt: "A golden dog walking outdoors"
 contentBlocks:
   - body: "<h2>Knee Cap Dislocation Surgery in Lebanon, OH</h2><p>Welcome to Lebanon Small Animal Clinic, where our experienced veterinary team provides advanced care for knee cap dislocation in pets. Your pet’s comfort and mobility are our priority.</p><h2>Understanding Knee Cap Dislocation</h2><p>Knee cap dislocation, also called patellar luxation, is a condition where the kneecap (patella) moves out of its normal position. This problem is most common in dogs but can affect cats and other pets as well. Pets with knee cap dislocation may limp, skip steps, or show signs of pain and discomfort. Left untreated, this condition can lead to arthritis, reduced mobility, and chronic pain.</p><p>Surgical correction is often recommended for pets with moderate to severe patellar luxation or those experiencing ongoing discomfort. At Lebanon Small Animal Clinic, our veterinarians use advanced surgical techniques to realign the kneecap, restore joint stability, and relieve pain. Successful treatment helps pets regain comfortable movement, improves quality of life, and prevents further joint damage.</p><p>If you notice your pet limping or having difficulty with their hind legs, our team is here to help. Early intervention means better outcomes for your companion’s long-term health.</p>"
     image: "../../assets/services/stock/service-18-content1.jpg"

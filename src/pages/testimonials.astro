@@ -4,7 +4,7 @@
 import ContentPage from "../layouts/ContentPage.astro";
 import { getAllTestimonials } from "../lib/data/testimonials";
 import { getSiteInfo } from "../lib/data/site";
-import banner from "../assets/site/hero-vet-with-dog.jpg";
+import banner from "../assets/gallery/cavalier-closeup.jpg";
 
 const site = await getSiteInfo();
 const testimonials = await getAllTestimonials();
@@ -16,7 +16,7 @@ const testimonials = await getAllTestimonials();
   heading="What our clients say"
   eyebrow="Testimonials"
   bannerImage={banner}
-  bannerAlt="Team member smiling with a golden dog"
+  bannerAlt="Close-up of a happy Cavalier King Charles spaniel"
   bannerPosition="70% 30%"
 >
   <section class="reviews">

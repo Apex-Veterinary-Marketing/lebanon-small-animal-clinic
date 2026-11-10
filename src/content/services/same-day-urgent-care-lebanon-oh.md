@@ -2,8 +2,8 @@
 name: "Same-Day Urgent Care"
 customName: "Same-Day Urgent Care"
 serviceIcon: "../../assets/services/icons/pet-emergency.svg"
-pageHeaderImage: "../../assets/services/testing.jpg"
-pageHeaderImageAlt: "Team member preparing a dog for treatment"
+pageHeaderImage: "../../assets/gallery/dog-in-cone.jpg"
+pageHeaderImageAlt: "Team members walking a dog wearing a recovery cone"
 contentBlocks:
   - body: "<h2>Same-Day Urgent Care in Lebanon, OH</h2><p>When your pet needs prompt attention, Lebanon Small Animal Clinic is here with experienced, compassionate same-day urgent care in Lebanon, OH.</p><h2>Understanding Same-Day Urgent Care</h2><p>Same-day urgent care is designed for pets who need immediate medical attention for sudden illnesses, injuries, or concerning symptoms that can't wait for a routine visit. At Lebanon Small Animal Clinic, our veterinary team offers accessible, high-quality care when your pet needs it most. We understand how stressful it is when your companion is unwell. Our goal is to provide fast, effective evaluation and treatment, helping your pet recover and giving you peace of mind. Whether your pet is experiencing vomiting, difficulty breathing, injuries, allergic reactions, or other urgent issues, we offer skilled triage and medical care to stabilize and treat your pet quickly. Our same-day urgent care in Lebanon is available during our clinic hours, serving Lebanon and surrounding communities, so you never have to worry about where to turn in an emergency. Your pet’s health and comfort are always our top priority. If you’re concerned about your pet’s condition, don’t wait, contact our team right away. Immediate veterinary attention can make all the difference in your pet’s recovery and wellbeing.</p>"
     image: "../../assets/services/stock/service-6-content1.jpg"

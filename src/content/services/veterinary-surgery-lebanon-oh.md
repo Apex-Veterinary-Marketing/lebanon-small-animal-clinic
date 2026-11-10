@@ -2,8 +2,8 @@
 name: "Veterinary Surgery"
 customName: "Veterinary Surgery"
 serviceIcon: "../../assets/services/icons/surgery.svg"
-pageHeaderImage: "../../assets/services/surgery.jpg"
-pageHeaderImageAlt: "Surgical team caring for a dog"
+pageHeaderImage: "../../assets/gallery/surgery-suite.jpg"
+pageHeaderImageAlt: "Dr. Tenenzapf and the team in the surgical suite"
 contentBlocks:
   - body: "<h2>Veterinary Surgery in Lebanon, OH</h2><p>Trust Lebanon Small Animal Clinic for skilled, compassionate veterinary surgery in Lebanon. Our experienced team delivers advanced care, prioritizing your pet’s safety and comfort every step of the way.</p><h2>Understanding Veterinary Surgery</h2><p>Veterinary surgery is an essential part of advanced pet care, addressing a wide range of medical needs from spay and neuter to complex orthopedic or cancer procedures. Surgery can resolve injuries, remove masses, correct congenital defects, and treat life-threatening conditions. At Lebanon Small Animal Clinic, our veterinary team uses modern techniques and equipment to provide safe, effective surgical care for dogs, cats, and exotic pets. We understand that surgery can be stressful for pet owners, which is why we emphasize communication, pain management, and personalized treatment plans. Our surgical services in Lebanon are designed to help your pet recover quickly and return to a happy, healthy life. Whether your pet needs a routine procedure or a specialized operation, trust our compassionate professionals to deliver the expert care your loved one deserves.</p>"
     image: "../../assets/services/stock/service-11-content1.jpg"

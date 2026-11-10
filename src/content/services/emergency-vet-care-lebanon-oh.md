@@ -2,8 +2,8 @@
 name: "Emergency Care"
 customName: "Emergency Care"
 serviceIcon: "../../assets/services/icons/pet-emergency.svg"
-pageHeaderImage: "../../assets/services/stock/service-2-cover.jpg"
-pageHeaderImageAlt: "Three beagle puppies lying together"
+pageHeaderImage: "../../assets/gallery/treatment-room.jpg"
+pageHeaderImageAlt: "Technicians treating a dog in the treatment room"
 contentBlocks:
   - body: "<h2>Emergency Care in Lebanon, OH</h2><p>When every second counts, trust Lebanon Small Animal Clinic for expert emergency care. Our veterinary team is ready to help your pet in critical moments with skill and compassion.</p><h2>Understanding Emergency Care</h2><p>Emergency veterinary care provides immediate, life-saving treatment for pets experiencing sudden illnesses, injuries, or severe symptoms. Fast intervention can make all the difference when your pet's health is at risk. Our experienced veterinarians and support staff are trained to quickly assess, stabilize, and treat a wide range of emergencies, including trauma, toxic exposures, breathing difficulties, and more.</p><p>At Lebanon Small Animal Clinic, we understand how frightening it can be when your pet needs urgent help. Our team is equipped to handle both common and complex emergencies for dogs, cats, and even exotic pets. We use advanced diagnostics and compassionate, low-stress handling to deliver the best possible outcome for your companion. Emergency care ensures your pet receives rapid attention, pain relief, and critical interventions when it matters most. If you think your pet is experiencing an emergency, contact us immediately for guidance and support.</p>"
     image: "../../assets/services/stock/service-2-content1.jpg"

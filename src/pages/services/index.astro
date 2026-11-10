@@ -6,7 +6,7 @@ import ServiceGrid from "../../components/ServiceGrid.astro";
 import { getServicesByCategory } from "../../lib/data/services";
 import { getAllServiceCategories } from "../../lib/data/serviceCategories";
 import { byCategoryOrder } from "../../data/service-category-order";
-import banner from "../../assets/services/rabbit.jpg";
+import banner from "../../assets/gallery/cavalier-exam-table.jpg";
 import CtaBand from "../../components/CtaBand.astro";
 
 const categories = (await getAllServiceCategories()).sort(byCategoryOrder);
@@ -20,7 +20,7 @@ const groups = (await Promise.all(categories.map(async (category) => ({ category
     eyebrow="Pet care"
     intro="Wellness visits, diagnostics, dentistry, surgery and same-day urgent care, all under one roof in Lebanon."
     image={banner}
-    imageAlt="A rabbit resting on a cushion"
+    imageAlt="A Cavalier King Charles spaniel on the exam table"
   />
   <nav class="services-jump" aria-label="Jump to a category">
     {groups.map(({ category }) => <a class="pill services-jump__link" href={`#${category.id}`}>{category.data.name}</a>)}

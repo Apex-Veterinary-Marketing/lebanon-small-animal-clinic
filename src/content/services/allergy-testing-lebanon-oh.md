@@ -2,8 +2,8 @@
 name: "Allergy Testing"
 customName: "Allergy Testing"
 serviceIcon: "../../assets/services/icons/allergy-testing.svg"
-pageHeaderImage: "../../assets/services/stock/service-4-cover.jpg"
-pageHeaderImageAlt: "Tabby cat lying on a wooden floor"
+pageHeaderImage: "../../assets/gallery/allergy-check.jpg"
+pageHeaderImageAlt: "Close-up of a dog's coat being examined"
 contentBlocks:
   - body: "<h2>Allergy Testing in Lebanon, OH</h2><p>Welcome to Lebanon Small Animal Clinic, where our experienced veterinary team provides thorough allergy testing in Lebanon, OH to help your pet live comfortably and itch-free.</p><h2>Understanding Allergy Testing</h2><p>Allergy testing helps identify the specific substances causing your pet’s allergic reactions. Pets can be allergic to pollen, dust, food, fleas, or even household products. These allergies often lead to chronic itching, skin infections, ear problems, and overall discomfort. Timely identification of triggers is essential for effective treatment and long-term relief.</p><p>Our veterinary professionals use advanced diagnostic methods to pinpoint the cause of your pet’s symptoms. By uncovering what’s making your dog, cat, or other companion animal uncomfortable, we can recommend tailored treatment options, such as environmental management, dietary changes, or targeted medications. This approach allows us to address the root cause rather than just the symptoms, improving your pet’s quality of life. If your pet is licking, scratching, or losing fur, allergy testing at Lebanon Small Animal Clinic can provide the answers you need.</p>"
     image: "../../assets/services/stock/service-4-content1.jpg"

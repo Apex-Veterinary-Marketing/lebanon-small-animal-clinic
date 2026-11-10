@@ -2,8 +2,8 @@
 name: "FHO (Femoral Head Ostectomy)"
 customName: "FHO Surgery"
 serviceIcon: "../../assets/services/icons/fho.svg"
-pageHeaderImage: "../../assets/services/stock/service-17-cover.jpg"
-pageHeaderImageAlt: "Gray tabby cat stretching in a cat bed"
+pageHeaderImage: "../../assets/gallery/spaniel-portrait.jpg"
+pageHeaderImageAlt: "Portrait of a spaniel"
 contentBlocks:
   - body: "<h2>FHO (Femoral Head Ostectomy) in Lebanon, OH</h2><p>Lebanon Small Animal Clinic delivers expert FHO surgery for pets in Lebanon and surrounding communities, combining advanced surgical care with compassion and a personalized approach.</p><h2>Understanding FHO (Femoral Head Ostectomy)</h2><p>Femoral Head Ostectomy, often called FHO, is a surgical procedure that removes the head and neck of the femur (thigh bone) to alleviate pain caused by hip injury or disease. This surgery is commonly recommended for pets suffering from hip dysplasia, severe arthritis, fractures, or chronic dislocation that cannot be managed with medication or other treatments.</p><p>FHO eliminates the bone-on-bone contact in the hip joint, allowing a \"false joint\" to form. This greatly reduces pain and restores mobility for many pets, especially smaller dogs and cats. The goal is not just pain relief, but also to help your pet return to an active, comfortable life. After surgery, most pets experience significant improvement in mobility and quality of life when paired with proper rehabilitation.</p><p>At Lebanon Small Animal Clinic, our veterinary team provides thorough evaluation and honest recommendations to determine if FHO is the right option for your pet. We are committed to supporting your pet through every step, from diagnosis to recovery.</p>"
     image: "../../assets/services/stock/service-17-content1.jpg"

@@ -5,7 +5,7 @@ import ContentPage from "../layouts/ContentPage.astro";
 import FaqAccordion from "../components/FaqAccordion.astro";
 import { getAllServices } from "../lib/data/services";
 import faqHtml from "../data/pages/faq.html?raw";
-import banner from "../assets/services/integrative-cat.jpg";
+import banner from "../assets/gallery/fluffy-cat.jpg";
 
 // faq.html = intro paragraphs, then one <h3>question</h3> + answer HTML per FAQ.
 const [intro, ...rest] = faqHtml.split(/<h3>/);
@@ -24,7 +24,7 @@ const faqs = [...clientFaqs, ...serviceFaqs];
   heading="Frequently asked questions"
   eyebrow="Patient resources"
   bannerImage={banner}
-  bannerAlt="Team member gently examining a cat"
+  bannerAlt="A fluffy cat at the clinic"
   ctaHeading="Still have a question?"
   ctaText="Our team is happy to help. Give us a call or book a visit."
   webPage={{ "@type": "FAQPage" }}

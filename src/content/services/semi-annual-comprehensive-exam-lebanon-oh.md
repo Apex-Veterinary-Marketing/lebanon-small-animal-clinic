@@ -2,8 +2,8 @@
 name: "Semi-Annual Comprehensive Exam"
 customName: "Comprehensive Exam"
 serviceIcon: "../../assets/services/icons/wellness-visits.svg"
-pageHeaderImage: "../../assets/services/stock/service-4-cover.jpg"
-pageHeaderImageAlt: "Tabby cat lying on a wooden floor"
+pageHeaderImage: "../../assets/gallery/cavalier-checkup.jpg"
+pageHeaderImageAlt: "Cavalier King Charles spaniel during a checkup"
 contentBlocks:
   - body: "<h2>Semi-Annual Comprehensive Exam in Lebanon, OH</h2><p>Welcome to Lebanon Small Animal Clinic, where your pet’s health and comfort are our top priorities. Our experienced veterinary team provides thorough semi-annual comprehensive exams for pets in Lebanon and surrounding communities.</p><h2>Understanding Semi-Annual Comprehensive Exams</h2><p>A semi-annual comprehensive exam is a complete wellness check for your pet, performed twice a year. These visits help our veterinary professionals catch health concerns early, support preventative care, and ensure your pet enjoys a long, healthy life. During these exams, we assess your pet’s overall condition, check vital signs, and discuss any changes you’ve noticed at home. Our team evaluates everything from weight and dental health to skin, coat, eyes, ears, and internal organ function. By monitoring your pet’s health every six months, we can detect subtle changes that may not be obvious day to day. This proactive approach allows us to address problems before they become serious, tailor care to your pet’s unique needs, and strengthen the bond between you and your pet. Regular semi-annual exams are especially important for senior pets, those with chronic conditions, and breeds prone to specific health issues. At Lebanon Small Animal Clinic, we are committed to making each exam thorough, stress-free, and informative for both you and your pet.</p>"
     image: "../../assets/services/stock/service-4-content1.jpg"
