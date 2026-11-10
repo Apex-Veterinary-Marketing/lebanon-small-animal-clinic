@@ -1,0 +1,57 @@
+---
+// Prescription & food refills. The clinic's Chckup chat widget (floating, every
+// page) has a "Prescription Refill" option; their Covetrus online pharmacy ships
+// medications and food. Chckup's refill flow only exists inside that widget — an
+// inline embed here needs an Inline-type widget created in the Chckup dashboard
+// (then add <div class="chckup_widget" data-widget-id="NEW-ID"></div> below).
+import ContentPage from "../layouts/ContentPage.astro";
+import { getSiteInfo } from "../lib/data/site";
+import { phoneHref } from "../lib/utils/phone";
+import banner from "../assets/gallery/tech-with-cat.jpg";
+
+const site = await getSiteInfo();
+const PHARMACY_URL = "https://lebanonsmallanimalclinic.covetruspharmacy.com";
+---
+
+<ContentPage
+  title="Prescription Refills"
+  description="Refill your pet's prescriptions and food from Lebanon Small Animal Clinic in Lebanon, OH: order online from our pharmacy, request a refill by chat or call us."
+  heading="Prescription & food refills"
+  eyebrow="Patient resources"
+  intro="Three easy ways to keep your pet's medications and food on hand."
+  bannerImage={banner}
+  bannerAlt="Technician smiling with a fluffy cat on the exam table"
+>
+  <section class="refill">
+    <ul class="refill__grid">
+      <li class="refill__card">
+        <h2>Order online</h2>
+        <p>Order medications, preventives and food from our online pharmacy and have them shipped to your door.</p>
+        <a class="btn btn--cta" href={PHARMACY_URL} target="_blank" rel="noopener noreferrer">Visit our online pharmacy</a>
+      </li>
+      <li class="refill__card">
+        <h2>Request by chat</h2>
+        <p>Tap the chat bubble in the bottom corner of this page and choose <strong>Prescription Refill</strong>. Our team will confirm when it's ready.</p>
+        <span class="refill__hint" aria-hidden="true">Look for the chat bubble &searr;</span>
+      </li>
+      <li class="refill__card">
+        <h2>Give us a call</h2>
+        <p>Prefer to talk? Call us and we'll get your refill started. Please allow time for the doctor to review the request.</p>
+        <a class="btn btn--outline" href={phoneHref(site)}>Call {site.phoneNumber}</a>
+      </li>
+    </ul>
+  </section>
+</ContentPage>
+
+<style>
+  .refill { padding-block: var(--space-section); }
+  .refill__grid { max-width: var(--container-max); margin-inline: auto; padding: 0 var(--space-md); list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-lg); }
+  .refill__card { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-sm); padding: var(--space-xl) var(--space-lg); background: var(--solid-bg); border-radius: var(--radius-lg); border-block-start: 4px solid var(--cta); }
+  .refill__card h2 { margin: 0; font-size: var(--font-size-xl); }
+  .refill__card p { margin: 0 0 var(--space-sm); color: var(--text-muted); }
+  .refill__card .btn { margin-block-start: auto; }
+  .refill__hint { margin-block-start: auto; font-family: var(--font-heading); font-weight: 600; color: var(--main); }
+  @media (max-width: 900px) {
+    .refill__grid { grid-template-columns: 1fr; }
+  }
+</style>

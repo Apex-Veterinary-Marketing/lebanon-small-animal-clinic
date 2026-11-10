@@ -75,8 +75,6 @@
 /blog/tag/*                                                                                     /blog/                                                                 301
 /terms-of-use                                                                                   /privacy-policy/                                                       301
 /terms-of-use/                                                                                  /privacy-policy/                                                       301
-/appointment-request                                                                            https://portal.chckup.app/book/lebanon-small-animal-clinic?id=b3685bcc-df07-4c83-ac23-e05c688582ff 301
-/appointment-request/                                                                           https://portal.chckup.app/book/lebanon-small-animal-clinic?id=b3685bcc-df07-4c83-ac23-e05c688582ff 301
 /general-information-request                                                                    /contact-us/                                                           301
 /general-information-request/                                                                   /contact-us/                                                           301
 /pet-care/urgent-and-emergency-care                                                             /services/same-day-urgent-care-lebanon-oh/                        301

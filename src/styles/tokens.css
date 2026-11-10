@@ -136,6 +136,7 @@
 
   /* Containers */
   --container-max: 75rem;
+  --booking-frame-height: 56rem; /* embedded Chckup online booking on /appointment-request */
   --container-max-wide: 82rem; /* header rows: logo + six menu items + booking button */
   --container-max-narrow: 48rem;
 
