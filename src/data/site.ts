@@ -95,8 +95,9 @@ export const siteInfo: SiteInfo = {
   addressLocality: "Lebanon",
   addressRegion: "OH",
   postalCode: "45036",
-  addressLink: "https://www.google.com/maps?cid=8531316001904538955",
-  mapEmbedLink: "https://www.google.com/maps?q=Lebanon+Small+Animal+Clinic,+1196+Oregonia+Rd,+Lebanon,+OH+45036&output=embed",
+  addressLink: "https://maps.app.goo.gl/TxFEo1Ak72UXjsUX8",
+  // The client's own embed from their current Directions page.
+  mapEmbedLink: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6163.0225042906495!2d-84.184409!3d39.435175199999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8840f3f792d98e99%3A0x578bd3728f26246a!2s1196%20Oregonia%20Rd%2C%20Lebanon%2C%20OH%2045036!5e0!3m2!1sen!2sus!4v1743518215301!5m2!1sen!2sus",
   bookingUrl: "https://portal.chckup.app/book/lebanon-small-animal-clinic?id=b3685bcc-df07-4c83-ac23-e05c688582ff",
   bookingLabel: "Book an Appointment",
   cityState: "Lebanon, OH",
@@ -106,13 +107,16 @@ export const siteInfo: SiteInfo = {
     "Lebanon Small Animal Clinic is a Fear Free-focused veterinary clinic in Lebanon, Ohio, offering wellness care, same-day urgent care, surgery and dentistry for dogs, cats, exotics and farm animals.",
   hours:
     "<p>Mon&ndash;Fri: 8am&ndash;6pm<br>Sat: 8am&ndash;12pm, by appointment (please call for availability)<br>Sun: Closed</p>",
+  // After-hours phone line times, from the current Contact Us page.
+  afterHours: "<p>After-hours phone available until 7pm Mon&ndash;Fri and until 4pm on Saturdays.</p>",
   openingHoursSpecification: [
     { dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "08:00", closes: "18:00" },
   ],
   footerAbout:
     "Small-town heart, big-city care: Lebanon Small Animal Clinic treats dogs, cats, exotics and farm animals in Lebanon, OH, with Fear Free visits and urgent care.",
-  // TODO(PM): real Google review link needs the Place ID (only the Maps CID is known).
-  googleReviewsLink: "https://www.google.com/maps?cid=8531316001904538955",
+  // Google Business Profile Place ID (from the PM, 2026-11-10): review link + reviews widget.
+  googleReviewsLink: "https://search.google.com/local/writereview?placeid=ChIJObjz8vfzQIgRSzUg8LNSZXY",
+  googleWidgetId: "ChIJObjz8vfzQIgRSzUg8LNSZXY",
   facebookReviewsLink: "https://www.facebook.com/LebanonSmallAnimalClinic/reviews",
   url: "https://www.lebanonsac.com", // confirm apex vs www before launch
   // GA4 property from the client's current site (lebanonsac.com, read 2026-11-09).

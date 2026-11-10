@@ -27,6 +27,7 @@ import { getAllServices, getServicesByCategory } from "../lib/data/services";
 import { getAllSocialLinks } from "../lib/data/socialLinks";
 import { SOCIAL_ICON_CLASSES, SOCIAL_LABELS } from "../lib/icons/social";
 import { phoneHref } from "../lib/utils/phone";
+import awardBadge from "../assets/site/award-businessrate-crystal.png";
 import { getAllServiceCategories } from "../lib/data/serviceCategories";
 import { byCategoryOrder } from "../data/service-category-order";
 import { BLOG_BASE } from "../lib/data/blog";
@@ -67,6 +68,7 @@ const generalServices = allServices.filter(
           <span class="footer__logo-text">{site.practiceName}</span>
         )}
         {site.footerAbout && <p class="footer__about-text">{site.footerAbout}</p>}
+        <img class="footer__award" src={awardBadge.src} width={awardBadge.width} height={awardBadge.height} alt="Best of 2026 BusinessRate award winner" loading="lazy" decoding="async" />
         <ul class="footer__link-list">
           <li><a href="/why-choose-us">Why Choose Us?</a></li>
           <li><a href="/meet-the-team">Our Care Team</a></li>
@@ -177,6 +179,7 @@ const generalServices = allServices.filter(
   .footer__logo-text { font-weight: 700; font-size: var(--font-size-lg); color: var(--footer-heading); }
   .footer__about-text { margin: 0; font-size: var(--font-size-sm); opacity: 0.85; line-height: 1.6; max-width: 22rem; }
   .footer__about .footer__link-list { margin-block-start: 0; }
+  .footer__award { align-self: flex-start; width: auto; height: 7rem; }
 
   .footer__visit { display: flex; flex-direction: column; gap: var(--space-sm); margin-block-start: var(--space-sm); font-size: var(--font-size-sm); }
   .footer__visit-phone { font-weight: 700; opacity: 1; font-size: var(--font-size-md); }

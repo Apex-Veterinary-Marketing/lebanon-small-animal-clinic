@@ -19,10 +19,11 @@ import heroChickens from "../assets/site/chickens.jpg";
 import heroTeam from "../assets/site/team-group.jpg";
 import clinicExterior from "../assets/site/clinic-exterior.jpg";
 import microscope from "../assets/site/microscope.jpg";
-import petDog from "../assets/site/dog-with-doctor.jpg";
-import petCat from "../assets/services/integrative-cat.jpg";
+import petDog from "../assets/site/pets-DSC02617.jpg";
+import petCat from "../assets/site/pets-DSC02675.jpg";
 import petPocket from "../assets/site/hedgehog.jpg";
-import petFarm from "../assets/site/goats.jpg";
+import petFarm from "../assets/site/pets-DSC03361.jpg";
+import awardBadge from "../assets/site/award-businessrate-crystal.png";
 import logoCherry from "../assets/site/logo-cherry.png";
 import logoCareCredit from "../assets/site/logo-carecredit.jpg";
 
@@ -46,10 +47,10 @@ const highlights = [
 ];
 
 const pets = [
-  { name: "Dogs", src: petDog, alt: "Veterinarian examining a dog" },
-  { name: "Cats", src: petCat, alt: "Team member gently examining a cat" },
+  { name: "Dogs", src: petDog, alt: "Dr. Hassel and a team member examining two puppies" },
+  { name: "Cats", src: petCat, alt: "Team member petting a gray kitten" },
   { name: "Exotics & Pocket Pets", src: petPocket, alt: "Hedgehog held in a pair of hands" },
-  { name: "Farm Animals", src: petFarm, alt: "Team members with goats" },
+  { name: "Farm Animals", src: petFarm, alt: "Two team members holding baby goats in the hay" },
 ];
 
 const doctorRoles: Record<string, string> = {
@@ -111,10 +112,15 @@ const doctorRoles: Record<string, string> = {
       </div>
       <div class="home-split__copy" data-reveal="right">
         <p class="eyebrow">Welcome to the family</p>
-        <h2>Wellness starts here, on Oregonia Road</h2>
-        <p>For about 20 years, Lebanon Small Animal Clinic has cared for the pets of Lebanon, Mason, Springboro and the towns around them. Since 2025 the clinic has been owned by Dr. Halley Hassel, who works alongside Dr. Jonathan Tenenzapf (Dr. T) and a team that genuinely loves what they do.</p>
-        <p>We take the time to get to know both the patient and the family behind it, so every visit feels calm, personal and unhurried. You'll find us next door to Lebanon Equine Clinic and Allyson's Nursery.</p>
-        <a class="btn btn--main" href="/meet-the-team">Meet our care team</a>
+        <h2>Wellness starts here</h2>
+        <p>At Lebanon Small Animal Clinic, we know your pet is family. Proud to be named <strong>2025 Best Veterinarian in Turtlecreek Township</strong> and a <strong>2026 Best of BusinessRate</strong> winner, we're committed to making proactive care easy to access and every visit as peaceful and reassuring as possible for both you and your pet.</p>
+        <p>You'll be welcomed by Care Companions who've worked together for over 20 years, providing expert care in medicine, surgery, and preventive wellness. As USDA-accredited veterinarians, we're equipped to offer advanced treatment when it's needed, without ever losing sight of your pet's comfort.</p>
+        <p>Our doctors and staff are <strong>Fear Free Certified</strong>, with veterinarians who are also <strong>Feline Friendly Certified</strong>. These certifications reflect our commitment to creating a calming environment for every pet, especially those who need a little extra reassurance. We've even created a dedicated space in the clinic just for cats to help reduce stress during their visits.</p>
+        <p>For pets who feel more comfortable at home, we also offer convenient house calls to bring care right to your door. Whether your pet comes to the clinic or we visit your home, every appointment is built around trust, comfort, and the kind of care that helps them feel safe and loved.</p>
+        <div class="welcome-actions">
+          <a class="btn btn--main" href="/meet-the-team">Meet our care team</a>
+          <Image src={awardBadge} alt="Best of 2026 BusinessRate award winner: Lebanon Small Animal Clinic, Veterinarian, Lebanon, Ohio" class="award-badge" height={150} />
+        </div>
       </div>
     </div>
   </section>
@@ -164,13 +170,17 @@ const doctorRoles: Record<string, string> = {
         <Image src={microscope} alt="Lebanon Small Animal Clinic team member reviewing a sample under the microscope" class="home-photo" widths={[600, 900]} sizes="(max-width: 900px) 100vw, 560px" />
       </div>
       <div class="home-split__copy" data-reveal="left">
-        <p class="eyebrow eyebrow--light">Small-town heart, big-city care</p>
-        <h2>You're never just another appointment</h2>
-        <p>We pair the welcome of a hometown clinic with the range of a larger hospital: in-house diagnostics, ultrasound, surgery, dentistry and chiropractic care, plus home visits and farm calls when your pet does better at home.</p>
-        <p>We listen, explain your options clearly and build a plan that fits your pet and your family. And because we live here too, you'll see us at local schools, ball games and community events.</p>
-        {site.bookingUrl && (
-          <a class="btn btn--cta" href={site.bookingUrl} target="_blank" rel="noopener noreferrer">{site.bookingLabel}</a>
-        )}
+        <p class="eyebrow eyebrow--light">PAWS wellness plans</p>
+        <h2>Happy pets, healthy hearts</h2>
+        <p>We make it easier than ever to keep your pet healthy and happy. From online booking and an emergency hotline to in-home appointments, we offer care options that work for your life.</p>
+        <p>Our PAWS Plans give members access to comprehensive wellness care, including routine checkups, vaccinations, spay/neuter procedures, dental cleanings, and x-rays. These customizable memberships are designed to catch health concerns early, prevent illness, and reduce stress at every step.</p>
+        <p>When your pet is thriving, so is your family. Schedule a visit for care that keeps tails wagging, whiskers twitching, and turns every vet visit into a treat.</p>
+        <div class="home-actions">
+          {site.bookingUrl && (
+            <a class="btn btn--cta" href={site.bookingUrl} target="_blank" rel="noopener noreferrer">{site.bookingLabel}</a>
+          )}
+          <a class="btn btn--ghost-light" href="/wellness-plans">Explore PAWS Plans</a>
+        </div>
       </div>
     </div>
   </section>
@@ -218,11 +228,12 @@ const doctorRoles: Record<string, string> = {
             imageAltText: t.data.imageAltText,
           }))}
         />
-        {site.googleReviewsLink && (
-          <div class="home-center">
+        <div class="home-center home-actions">
+          <a class="btn btn--cta" href="/testimonials">Read all testimonials</a>
+          {site.googleReviewsLink && (
             <a class="btn btn--ghost-light" href={site.googleReviewsLink} target="_blank" rel="noopener noreferrer">Leave us a Google review</a>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </section>
   )}
@@ -247,6 +258,7 @@ const doctorRoles: Record<string, string> = {
           <div class="visit__hours">
             <h3>Hours</h3>
             <div set:html={site.hours} />
+            <p class="visit__note">Emergency and urgent care: 8 AM to 6 PM, Monday through Friday. Weekends: call <a href={phoneHref(site)}>{site.phoneNumber}</a>.</p>
           </div>
         )}
         <div class="visit__pay">
@@ -312,6 +324,11 @@ const doctorRoles: Record<string, string> = {
   .home-split--reverse .home-split__media { order: 2; }
   .home-split__copy p { margin: 0 0 var(--space-md); }
   .home-split__copy .btn { margin-block-start: var(--space-sm); }
+  .welcome-actions, .home-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-md); margin-block-start: var(--space-sm); }
+  .welcome-actions .btn, .home-actions .btn { margin-block-start: 0; }
+  .award-badge { width: auto; height: 9.5rem; }
+  .visit__note { margin: var(--space-xs) 0 0; color: var(--text-muted); }
+  .visit__note a { color: var(--main); font-weight: 600; text-decoration: none; }
 
   /* Hero */
   .home-hero { position: relative; min-height: calc(100dvh - var(--header-height)); display: flex; flex-direction: column; justify-content: center; color: var(--white); overflow: hidden; background: var(--main-dark); }

@@ -12,7 +12,7 @@ import { getSiteInfo } from "../lib/data/site";
 import { phoneHref } from "../lib/utils/phone";
 
 const site = await getSiteInfo();
-const effectiveDate = "[Month DD, YYYY]"; // set at launch
+const effectiveDate = "November 10, 2026"; // set 2026-11-10 (site build); update if the policy changes
 const telHref = phoneHref(site);
 const siteHost = new URL(site.url || "https://example.com").hostname;
 ---
