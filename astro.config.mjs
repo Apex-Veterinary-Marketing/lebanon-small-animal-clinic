@@ -58,7 +58,25 @@ const singleSitemap = {
   },
 };
 
+// Old-site redirects (same mechanism as the agency's other Skeleton sites).
+// public/_redirects is the one list: Cloudflare (workers.dev) answers it with real
+// 301s; the same rules also become Astro meta-refresh pages for hosts that ignore it.
+// `/x` and `/x/` are one page. Wildcards `/x/*` expand to /x/1–10.
+/** @type {Record<string, string>} */
+const REDIRECTS = {};
+for (const line of fs.readFileSync('public/_redirects', 'utf8').split('\n')) {
+  const [from, to] = line.trim().split(/\s+/);
+  if (!from || from.startsWith('#') || !to) continue;
+  const key = from.replace(/(.)\/$/, '$1');
+  if (key.endsWith('/*')) {
+    for (let n = 1; n <= 10; n++) REDIRECTS[`${key.slice(0, -1)}${n}`] = to;
+  } else {
+    REDIRECTS[key] = to;
+  }
+}
+
 export default defineConfig({
+  redirects: REDIRECTS,
   site: siteUrl,
   // sitemap() lists every route; singleSitemap turns that into /sitemap.xml,
   // which robots.txt (src/pages/robots.txt.ts) points to.

@@ -1,0 +1,34 @@
+---
+// Old site: /careers/ (client copy, verbatim). The old page had an "Apply Now"
+// form; until its Gravity Form exists, applicants call or use the contact form.
+import ContentPage from "../layouts/ContentPage.astro";
+import html from "../data/pages/careers.html?raw";
+import banner from "../assets/site/team-group.jpg";
+import { getSiteInfo } from "../lib/data/site";
+import { phoneHref } from "../lib/utils/phone";
+const site = await getSiteInfo();
+---
+
+<ContentPage
+  title="Careers"
+  description="Love pets and people? Join the Lebanon Small Animal Clinic team in Lebanon, OH. We're always looking for caring team members who make a daily difference."
+  heading="Join our clinic family"
+  eyebrow="Careers"
+  bannerImage={banner}
+  bannerAlt="The Lebanon Small Animal Clinic care team"
+  html={html}
+  ctaHeading="Questions about working with us?"
+  ctaText="Give us a call or stop by. We'd love to meet you."
+>
+  <section class="careers-apply">
+    <div class="careers-apply__inner">
+      <a class="btn btn--cta btn--lg" href={phoneHref(site)}>Call {site.phoneNumber}</a>
+      <a class="btn btn--outline btn--lg" href="/contact-us">Send us a message</a>
+    </div>
+  </section>
+</ContentPage>
+
+<style>
+  .careers-apply { padding-block-end: var(--space-section); }
+  .careers-apply__inner { max-width: var(--container-max-narrow); margin-inline: auto; padding-inline: var(--space-md); display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+</style>

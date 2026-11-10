@@ -1,0 +1,52 @@
+---
+// Old site: /testimonials/ — every client review (testimonials collection, the
+// old page's reviews verbatim), plus the Google review and How'd We Do? actions.
+import ContentPage from "../layouts/ContentPage.astro";
+import { getAllTestimonials } from "../lib/data/testimonials";
+import { getSiteInfo } from "../lib/data/site";
+import banner from "../assets/site/hero-vet-with-dog.jpg";
+
+const site = await getSiteInfo();
+const testimonials = await getAllTestimonials();
+---
+
+<ContentPage
+  title="Testimonials"
+  description="Read what pet owners say about Lebanon Small Animal Clinic in Lebanon, OH: caring doctors, a patient team and Fear Free visits for every kind of pet."
+  heading="What our clients say"
+  eyebrow="Testimonials"
+  bannerImage={banner}
+  bannerAlt="Team member smiling with a golden dog"
+  bannerPosition="70% 30%"
+>
+  <section class="reviews">
+    <div class="reviews__inner">
+      <div class="reviews__actions">
+        {site.googleReviewsLink && (
+          <a class="btn btn--cta" href={site.googleReviewsLink} target="_blank" rel="noopener noreferrer">Leave us a Google review</a>
+        )}
+        <button type="button" class="btn btn--outline" data-modal-target="reputation-widget">How'd we do?</button>
+      </div>
+      <ul class="reviews__grid">
+        {testimonials.map((t) => (
+          <li class="review-card">
+            <p class="review-card__mark" aria-hidden="true">&ldquo;</p>
+            <blockquote class="review-card__quote">{t.data.testimonial}</blockquote>
+            <p class="review-card__name">{t.data.name}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</ContentPage>
+
+<style>
+  .reviews { padding-block: var(--space-section); background: var(--solid-bg); }
+  .reviews__inner { max-width: var(--container-max); margin-inline: auto; padding-inline: var(--space-md); }
+  .reviews__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm); margin-block-end: var(--space-xl); }
+  .reviews__grid { list-style: none; margin: 0; padding: 0; columns: 3 18rem; column-gap: var(--space-lg); }
+  .review-card { break-inside: avoid; margin-block-end: var(--space-lg); padding: var(--space-lg); background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); }
+  .review-card__mark { margin: 0; font-family: var(--font-heading); font-size: var(--font-size-4xl); line-height: 0.8; color: var(--cta); }
+  .review-card__quote { margin: 0 0 var(--space-sm); color: var(--text); line-height: 1.7; }
+  .review-card__name { margin: 0; font-family: var(--font-heading); font-weight: 600; color: var(--main); }
+</style>

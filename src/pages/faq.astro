@@ -1,25 +1,44 @@
 ---
-// Aggregates every service's FAQs into one site-wide FAQ page, since
-// Skeleton has no separate "site FAQs" collection — services already
-// model FAQs (content.config.ts: services.faqs) and that's the richest
-// source of real Q&A content a client will have. See Skeleton-Build-Spec.md
-// §10 ("LLM data" — favor Q&A-shaped content).
-import BaseLayout from "../layouts/BaseLayout.astro";
-import PageHeaderBanner from "../components/PageHeaderBanner.astro";
+// Lebanon: the client's own FAQs from their current /patient-resources/faqs/
+// page (verbatim), followed by any FAQs written on the service pages.
+import ContentPage from "../layouts/ContentPage.astro";
 import FaqAccordion from "../components/FaqAccordion.astro";
 import { getAllServices } from "../lib/data/services";
+import faqHtml from "../data/pages/faq.html?raw";
+import banner from "../assets/services/integrative-cat.jpg";
 
+// faq.html = intro paragraphs, then one <h3>question</h3> + answer HTML per FAQ.
+const [intro, ...rest] = faqHtml.split(/<h3>/);
+const clientFaqs = rest.map((chunk) => {
+  const [question, answer] = chunk.split("</h3>");
+  return { question: question.replace(/<[^>]+>/g, "").trim(), answer: answer.trim() };
+});
 const services = await getAllServices();
-const faqs = services.flatMap((s) => s.data.faqs);
+const serviceFaqs = services.flatMap((s) => s.data.faqs);
+const faqs = [...clientFaqs, ...serviceFaqs];
 ---
 
-<BaseLayout title="FAQs" description="Answers to common questions about visits, payment options, urgent care and Fear Free care at Lebanon Small Animal Clinic in Lebanon, Ohio.">
-  <PageHeaderBanner heading="Frequently Asked Questions" />
-  <div class="page-section">
-    <FaqAccordion faqs={faqs} />
-  </div>
-</BaseLayout>
+<ContentPage
+  title="FAQs"
+  description="Answers to common questions about visits, payment options, urgent care and Fear Free care at Lebanon Small Animal Clinic in Lebanon, Ohio."
+  heading="Frequently asked questions"
+  eyebrow="Patient resources"
+  bannerImage={banner}
+  bannerAlt="Team member gently examining a cat"
+  ctaHeading="Still have a question?"
+  ctaText="Our team is happy to help. Give us a call or book a visit."
+  webPage={{ "@type": "FAQPage" }}
+>
+  <section class="faq-page">
+    <div class="faq-page__inner">
+      <div class="prose faq-page__intro" set:html={intro} />
+      <FaqAccordion faqs={faqs} />
+    </div>
+  </section>
+</ContentPage>
 
 <style>
-  .page-section { max-width: 48rem; margin-inline: auto; padding: var(--space-xl) var(--space-md); }
+  .faq-page { padding-block: var(--space-section); }
+  .faq-page__inner { max-width: var(--container-max-narrow); margin-inline: auto; padding-inline: var(--space-md); }
+  .faq-page__intro { margin-block-end: var(--space-xl); }
 </style>

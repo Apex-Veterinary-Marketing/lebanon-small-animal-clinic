@@ -1,0 +1,20 @@
+---
+// Old site: /about/why-choose-us/ (client copy, verbatim).
+import ContentPage from "../layouts/ContentPage.astro";
+import html from "../data/pages/why-choose-us.html?raw";
+import banner from "../assets/site/team-group.jpg";
+import photo from "../assets/site/goats.jpg";
+---
+
+<ContentPage
+  title="Why Choose Us"
+  description="A locally owned Fear Free clinic in Lebanon, OH caring for dogs, cats, exotics and farm animals for over 20 years, with same-day care and house calls."
+  heading="Why choose Lebanon Small Animal Clinic"
+  eyebrow="About us"
+  bannerImage={banner}
+  bannerAlt="The Lebanon Small Animal Clinic care team in the clinic lobby"
+  html={html}
+  photo={photo}
+  photoAlt="Team members holding young goats"
+  webPage={{ "@type": "AboutPage" }}
+/>

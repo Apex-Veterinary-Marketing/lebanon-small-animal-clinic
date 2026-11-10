@@ -5,24 +5,30 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHeaderBanner from "../../components/PageHeaderBanner.astro";
 import ServiceGrid from "../../components/ServiceGrid.astro";
-import ServicesSidebar from "../../components/ServicesSidebar.astro";
 import { getAllServices } from "../../lib/data/services";
-import bannerGeneric from "../../assets/banner-generic.png";
+import banner from "../../assets/services/rabbit.jpg";
+import CtaBand from "../../components/CtaBand.astro";
 
 const services = await getAllServices();
 ---
 
-<BaseLayout title="Our Services" description="Explore our full range of veterinary services.">
-  <PageHeaderBanner heading="Veterinary Services" image={bannerGeneric} />
-  <div class="services-layout">
-    <div class="page-section">
+<BaseLayout title="Pet Care Services" description="Wellness exams, vaccines, diagnostics, dentistry, surgery, urgent care, house calls and more at Lebanon Small Animal Clinic in Lebanon, Ohio.">
+  <PageHeaderBanner
+    heading="Pet care for every stage of life"
+    eyebrow="Pet care"
+    intro="Wellness visits, diagnostics, dentistry, surgery and same-day urgent care, all under one roof in Lebanon."
+    image={banner}
+    imageAlt="A rabbit resting on a cushion"
+  />
+  <section class="services-index">
+    <div class="services-index__inner">
       <ServiceGrid services={services} />
     </div>
-    <ServicesSidebar />
-  </div>
+  </section>
+  <CtaBand heading="Not sure what your pet needs?" text="Give us a call and our team will help you choose the right visit." />
 </BaseLayout>
 
 <style>
-  .services-layout { max-width: var(--container-max); margin-inline: auto; padding: var(--space-xl) var(--space-md); display: flex; gap: var(--space-xl); align-items: flex-start; flex-wrap: wrap; }
-  .page-section { flex: 1 1 30rem; }
+  .services-index { padding-block: var(--space-section); background: var(--solid-bg); }
+  .services-index__inner { max-width: var(--container-max); margin-inline: auto; padding-inline: var(--space-md); }
 </style>

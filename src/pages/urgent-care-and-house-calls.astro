@@ -1,0 +1,20 @@
+---
+// Old site: /patient-resources/urgent-care-and-house-calls/ (client copy, verbatim).
+import ContentPage from "../layouts/ContentPage.astro";
+import html from "../data/pages/urgent-care-and-house-calls.html?raw";
+import banner from "../assets/site/chickens.jpg";
+import photo from "../assets/site/dog-with-doctor.jpg";
+---
+
+<ContentPage
+  title="Urgent Care & House Calls"
+  description="Same-day urgent care during business hours and house calls for pets and farm animals around Lebanon, OH. Call Lebanon Small Animal Clinic at (513) 932-4189."
+  heading="Urgent care & house calls"
+  eyebrow="Patient resources"
+  bannerImage={banner}
+  bannerAlt="Two team members holding chickens on a farm visit"
+  bannerPosition="center 30%"
+  html={html}
+  photo={photo}
+  photoAlt="Veterinarian hugging a dog"
+/>

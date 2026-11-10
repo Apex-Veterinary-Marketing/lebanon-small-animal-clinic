@@ -1,9 +1,10 @@
 ---
-// Full-width call-to-action band. Generic/token-driven; not grounded in a
-// staged real-markup reference. See Skeleton-Build-Spec.md §6.
+// Full-width call-to-action band (Lebanon design pass: deep-teal band with the
+// raspberry booking button, same buttons as the approved homepage).
 // The button defaults to the site's booking action (site.bookingUrl /
 // bookingLabel) — pass ctaText/ctaHref only when a page needs another target.
 import { getSiteInfo } from "../lib/data/site";
+import { phoneHref } from "../lib/utils/phone";
 
 export interface Props {
   heading: string;
@@ -13,6 +14,7 @@ export interface Props {
 }
 const site = await getSiteInfo();
 const { heading, text, ctaText = site.bookingLabel || "Book Now", ctaHref = site.bookingUrl || "/contact-us" } = Astro.props;
+const external = /^https?:\/\//.test(ctaHref);
 ---
 
 <section class="cta-band">
@@ -21,14 +23,21 @@ const { heading, text, ctaText = site.bookingLabel || "Book Now", ctaHref = site
       <h2 class="cta-band__heading">{heading}</h2>
       {text && <p class="cta-band__text">{text}</p>}
     </div>
-    <a class="cta-band__cta" href={ctaHref}>{ctaText}</a>
+    <div class="cta-band__actions">
+      <a class="btn btn--cta btn--lg" href={ctaHref} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>{ctaText}</a>
+      {site.phoneNumber && <a class="btn btn--ghost-light btn--lg" href={phoneHref(site)}>Call {site.phoneNumber}</a>}
+    </div>
   </div>
 </section>
 
 <style>
-  .cta-band { background: var(--main); color: var(--on-main); }
-  .cta-band__inner { max-width: var(--container-max); margin-inline: auto; padding: var(--space-xl) var(--space-md); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-lg); }
-  .cta-band__heading { margin: 0 0 var(--space-xs); color: inherit; }
-  .cta-band__text { margin: 0; opacity: 0.9; }
-  .cta-band__cta { display: inline-block; padding: var(--space-sm) var(--space-lg); border-radius: var(--radius-sm); background: var(--on-main); color: var(--main); text-decoration: none; font-weight: 600; white-space: nowrap; }
+  .cta-band { background: var(--main-dark); color: var(--white); }
+  .cta-band__inner { max-width: var(--container-max); margin-inline: auto; padding: var(--space-2xl) var(--space-md); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-lg); }
+  .cta-band__heading { margin: 0 0 var(--space-xs); color: inherit; font-size: var(--font-size-3xl); }
+  .cta-band__text { margin: 0; opacity: 0.9; max-width: 36rem; }
+  .cta-band__actions { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+  @media (max-width: 767px) {
+    .cta-band__heading { font-size: var(--font-size-2xl); }
+    .cta-band__actions, .cta-band__actions .btn { width: 100%; }
+  }
 </style>

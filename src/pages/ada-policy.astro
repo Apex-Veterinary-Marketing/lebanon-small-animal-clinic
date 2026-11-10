@@ -1,0 +1,25 @@
+---
+// Old site: /ada-policy/ (client copy, verbatim; phone/email from site.ts).
+import ContentPage from "../layouts/ContentPage.astro";
+import { getSiteInfo } from "../lib/data/site";
+import { phoneHref } from "../lib/utils/phone";
+const site = await getSiteInfo();
+---
+
+<ContentPage
+  title="ADA Policy"
+  description="Lebanon Small Animal Clinic is committed to online accessibility. Contact us if you need help accessing anything on our website."
+  heading="ADA policy"
+>
+  <section class="legal">
+    <div class="prose">
+      <p>At {site.practiceName}, we are committed to online accessibility.</p>
+      <p>It is our policy to ensure that everyone, including persons with disabilities, has full and equal access to our digital offerings.</p>
+      <p>If you need assistance accessing something on our website, please contact us at <a href={phoneHref(site)}>{site.phoneNumber}</a> or <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+    </div>
+  </section>
+</ContentPage>
+
+<style>
+  .legal { max-width: var(--container-max-narrow); margin-inline: auto; padding: var(--space-section) var(--space-md); }
+</style>

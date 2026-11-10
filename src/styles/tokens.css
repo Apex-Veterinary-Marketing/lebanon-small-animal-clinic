@@ -146,7 +146,7 @@
   --header-height: 7.25rem; /* fixed header incl. utility bar; heroes pad by this */
   --callbar-height: 5.5rem; /* mobile call bar; BaseLayout pads <main> by this */
   --logo-height: 3.75rem;
-  --page-header-height: 16rem; /* PageHeaderBanner min-height */
+  --page-header-height: max(60vh, 31.25rem); /* PageHeaderBanner min-height — agency rule: >= 60vh and >= 500px */
   --reviews-pill-left: 5.5em; /* ReviewsBand offset, sits right of the a11y button */
 
   /*

@@ -65,7 +65,10 @@ const generalServices = allServices.filter(
         )}
         {site.footerAbout && <p class="footer__about-text">{site.footerAbout}</p>}
         <ul class="footer__link-list">
+          <li><a href="/why-choose-us">Why Choose Us?</a></li>
           <li><a href="/meet-the-team">Our Care Team</a></li>
+          <li><a href="/careers">Careers</a></li>
+          <li><a href="/testimonials">Testimonials</a></li>
           <li><button type="button" class="footer__link-button" data-modal-target="reputation-widget">How'd We Do?</button></li>
         </ul>
         <div class="footer__social-icons">
@@ -119,12 +122,17 @@ const generalServices = allServices.filter(
     <details class="footer__column" open>
       <summary class="footer__column-title">Patient Resources</summary>
       <ul class="footer__link-list">
+        <li><a href="/what-to-expect">What to Expect</a></li>
+        <li><a href="/pets-we-care-for">Pets We Care For</a></li>
+        <li><a href="/wellness-plans">Wellness Plans</a></li>
+        <li><a href="/payment-options">Payment Options</a></li>
+        <li><a href="/urgent-care-and-house-calls">Urgent Care &amp; House Calls</a></li>
         <li><a href="/faq">FAQs</a></li>
         <li><a href="/online-forms">New Patient Forms</a></li>
         <li><a href={BLOG_BASE}>Blog</a></li>
         <li><a href="https://lebanonsmallanimalclinic.covetruspharmacy.com" target="_blank" rel="noopener noreferrer">Pharmacy</a></li>
         <li><a href="/privacy-policy">Privacy Policy</a></li>
-        <li><a href="/terms-of-use">Terms of Use</a></li>
+        <li><a href="/ada-policy">ADA Policy</a></li>
       </ul>
     </details>
     <div class="footer__column footer__column--visit">

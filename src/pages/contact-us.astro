@@ -1,18 +1,75 @@
 ---
+// Directions & Contact (old site: /directions/ and /contact-us/).
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHeaderBanner from "../components/PageHeaderBanner.astro";
 import GravityFormEmbed from "../components/GravityFormEmbed.astro";
-import LocationSection from "../components/LocationSection.astro";
+import { getSiteInfo } from "../lib/data/site";
+import { phoneHref } from "../lib/utils/phone";
+import banner from "../assets/site/clinic-exterior.jpg";
+
+const site = await getSiteInfo();
 ---
 
-<BaseLayout title="Contact Us" description="Contact Lebanon Small Animal Clinic at 1196 Oregonia Rd, Lebanon, OH, next to Lebanon Equine Clinic. Call (513) 932-4189 or send our team a message.">
-  <PageHeaderBanner heading="Contact Us" />
-  <div class="page-section">
-    <GravityFormEmbed formId="contact" context="contact" heading="Send Us a Message" />
-  </div>
-  <LocationSection />
+<BaseLayout title="Directions & Contact" description="Contact Lebanon Small Animal Clinic at 1196 Oregonia Rd, Lebanon, OH, next to Lebanon Equine Clinic. Call (513) 932-4189 or send our team a message.">
+  <PageHeaderBanner
+    heading="Directions & contact"
+    eyebrow="Visit us"
+    intro="Find us on Oregonia Road, next door to Lebanon Equine Clinic and Allyson's Nursery."
+    image={banner}
+    imageAlt="Lebanon Small Animal Clinic on Oregonia Road with the clinic's teal truck"
+  />
+
+  <section class="contact">
+    <div class="contact__inner">
+      <div class="contact__info">
+        <h2>Get in touch</h2>
+        {site.phoneNumber && (
+          <p class="contact__line"><span class="contact__label">Phone</span><a class="contact__phone" href={phoneHref(site)}>{site.phoneNumber}</a></p>
+        )}
+        {site.email && (
+          <p class="contact__line"><span class="contact__label">Email</span><a href={`mailto:${site.email}`}>{site.email}</a></p>
+        )}
+        {site.address && (
+          <p class="contact__line">
+            <span class="contact__label">Address</span>
+            <a href={site.addressLink} target="_blank" rel="noopener noreferrer">{site.address}<br />{site.addressLine2}</a>
+          </p>
+        )}
+        {site.hours && (
+          <div class="contact__line">
+            <span class="contact__label">Hours</span>
+            <div set:html={site.hours} />
+          </div>
+        )}
+        <p class="contact__note">Urgent need during business hours? Call us. We fit in same-day urgent visits whenever we can.</p>
+      </div>
+      <div class="contact__form">
+        <GravityFormEmbed formId="contact" context="contact" heading="Send us a message" />
+      </div>
+    </div>
+  </section>
+
+  {site.mapEmbedLink && (
+    <section class="contact-map">
+      <iframe src={site.mapEmbedLink} loading="lazy" referrerpolicy="no-referrer-when-downgrade" title={`Map to ${site.practiceName}`}></iframe>
+    </section>
+  )}
 </BaseLayout>
 
 <style>
-  .page-section { max-width: 40rem; margin-inline: auto; padding: var(--space-xl) var(--space-md); }
+  .contact { padding-block: var(--space-section); }
+  .contact__inner { max-width: var(--container-max); margin-inline: auto; padding-inline: var(--space-md); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: var(--space-2xl); align-items: start; }
+  .contact__info h2 { font-size: var(--font-size-3xl); margin: 0 0 var(--space-lg); }
+  .contact__line { display: grid; grid-template-columns: 5.5rem 1fr; gap: var(--space-sm); margin: 0 0 var(--space-md); }
+  .contact__line :global(p) { margin: 0; }
+  .contact__label { font-family: var(--font-heading); font-weight: 600; color: var(--heading); }
+  .contact__line a { color: var(--text); text-decoration: none; transition: color var(--motion-duration-base) var(--motion-ease); }
+  .contact__line a:hover { color: var(--cta); }
+  .contact__line .contact__phone { color: var(--main); font-weight: 700; }
+  .contact__note { margin: var(--space-lg) 0 0; padding: var(--space-md); background: var(--solid-bg); border-radius: var(--radius-lg); color: var(--text); }
+  .contact__form { padding: var(--space-lg); background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); }
+  .contact-map iframe { display: block; width: 100%; height: 26rem; border: 0; }
+  @media (max-width: 900px) {
+    .contact__inner { grid-template-columns: 1fr; }
+  }
 </style>

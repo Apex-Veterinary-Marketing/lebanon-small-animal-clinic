@@ -1,0 +1,19 @@
+---
+// Old site: /patient-resources/what-to-expect/ (client copy, verbatim).
+import ContentPage from "../layouts/ContentPage.astro";
+import html from "../data/pages/what-to-expect.html?raw";
+import banner from "../assets/site/clinic-exterior.jpg";
+import photo from "../assets/site/hero-vet-with-dog.jpg";
+---
+
+<ContentPage
+  title="What to Expect"
+  description="Coming to Lebanon Small Animal Clinic for the first time? Here's what to expect at your pet's visit, from check-in to a Fear Free exam."
+  heading="What to expect at your visit"
+  eyebrow="Patient resources"
+  bannerImage={banner}
+  bannerAlt="Lebanon Small Animal Clinic on Oregonia Road with the clinic's teal truck"
+  html={html}
+  photo={photo}
+  photoAlt="Team member smiling with a golden dog"
+/>

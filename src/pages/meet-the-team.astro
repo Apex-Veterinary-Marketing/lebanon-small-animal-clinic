@@ -1,20 +1,23 @@
 ---
-// Meet the Team. Section order set 2026-09-08 by direct instruction:
-// header banner, doctors grid, about-the-clinic (mission/vision/approach-
-// shaped blurbs, deliberately not labeled with those words), about-the-
-// team paragraph, staff grid. The three-blurb grid is page-specific markup
-// (not promoted to a shared component) since it's the only page that needs
-// it right now — revisit if another page wants the same pattern.
+// Meet the Team (old site: /our-care-team/). Lebanon design pass, agency rules:
+// doctor cards visibly more prominent than staff, both groups close together,
+// staff max 4 per row, "Read full bio" opens a modal instead of a new page.
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHeaderBanner from "../components/PageHeaderBanner.astro";
-import DoctorGrid from "../components/DoctorGrid.astro";
-import StaffGrid from "../components/StaffGrid.astro";
+import Modal from "../components/Modal.astro";
+import CtaBand from "../components/CtaBand.astro";
 import { getAllDoctors } from "../lib/data/doctors";
 import { getAllStaff } from "../lib/data/staff";
-import bannerGeneric from "../assets/banner-generic.png";
+import banner from "../assets/site/team-group.jpg";
 
 const doctors = await getAllDoctors();
 const staff = await getAllStaff();
+
+const doctorRoles: Record<string, string> = {
+  "dr-halley-hassel": "Owner & Veterinarian",
+  "dr-jonathan-tenenzapf": "Associate Veterinarian",
+};
 
 const clinicBlurbs = [
   {
@@ -32,48 +35,140 @@ const clinicBlurbs = [
 ];
 ---
 
-<BaseLayout title="Meet the Team" description="Meet Dr. Halley Hassel, Dr. Jonathan Tenenzapf and the Lebanon Small Animal Clinic team caring for dogs, cats, exotics and farm animals in Lebanon, OH.">
-  <PageHeaderBanner heading="Meet the Team" image={bannerGeneric} />
+<BaseLayout title="Our Care Team" description="Meet Dr. Halley Hassel, Dr. Jonathan Tenenzapf and the Lebanon Small Animal Clinic team caring for dogs, cats, exotics and farm animals in Lebanon, OH.">
+  <PageHeaderBanner
+    heading="Meet our care team"
+    eyebrow="About us"
+    intro="Fun, compassionate and knowledgeable people who treat every patient like their own."
+    image={banner}
+    imageAlt="The Lebanon Small Animal Clinic care team in the clinic lobby"
+  />
 
-  {doctors.length > 0 && (
-    <section class="page-section">
-      <h2>Our Doctors</h2>
-      <DoctorGrid doctors={doctors} />
-    </section>
-  )}
+  <section class="team-section">
+    <div class="team-container">
+      <div class="team-intro">
+        <p class="eyebrow">Our veterinarians</p>
+        <h2>Meet the doctors</h2>
+      </div>
+      <div class="doctor-row">
+        {doctors.map((d) => (
+          <article class="doctor" data-reveal>
+            {d.data.mainImage && (
+              <Image src={d.data.mainImage} alt={d.data.imageAltText || d.data.name} class="doctor__photo" widths={[400, 700]} sizes="(max-width: 767px) 100vw, 300px" />
+            )}
+            <div class="doctor__body">
+              <h3 class="doctor__name">{d.data.name}</h3>
+              {doctorRoles[d.id] && <p class="doctor__role">{doctorRoles[d.id]}</p>}
+              {d.data.bioShort && <div class="doctor__bio" set:html={d.data.bioShort} />}
+              <button type="button" class="btn btn--main doctor__btn" data-modal-target={`bio-${d.id}`}>Read full bio</button>
+            </div>
+          </article>
+        ))}
+      </div>
 
-  <section class="page-section about-clinic">
-    <h2>About Our Practice</h2>
-    <div class="about-clinic__grid">
-      {clinicBlurbs.map((blurb) => (
-        <div class="about-clinic__item">
-          <h3>{blurb.heading}</h3>
-          <p>{blurb.body}</p>
-        </div>
-      ))}
+      <div class="team-intro team-intro--staff">
+        <p class="eyebrow">Our support team</p>
+        <h2>The people your pet will love</h2>
+        <p>Our registered veterinary technicians, veterinary assistants and client service representatives take time to calm nervous pets, answer your questions and make every visit feel personal.</p>
+      </div>
+      <ul class="staff-grid">
+        {staff.map((s) => (
+          <li class="staff" data-reveal>
+            {s.data.image && (
+              <Image src={s.data.image} alt={s.data.imageAltText || s.data.name} class="staff__photo" widths={[300, 520]} sizes="(max-width: 767px) 50vw, 260px" />
+            )}
+            <h3 class="staff__name">{s.data.name}</h3>
+            {s.data.position && <p class="staff__role">{s.data.position}</p>}
+            {s.data.bio && <button type="button" class="staff__btn" data-modal-target={`bio-${s.id}`}>Read full bio</button>}
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 
-  <section class="page-section about-staff">
-    <h2>About Our Team</h2>
-    <p class="about-staff__body">Our team of 13 includes registered veterinary technicians, veterinary assistants and client service representatives who are fun, compassionate and knowledgeable. They take time to calm nervous pets, answer your questions and make every visit feel personal. Many of our clients ask for their favorite team member by name, and we love that.</p>
+  <section class="team-section team-section--soft">
+    <div class="team-container">
+      <div class="team-intro">
+        <p class="eyebrow">About our practice</p>
+        <h2>Small-town heart, big-city care</h2>
+      </div>
+      <div class="blurbs">
+        {clinicBlurbs.map((b) => (
+          <div class="blurb" data-reveal>
+            <h3>{b.heading}</h3>
+            <p>{b.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
   </section>
 
-  {staff.length > 0 && (
-    <section class="page-section">
-      <h2>Our Staff</h2>
-      <StaffGrid staff={staff} />
-    </section>
-  )}
+  <CtaBand heading="Come meet us in person" text="Book a visit online or give us a call. We can't wait to meet you and your pet." />
+
+  {[...doctors.map((d) => ({ id: d.id, name: d.data.name, role: doctorRoles[d.id], bio: d.data.bio, img: d.data.mainImage, alt: d.data.imageAltText })),
+    ...staff.map((s) => ({ id: s.id, name: s.data.name, role: s.data.position, bio: s.data.bio, img: s.data.image, alt: s.data.imageAltText }))]
+    .filter((p) => p.bio)
+    .map((p) => (
+      <Modal id={`bio-${p.id}`}>
+        <div class="bio-modal">
+          {p.img && <Image src={p.img} alt={p.alt || p.name} class="bio-modal__photo" widths={[240, 400]} sizes="160px" />}
+          <div>
+            <h2 class="bio-modal__name">{p.name}</h2>
+            {p.role && <p class="bio-modal__role">{p.role}</p>}
+          </div>
+        </div>
+        <div class="prose bio-modal__bio" set:html={p.bio} />
+      </Modal>
+    ))}
 </BaseLayout>
 
 <style>
-  .page-section { max-width: var(--container-max); margin-inline: auto; padding: var(--space-xl) var(--space-md); }
-  .page-section + .page-section { padding-block-start: 0; }
+  .team-section { padding-block: var(--space-section); }
+  .team-section--soft { background: var(--solid-bg); }
+  .team-container { max-width: var(--container-max); margin-inline: auto; padding-inline: var(--space-md); }
+  .team-intro { max-width: 44rem; margin: 0 auto var(--space-xl); text-align: center; }
+  .team-intro h2 { font-size: var(--font-size-3xl); margin: 0 0 var(--space-sm); }
+  .team-intro p:last-child { margin-block-end: 0; }
+  .team-intro--staff { margin-block-start: var(--space-2xl); }
 
-  .about-clinic__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: var(--space-lg); margin-block-start: var(--space-lg); }
-  .about-clinic__item h3 { margin: 0 0 var(--space-xs); font-size: var(--font-size-md); color: var(--main); }
-  .about-clinic__item p { margin: 0; color: var(--text-muted); }
+  .doctor-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-xl); }
+  .doctor { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-float); overflow: hidden; }
+  .doctor__photo { width: 100%; height: 100%; min-height: 22rem; object-fit: cover; object-position: center 20%; }
+  .doctor__body { display: flex; flex-direction: column; padding: var(--space-xl) var(--space-lg); }
+  .doctor__name { margin: 0; font-size: var(--font-size-xl); }
+  .doctor__role { margin: var(--space-2xs) 0 var(--space-md); color: var(--cta); font-weight: 600; font-size: var(--font-size-sm); }
+  .doctor__bio { color: var(--text-muted); font-size: var(--font-size-sm); }
+  .doctor__bio :global(p) { margin: 0; display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; }
+  .doctor__btn { margin-block-start: auto; align-self: flex-start; }
+  .doctor__bio + .doctor__btn { margin-block-start: var(--space-lg); }
 
-  .about-staff__body { max-width: 48rem; }
+  .staff-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-lg); }
+  .staff { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2xs); }
+  .staff__photo { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 25%; border-radius: var(--radius-lg); box-shadow: var(--shadow-card); margin-block-end: var(--space-xs); }
+  .staff__name { margin: 0; font-size: var(--font-size-lg); }
+  .staff__role { margin: 0; color: var(--text-muted); font-size: var(--font-size-sm); }
+  .staff__btn { margin-block-start: var(--space-2xs); padding: 0; background: none; border: 0; font: inherit; font-weight: 600; font-size: var(--font-size-sm); color: var(--main); cursor: pointer; transition: color var(--motion-duration-base) var(--motion-ease); }
+  .staff__btn:hover { color: var(--cta); }
+
+  .blurbs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-lg); }
+  .blurb { padding: var(--space-lg); background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); }
+  .blurb h3 { margin: 0 0 var(--space-xs); font-size: var(--font-size-lg); }
+  .blurb p { margin: 0; color: var(--text-muted); }
+
+  .bio-modal { display: flex; align-items: center; gap: var(--space-md); margin-block-end: var(--space-md); }
+  .bio-modal__photo { width: 6rem; height: 6rem; object-fit: cover; object-position: center 20%; border-radius: var(--radius-lg); }
+  .bio-modal__name { margin: 0; font-size: var(--font-size-xl); }
+  .bio-modal__role { margin: var(--space-2xs) 0 0; color: var(--cta); font-weight: 600; font-size: var(--font-size-sm); }
+  .bio-modal__bio { font-size: var(--font-size-md); }
+
+  @media (max-width: 1000px) {
+    .doctor-row { grid-template-columns: 1fr; }
+    .staff-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (max-width: 767px) {
+    .doctor { grid-template-columns: 1fr; }
+    .doctor__photo { min-height: 0; aspect-ratio: 4 / 3; }
+    .staff-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-md); }
+    .blurbs { grid-template-columns: 1fr; }
+  }
 </style>

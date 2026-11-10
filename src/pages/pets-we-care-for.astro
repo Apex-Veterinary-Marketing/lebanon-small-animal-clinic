@@ -1,0 +1,69 @@
+---
+// Old site: /pets/ + its five pages (dogs, cats, pocket pets, exotic pets, farm
+// animals) combined into one page with an anchor per animal (client copy,
+// verbatim). Old URLs redirect to the matching #anchor.
+import { Image } from "astro:assets";
+import ContentPage from "../layouts/ContentPage.astro";
+import dogs from "../data/pages/pets-dogs.html?raw";
+import cats from "../data/pages/pets-cats.html?raw";
+import pocket from "../data/pages/pets-pocket-pets.html?raw";
+import exotic from "../data/pages/pets-exotic-pets.html?raw";
+import farm from "../data/pages/pets-farm-animals.html?raw";
+import banner from "../assets/site/goats.jpg";
+import imgDogs from "../assets/site/dog-with-doctor.jpg";
+import imgCats from "../assets/services/integrative-cat.jpg";
+import imgPocket from "../assets/site/hedgehog.jpg";
+import imgExotic from "../assets/site/snake.jpg";
+import imgFarm from "../assets/site/chickens.jpg";
+
+const pets = [
+  { id: "dogs", name: "Dogs", html: dogs, img: imgDogs, alt: "Veterinarian hugging a dog" },
+  { id: "cats", name: "Cats", html: cats, img: imgCats, alt: "Team member gently examining a cat" },
+  { id: "pocket-pets", name: "Pocket Pets", html: pocket, img: imgPocket, alt: "Hedgehog held in a pair of hands" },
+  { id: "exotic-pets", name: "Exotic Pets", html: exotic, img: imgExotic, alt: "Team member holding a lizard" },
+  { id: "farm-animals", name: "Farm Animals", html: farm, img: imgFarm, alt: "Team members holding chickens" },
+];
+---
+
+<ContentPage
+  title="Pets We Care For"
+  description="Lebanon Small Animal Clinic cares for dogs, cats, pocket pets, exotic pets and farm animals in Lebanon, OH, with Fear Free visits and house calls."
+  heading="Pets we care for"
+  eyebrow="Patient resources"
+  intro="Whether they bark, meow, squeak, slither or cluck, every patient gets gentle, knowledgeable care."
+  bannerImage={banner}
+  bannerAlt="Team members with young goats"
+>
+  <nav class="pets-jump" aria-label="Jump to an animal">
+    {pets.map((p) => <a class="pill pets-jump__link" href={`#${p.id}`}>{p.name}</a>)}
+  </nav>
+  {pets.map((p, i) => (
+    <section id={p.id} class:list={["pets-section", i % 2 === 1 && "pets-section--soft"]}>
+      <div class:list={["pets-section__inner", i % 2 === 1 && "pets-section__inner--reverse"]}>
+        <div class="pets-section__media" data-reveal>
+          <Image src={p.img} alt={p.alt} widths={[480, 800]} sizes="(max-width: 900px) 100vw, 480px" />
+        </div>
+        <div class="pets-section__copy">
+          <h2>{p.name}</h2>
+          <div class="prose" set:html={p.html} />
+        </div>
+      </div>
+    </section>
+  ))}
+</ContentPage>
+
+<style>
+  .pets-jump { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-xs); padding: var(--space-xl) var(--space-md) 0; }
+  .pets-jump__link { background: var(--solid-bg); color: var(--main); text-decoration: none; transition: background-color var(--motion-duration-base) var(--motion-ease), color var(--motion-duration-base) var(--motion-ease); }
+  .pets-jump__link:hover { background: var(--main); color: var(--on-main); }
+  .pets-section { padding-block: var(--space-section); scroll-margin-top: var(--header-height); }
+  .pets-section--soft { background: var(--solid-bg); }
+  .pets-section__inner { max-width: var(--container-max); margin-inline: auto; padding-inline: var(--space-md); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: var(--space-2xl); align-items: center; }
+  .pets-section__inner--reverse .pets-section__media { order: 2; }
+  .pets-section__media :global(img) { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-float); }
+  .pets-section__copy h2 { font-size: var(--font-size-3xl); margin: 0 0 var(--space-md); }
+  @media (max-width: 900px) {
+    .pets-section__inner { grid-template-columns: 1fr; gap: var(--space-lg); }
+    .pets-section__inner--reverse .pets-section__media { order: 0; }
+  }
+</style>

@@ -58,6 +58,7 @@ const services = defineCollection({
           z.object({
             body: z.string(),
             image: image().optional(),
+            imageAlt: z.string().optional(), // Lebanon: alt text for the block image
             // "cta": the closing booking block (body + the site's booking
             // button, no image). Standard service page (agency Webflow
             // structure): 3 text+image blocks, then one "cta" block, then FAQs.

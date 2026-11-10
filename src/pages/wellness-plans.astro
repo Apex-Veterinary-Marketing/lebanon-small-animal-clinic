@@ -1,0 +1,22 @@
+---
+// Old site: /wellness-plans/ (client copy, verbatim). No plan tiers, prices or
+// sign-up link exist on the current site — enrollment happens with the team.
+import ContentPage from "../layouts/ContentPage.astro";
+import html from "../data/pages/wellness-plans.html?raw";
+import banner from "../assets/site/staff-with-dog.jpg";
+import photo from "../assets/services/routine-exams.jpg";
+---
+
+<ContentPage
+  title="PAWS Wellness Plans"
+  description="PAWS wellness plans from Lebanon Small Animal Clinic spread routine care into monthly payments: exams, vaccines, dental cleanings, x-rays and more."
+  heading="PAWS Wellness Plans"
+  eyebrow="Proactive care, personalized"
+  bannerImage={banner}
+  bannerAlt="Lebanon Small Animal Clinic team member with a happy dog"
+  html={html}
+  photo={photo}
+  photoAlt="Veterinarian examining a cat"
+  ctaHeading="Ask us about a PAWS Plan"
+  ctaText="Call or book a visit and our team will help you find the right plan for your pet's life stage."
+/>
