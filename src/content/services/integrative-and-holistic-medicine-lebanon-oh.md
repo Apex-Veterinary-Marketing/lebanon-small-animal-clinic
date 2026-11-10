@@ -2,7 +2,7 @@
 name: "Integrative and Holistic Medicine"
 customName: "Integrative and Holistic Medicine"
 serviceIcon: "../../assets/icon-generic.png"
-pageHeaderImage: "../../assets/banner-generic.png"
+pageHeaderImage: "../../assets/services/integrative-cat.jpg"
 contentBlocks:
   - body: "<p>At Lebanon Small Animal Clinic, we offer expert veterinary chiropractic care led by Dr. Erene Mihalas (\"Dr. E\") as part of an integrative approach to pet wellness. Combined with cold laser therapy and holistic medicine, chiropractic care treats the whole body to improve mobility, relieve pain, and enhance overall quality of life.</p><h2>What Is Animal Chiropractic?</h2><p>Veterinary chiropractic focuses on the spine, joints, and nervous system. Using gentle, controlled adjustments, we restore proper alignment and movement, relieving nerve and muscle restrictions that cause discomfort or poor performance.</p>"
     image: "../../assets/thumbnail-generic.png"

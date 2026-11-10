@@ -1,99 +1,382 @@
 ---
-// Homepage. Not grounded in a staged real-markup reference (the V2
-// homepage export wasn't part of the files read for this build) — section
-// choice/order is a reasonable generic default (Hero → About Us → featured
-// services → Why Choose Us → testimonials → CTA → location), easy to
-// reorder per client. About Us added 2026-09-08, directly beneath Hero
-// per direct instruction. ReviewsBand no longer lives here — it's mounted
-// site-wide via Footer.astro (also 2026-09-08). Testimonials are
-// CMS-powered (testimonials collection, also 2026-09-08) rather than a
-// hardcoded prop array. See Skeleton-Build-Spec.md §5/§6.
+// Lebanon Small Animal Clinic homepage — "warm hometown" direction, built on the
+// colors and fonts of the client's current site (teal + raspberry, Parkinsans +
+// Poppins) and their own photos. Story order: hometown welcome → who we treat →
+// what we do → why families stay → the two doctors → what clients say → visit us.
+// Highlights (Fear Free, urgent care, exotics, award) appear ONCE, as hero pills.
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Hero from "../components/Hero.astro";
-import Section from "../components/Section.astro";
 import ServiceGrid from "../components/ServiceGrid.astro";
-import FeatureSplit from "../components/FeatureSplit.astro";
 import TestimonialSlider from "../components/TestimonialSlider.astro";
-import CtaBand from "../components/CtaBand.astro";
-import LocationSection from "../components/LocationSection.astro";
-import BeforeYourVisit from "../components/BeforeYourVisit.astro";
 import { getFeaturedServices } from "../lib/data/services";
+import { getHomeDoctors } from "../lib/data/doctors";
 import { getSiteInfo } from "../lib/data/site";
 import { getAllTestimonials } from "../lib/data/testimonials";
-import { visitTips } from "../data/visit-tips";
-import bannerGeneric from "../assets/banner-generic.png";
+import { phoneHref } from "../lib/utils/phone";
+
+import heroVetDog from "../assets/site/hero-vet-with-dog.jpg";
+import heroChickens from "../assets/site/chickens.jpg";
+import heroTeam from "../assets/site/team-group.jpg";
+import clinicExterior from "../assets/site/clinic-exterior.jpg";
+import microscope from "../assets/site/microscope.jpg";
+import petDog from "../assets/site/dog-with-doctor.jpg";
+import petCat from "../assets/services/integrative-cat.jpg";
+import petPocket from "../assets/site/hedgehog.jpg";
+import petExotic from "../assets/site/snake.jpg";
+import petFarm from "../assets/site/goats.jpg";
+import logoCherry from "../assets/site/logo-cherry.png";
+import logoCareCredit from "../assets/site/logo-carecredit.jpg";
 
 const site = await getSiteInfo();
-const featuredServices = await getFeaturedServices();
+const featuredServices = (await getFeaturedServices()).slice(0, 6);
+const doctors = await getHomeDoctors();
 const testimonials = await getAllTestimonials();
+
+const heroSlides = [
+  { src: heroVetDog, alt: "Lebanon Small Animal Clinic team member smiling with a golden dog", position: "70% 30%" },
+  { src: heroChickens, alt: "Two Lebanon Small Animal Clinic team members holding chickens at a farm", position: "50% 35%" },
+  { src: heroTeam, alt: "The Lebanon Small Animal Clinic care team in the clinic lobby", position: "50% 40%" },
+];
+
+const highlights = [
+  "Fear Free Certified",
+  "Cat Friendly",
+  "Same-day urgent care",
+  "Exotics & farm animals",
+  "2025 Best Veterinarian, Turtlecreek Township",
+];
+
+const pets = [
+  { name: "Dogs", src: petDog, alt: "Veterinarian examining a dog" },
+  { name: "Cats", src: petCat, alt: "Team member gently examining a cat" },
+  { name: "Pocket Pets", src: petPocket, alt: "Hedgehog held in a pair of hands" },
+  { name: "Exotic Pets", src: petExotic, alt: "Team member holding a snake" },
+  { name: "Farm Animals", src: petFarm, alt: "Team members with goats" },
+];
+
+const doctorRoles: Record<string, string> = {
+  "dr-halley-hassel": "Owner & Veterinarian",
+  "dr-jonathan-tenenzapf": "Associate Veterinarian",
+};
 ---
 
-<BaseLayout title={`${site.practiceName} | Veterinary Care`} titleTemplate="full" description="Fear Free vet in Lebanon, OH: wellness exams, same-day urgent care, surgery and dentistry for dogs, cats, exotics and farm animals. Call (513) 932-4189.">
-  <Hero
-    eyebrow="Welcome to"
-    heading={site.practiceName}
-    subheading="Small-town heart with big-city veterinary care for dogs, cats, exotics and farm animals in Lebanon, Ohio."
-    ctaText={site.bookingLabel || "Book Now"}
-    ctaHref={site.bookingUrl || "/contact-us"}
-    secondaryCtaText="Our Services"
-    secondaryCtaHref="/services"
-    image={bannerGeneric}
-  />
-
-  <div data-reveal>
-    <FeatureSplit heading="About Us" ctaText="Meet the Team" ctaHref="/meet-the-team">
-      <p>For about 20 years, Lebanon Small Animal Clinic has cared for the pets of Lebanon, Mason, Springboro and the towns around them. Since 2025 the clinic has been owned by Dr. Halley Hassel, who works alongside Dr. Jonathan Tenenzapf (Dr. T) and a team that genuinely loves what they do. We see dogs and cats, plus rabbits, pocket pets, birds, reptiles and farm animals, and we take the time to get to know both the patient and the family behind it.</p>
-    </FeatureSplit>
-  </div>
-
-  {featuredServices.length > 0 && (
-    <div data-reveal>
-      <Section tone="soft">
-        <h2 class="home-heading">Our Services</h2>
-        <ServiceGrid services={featuredServices} />
-      </Section>
+<BaseLayout
+  title={`${site.practiceName} | Veterinarian in Lebanon, OH`}
+  titleTemplate="full"
+  description="Fear Free vet in Lebanon, OH: wellness exams, same-day urgent care, surgery and dentistry for dogs, cats, exotics and farm animals. Call (513) 932-4189."
+>
+  <!-- HERO: photo slider of the client's own team and patients -->
+  <section class="home-hero" aria-label="Welcome">
+    <div class="home-hero__slides" data-hero-slider>
+      {heroSlides.map((slide, i) => (
+        <Image
+          src={slide.src}
+          alt={slide.alt}
+          class:list={["home-hero__slide", i === 0 && "is-active"]}
+          style={`object-position: ${slide.position}`}
+          widths={[768, 1280, 1920]}
+          sizes="100vw"
+          loading={i === 0 ? "eager" : "lazy"}
+          fetchpriority={i === 0 ? "high" : "auto"}
+        />
+      ))}
     </div>
+    <div class="home-hero__scrim" aria-hidden="true"></div>
+    <div class="home-hero__inner">
+      <div class="home-hero__content">
+        <p class="eyebrow eyebrow--light">Your hometown vet in Lebanon, Ohio</p>
+        <h1 class="home-hero__heading">Health, Happiness &amp; Homegrown Care</h1>
+        <p class="home-hero__sub">Small-town heart with big-city veterinary care for dogs, cats, exotics and farm animals.</p>
+        <div class="home-hero__actions">
+          {site.bookingUrl && (
+            <a class="btn btn--cta btn--lg" href={site.bookingUrl} target="_blank" rel="noopener noreferrer">{site.bookingLabel}</a>
+          )}
+          {site.phoneNumber && <a class="btn btn--ghost-light btn--lg" href={phoneHref(site)}>Call {site.phoneNumber}</a>}
+        </div>
+      </div>
+      <ul class="home-hero__pills" aria-label="Why families choose us">
+        {highlights.map((h) => <li class="pill">{h}</li>)}
+      </ul>
+    </div>
+    <div class="home-hero__dots" role="group" aria-label="Choose a photo">
+      {heroSlides.map((_, i) => (
+        <button type="button" class:list={["home-hero__dot", i === 0 && "is-active"]} data-hero-dot={i} aria-label={`Show photo ${i + 1}`}></button>
+      ))}
+    </div>
+  </section>
+
+  <!-- WELCOME -->
+  <section class="home-section">
+    <div class="home-container home-split">
+      <div class="home-split__media" data-reveal="left">
+        <Image src={clinicExterior} alt="Lebanon Small Animal Clinic on Oregonia Road, with the clinic's teal vintage truck parked out front" class="home-photo" widths={[600, 1000]} sizes="(max-width: 900px) 100vw, 560px" />
+      </div>
+      <div class="home-split__copy" data-reveal="right">
+        <p class="eyebrow">Welcome to the family</p>
+        <h2>Wellness starts here, on Oregonia Road</h2>
+        <p>For about 20 years, Lebanon Small Animal Clinic has cared for the pets of Lebanon, Mason, Springboro and the towns around them. Since 2025 the clinic has been owned by Dr. Halley Hassel, who works alongside Dr. Jonathan Tenenzapf (Dr. T) and a team that genuinely loves what they do.</p>
+        <p>We take the time to get to know both the patient and the family behind it, so every visit feels calm, personal and unhurried. You'll find us next door to Lebanon Equine Clinic and Allyson's Nursery.</p>
+        <a class="btn btn--main" href="/meet-the-team">Meet our care team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PETS WE CARE FOR -->
+  <section class="home-section home-section--soft">
+    <div class="home-container">
+      <div class="home-intro" data-reveal>
+        <p class="eyebrow">Pets we care for</p>
+        <h2>Not just a dog-and-cat clinic</h2>
+        <p>From family dogs and cats to rabbits, hedgehogs, reptiles, birds, goats and chickens, every patient gets the same gentle, knowledgeable care.</p>
+      </div>
+      <ul class="pet-row" data-reveal-stagger>
+        {pets.map((pet) => (
+          <li class="pet-card" data-reveal>
+            <Image src={pet.src} alt={pet.alt} class="pet-card__photo" widths={[320, 480]} sizes="(max-width: 767px) 50vw, 220px" />
+            <span class="pet-card__name">{pet.name}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  {featuredServices.length > 0 && (
+    <section class="home-section">
+      <div class="home-container">
+        <div class="home-intro" data-reveal>
+          <p class="eyebrow">Pet care</p>
+          <h2>Care for every stage of your pet's life</h2>
+          <p>Wellness visits, diagnostics, dentistry, surgery and same-day urgent care, all under one roof in Lebanon.</p>
+        </div>
+        <div data-reveal>
+          <ServiceGrid services={featuredServices} />
+        </div>
+        <div class="home-center">
+          <a class="btn btn--outline" href="/services">See all pet care</a>
+        </div>
+      </div>
+    </section>
   )}
 
-  <div data-reveal>
-    <FeatureSplit heading="Why Choose Us" ctaText="Our Services" ctaHref="/services" reverse>
-      <p>We pair the welcome of a hometown clinic with the range of a larger hospital: wellness and preventive care, same-day urgent care, surgery, dentistry, ultrasound and chiropractic care. Visits follow a Fear Free-focused, low-stress approach. We make individualized treatment plans and explain your options clearly, so you leave feeling heard and confident. When you walk through our doors, you're part of our clinic family.</p>
-    </FeatureSplit>
-  </div>
+  <!-- WHY FAMILIES STAY -->
+  <section class="home-section home-section--dark">
+    <div class="home-container home-split home-split--reverse">
+      <div class="home-split__media" data-reveal="right">
+        <Image src={microscope} alt="Lebanon Small Animal Clinic team member reviewing a sample under the microscope" class="home-photo" widths={[600, 900]} sizes="(max-width: 900px) 100vw, 560px" />
+      </div>
+      <div class="home-split__copy" data-reveal="left">
+        <p class="eyebrow eyebrow--light">Small-town heart, big-city care</p>
+        <h2>You're never just another appointment</h2>
+        <p>We pair the welcome of a hometown clinic with the range of a larger hospital: in-house diagnostics, ultrasound, surgery, dentistry and chiropractic care, plus home visits and farm calls when your pet does better at home.</p>
+        <p>We listen, explain your options clearly and build a plan that fits your pet and your family. And because we live here too, you'll see us at local schools, ball games and community events.</p>
+        {site.bookingUrl && (
+          <a class="btn btn--cta" href={site.bookingUrl} target="_blank" rel="noopener noreferrer">{site.bookingLabel}</a>
+        )}
+      </div>
+    </div>
+  </section>
 
-  <div data-reveal>
-    <Section tone="soft">
-      <BeforeYourVisit tips={visitTips} />
-    </Section>
-  </div>
+  <!-- DOCTORS -->
+  {doctors.length > 0 && (
+    <section class="home-section home-section--soft">
+      <div class="home-container">
+        <div class="home-intro" data-reveal>
+          <p class="eyebrow">Our veterinarians</p>
+          <h2>Meet the doctors</h2>
+        </div>
+        <div class="doc-row" data-reveal-stagger>
+          {doctors.map((doctor) => (
+            <article class="doc-card" data-reveal>
+              {doctor.data.mainImage && (
+                <Image src={doctor.data.mainImage} alt={doctor.data.imageAltText || doctor.data.name} class="doc-card__photo" widths={[320, 560]} sizes="(max-width: 767px) 100vw, 260px" />
+              )}
+              <div class="doc-card__body">
+                <h3 class="doc-card__name">{doctor.data.name}</h3>
+                {doctorRoles[doctor.id] && <p class="doc-card__role">{doctorRoles[doctor.id]}</p>}
+                {doctor.data.bioShort && <div class="doc-card__bio" set:html={doctor.data.bioShort} />}
+                <a class="doc-card__link" href={`/doctors/${doctor.id}`}>Read full bio <span aria-hidden="true">&rarr;</span></a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 
-  <div data-reveal>
-    {/* dark tone, added with Section (2026-09-21) — proves the tone system's
-       heading/link contrast fix on a real page; also closes a real gap this
-       block had (every other home section has an intro heading, this
-       didn't). "alt" tone is Section's other dark option, meant for a
-       section with a real background image behind it — nothing on this
-       page needs that yet (see Plan.md item A4), so it isn't demoed here. */}
-    <Section tone="dark">
-      <h2 class="home-heading">What Our Clients Say</h2>
-      <TestimonialSlider
-        testimonials={testimonials.map((t) => ({
-          name: t.data.name,
-          testimonial: t.data.testimonial,
-          image: t.data.image,
-          imageAltText: t.data.imageAltText,
-        }))}
-      />
-    </Section>
-  </div>
+  <!-- TESTIMONIALS -->
+  {testimonials.length > 0 && (
+    <section class="home-section home-section--teal">
+      <div class="home-container home-container--narrow">
+        <div class="home-intro" data-reveal>
+          <p class="eyebrow eyebrow--light">Kind words</p>
+          <h2>What our clients say</h2>
+        </div>
+        <TestimonialSlider
+          testimonials={testimonials.map((t) => ({
+            name: t.data.name,
+            testimonial: t.data.testimonial,
+            image: t.data.image,
+            imageAltText: t.data.imageAltText,
+          }))}
+        />
+        {site.googleReviewsLink && (
+          <div class="home-center">
+            <a class="btn btn--ghost-light" href={site.googleReviewsLink} target="_blank" rel="noopener noreferrer">Leave us a Google review</a>
+          </div>
+        )}
+      </div>
+    </section>
+  )}
 
-  <CtaBand heading="Ready to schedule a visit?" />
-
-  <div data-reveal>
-    <LocationSection />
-  </div>
+  <!-- VISIT US -->
+  <section class="home-section">
+    <div class="home-container visit">
+      <div class="visit__info" data-reveal>
+        <p class="eyebrow">Visit us</p>
+        <h2>Come see us in Lebanon</h2>
+        {(site.address || site.addressLine2) && (
+          <p class="visit__address">
+            {site.addressLink ? (
+              <a href={site.addressLink} target="_blank" rel="noopener noreferrer">{site.address}<br />{site.addressLine2}</a>
+            ) : (
+              <>{site.address}<br />{site.addressLine2}</>
+            )}
+          </p>
+        )}
+        {site.phoneNumber && <p class="visit__phone"><a href={phoneHref(site)}>{site.phoneNumber}</a></p>}
+        {site.hours && (
+          <div class="visit__hours">
+            <h3>Hours</h3>
+            <div set:html={site.hours} />
+          </div>
+        )}
+        <div class="visit__pay">
+          <h3>Flexible ways to pay</h3>
+          <p>Cash, check, Visa, MasterCard, Amex, Discover, PAWS wellness plans and financing through:</p>
+          <div class="visit__logos">
+            <Image src={logoCherry} alt="Cherry payment plans" class="visit__logo" height={36} />
+            <Image src={logoCareCredit} alt="CareCredit" class="visit__logo" height={30} />
+          </div>
+        </div>
+      </div>
+      {site.mapEmbedLink && (
+        <div class="visit__map" data-reveal>
+          <iframe src={site.mapEmbedLink} loading="lazy" referrerpolicy="no-referrer-when-downgrade" title={`Map to ${site.practiceName}`}></iframe>
+        </div>
+      )}
+    </div>
+  </section>
 </BaseLayout>
 
+<script>
+  // Hero photo slider: crossfades every few seconds; dots jump to a photo.
+  // Respects reduced motion (stays on the first photo, dots still work).
+  const slides = Array.from(document.querySelectorAll<HTMLElement>(".home-hero__slide"));
+  const dots = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-hero-dot]"));
+  let current = 0;
+  let timer: number | undefined;
+  function show(index: number) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((s, i) => s.classList.toggle("is-active", i === current));
+    dots.forEach((d, i) => {
+      d.classList.toggle("is-active", i === current);
+      d.setAttribute("aria-pressed", String(i === current));
+    });
+  }
+  function start() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || slides.length < 2) return;
+    window.clearInterval(timer);
+    timer = window.setInterval(() => show(current + 1), 6000);
+  }
+  dots.forEach((dot) => dot.addEventListener("click", () => { show(Number(dot.dataset.heroDot)); start(); }));
+  show(0);
+  start();
+</script>
+
 <style>
-  .home-heading { text-align: center; margin: 0 0 var(--space-lg); }
+  .home-container { max-width: var(--container-max); margin-inline: auto; padding-inline: var(--space-md); }
+  .home-container--narrow { max-width: var(--container-max-narrow); }
+  .home-section { padding-block: var(--space-section); }
+  .home-section--soft { background: var(--solid-bg); }
+  .home-section--dark { background: var(--main-dark); color: var(--white); }
+  .home-section--teal { background: var(--main); color: var(--white); }
+  .home-section--dark :is(h2, h3), .home-section--teal :is(h2, h3) { color: inherit; }
+  .home-section--teal :global(:is(h3, p, button, a)) { color: inherit; }
+  .home-intro { max-width: 44rem; margin: 0 auto var(--space-xl); text-align: center; }
+  .home-intro p:last-child { margin-block-end: 0; }
+  .home-center { display: flex; justify-content: center; margin-block-start: var(--space-xl); }
+  h2 { font-size: var(--font-size-3xl); line-height: 1.15; margin: 0 0 var(--space-md); }
+
+  .home-photo { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-float); }
+
+  .home-split { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: var(--space-2xl); }
+  .home-split--reverse .home-split__media { order: 2; }
+  .home-split__copy p { margin: 0 0 var(--space-md); }
+  .home-split__copy .btn { margin-block-start: var(--space-sm); }
+
+  /* Hero */
+  .home-hero { position: relative; min-height: calc(100dvh - var(--header-height)); display: flex; flex-direction: column; justify-content: center; color: var(--white); overflow: hidden; background: var(--main-dark); }
+  .home-hero__slides { position: absolute; inset: 0; }
+  .home-hero__slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity var(--motion-duration-hero) var(--motion-ease); }
+  .home-hero__slide.is-active { opacity: 1; }
+  .home-hero__scrim { position: absolute; inset: 0; background: linear-gradient(90deg, var(--alt-bg) 0%, var(--main-o50) 55%, var(--overlay-soft) 100%); }
+  .home-hero__inner { position: relative; z-index: 1; width: 100%; max-width: var(--container-max); margin-inline: auto; padding: var(--space-2xl) var(--space-md); }
+  .home-hero__content { max-width: 50rem; }
+  .home-hero__heading { color: inherit; font-size: var(--font-size-hero); line-height: 1.05; margin: 0 0 var(--space-md); }
+  .home-hero__sub { font-size: var(--font-size-lg); margin: 0 0 var(--space-lg); max-width: 34rem; }
+  .home-hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+  .home-hero__pills { list-style: none; margin: var(--space-2xl) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-xs); max-width: 48rem; }
+  .home-hero__dots { position: absolute; z-index: 1; inset-block-end: var(--space-lg); inset-inline-end: var(--space-lg); display: flex; gap: var(--space-xs); }
+  .home-hero__dot { width: 0.75rem; height: 0.75rem; border-radius: var(--radius-pill); border: 2px solid var(--white); background: transparent; padding: 0; cursor: pointer; transition: background-color var(--motion-duration-base) var(--motion-ease), width var(--motion-duration-base) var(--motion-ease); }
+  .home-hero__dot.is-active { background: var(--white); width: 1.75rem; }
+
+  /* Pets */
+  .pet-row { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-lg); }
+  .pet-card { display: flex; flex-direction: column; align-items: center; gap: var(--space-sm); }
+  .pet-card__photo { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-card); transition: transform var(--motion-duration-base) var(--motion-ease); }
+  .pet-card:hover .pet-card__photo { transform: translateY(-4px); }
+  .pet-card__name { font-family: var(--font-heading); font-weight: 600; font-size: var(--font-size-lg); color: var(--heading); }
+
+  /* Doctors */
+  .doc-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-xl); max-width: 64rem; margin-inline: auto; }
+  .doc-card { display: grid; grid-template-columns: 13rem 1fr; gap: var(--space-lg); background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); overflow: hidden; }
+  .doc-card__photo { width: 100%; height: 100%; min-height: 17rem; object-fit: cover; object-position: center 20%; }
+  .doc-card__body { padding: var(--space-lg) var(--space-lg) var(--space-lg) 0; display: flex; flex-direction: column; }
+  .doc-card__name { margin: 0; font-size: var(--font-size-lg); }
+  .doc-card__role { margin: var(--space-2xs) 0 var(--space-sm); color: var(--cta); font-weight: 600; font-size: var(--font-size-sm); }
+  .doc-card__bio { color: var(--text-muted); font-size: var(--font-size-sm); }
+  .doc-card__bio :global(p) { margin: 0; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+  .doc-card__link { margin-block-start: auto; padding-block-start: var(--space-md); font-weight: 600; text-decoration: none; transition: color var(--motion-duration-fast) var(--motion-ease); }
+  .doc-card__link:hover { color: var(--cta); }
+
+  /* Visit */
+  .visit { display: grid; grid-template-columns: 1fr 1.2fr; gap: var(--space-2xl); align-items: stretch; }
+  .visit__address, .visit__phone { margin: 0 0 var(--space-sm); font-size: var(--font-size-md); }
+  .visit__address a, .visit__phone a { text-decoration: none; color: var(--text); transition: color var(--motion-duration-fast) var(--motion-ease); }
+  .visit__phone a { font-weight: 700; color: var(--main); }
+  .visit__address a:hover, .visit__phone a:hover { color: var(--cta); }
+  .visit h3 { font-size: var(--font-size-md); margin: var(--space-lg) 0 var(--space-xs); }
+  .visit__hours :global(p), .visit__pay p { margin: 0; color: var(--text-muted); }
+  .visit__logos { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-lg); margin-block-start: var(--space-sm); }
+  .visit__logo { width: auto; }
+  .visit__map iframe { width: 100%; height: 100%; min-height: 26rem; border: 0; border-radius: var(--radius-lg); box-shadow: var(--shadow-card); }
+
+  @media (max-width: 900px) {
+    .home-split, .visit { grid-template-columns: 1fr; gap: var(--space-xl); }
+    .home-split--reverse .home-split__media { order: 0; }
+    .pet-row { grid-template-columns: repeat(3, 1fr); }
+    .doc-row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 767px) {
+    h2 { font-size: var(--font-size-2xl); }
+    .home-hero { min-height: auto; }
+    .home-hero__heading { font-size: var(--font-size-4xl); }
+    .home-hero__actions .btn { width: 100%; justify-content: center; }
+    .home-hero__pills { margin-block-start: var(--space-xl); }
+    .pet-row { grid-template-columns: repeat(2, 1fr); gap: var(--space-md); }
+    .doc-card { grid-template-columns: 1fr; }
+    .doc-card__photo { aspect-ratio: 4 / 3; min-height: 0; }
+    .doc-card__body { padding: 0 var(--space-lg) var(--space-lg); }
+  }
 </style>

@@ -32,7 +32,12 @@
  *      those two import paths to the new package's equivalent files, or
  *      drop the preload if the new choice doesn't need it
  */
-@import "@fontsource/inter/400.css";
-@import "@fontsource/inter/500.css";
-@import "@fontsource/inter/600.css";
-@import "@fontsource/inter/700.css";
+/* Lebanon Small Animal Clinic: the fonts their current site already uses —
+ * Parkinsans for headings, Poppins for body copy. */
+@import "@fontsource/poppins/400.css";
+@import "@fontsource/poppins/500.css";
+@import "@fontsource/poppins/600.css";
+@import "@fontsource/poppins/700.css";
+@import "@fontsource/parkinsans/500.css";
+@import "@fontsource/parkinsans/600.css";
+@import "@fontsource/parkinsans/700.css";

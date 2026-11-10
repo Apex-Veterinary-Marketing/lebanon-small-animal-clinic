@@ -26,6 +26,7 @@ import { getServiceCategoryBySlug } from "../lib/data/serviceCategories";
 import { getAllServices, getServicesByCategory } from "../lib/data/services";
 import { getAllSocialLinks } from "../lib/data/socialLinks";
 import { SOCIAL_ICON_CLASSES, SOCIAL_LABELS } from "../lib/icons/social";
+import { phoneHref } from "../lib/utils/phone";
 import { BLOG_BASE } from "../lib/data/blog";
 import ReviewsBand from "./ReviewsBand.astro";
 
@@ -33,7 +34,9 @@ const site = await getSiteInfo();
 const socialLinks = await getAllSocialLinks();
 const year = new Date().getFullYear();
 
-const DEDICATED_CATEGORY_IDS = ["dental", "surgery"];
+// Lebanon: one Pet Care column (the old site lists all care pages together), no
+// separate Dental/Surgery columns — each would hold a single link.
+const DEDICATED_CATEGORY_IDS: string[] = [];
 const [dentalCategory, surgeryCategory] = await Promise.all(
   DEDICATED_CATEGORY_IDS.map((id) => getServiceCategoryBySlug(id))
 );
@@ -62,9 +65,8 @@ const generalServices = allServices.filter(
         )}
         {site.footerAbout && <p class="footer__about-text">{site.footerAbout}</p>}
         <ul class="footer__link-list">
-          <li><a href="/meet-the-team">Meet the Team</a></li>
+          <li><a href="/meet-the-team">Our Care Team</a></li>
           <li><button type="button" class="footer__link-button" data-modal-target="reputation-widget">How'd We Do?</button></li>
-          <li><a href="/photo-gallery">Photo Gallery</a></li>
         </ul>
         <div class="footer__social-icons">
           {socialLinks.map((social) => (
@@ -83,12 +85,12 @@ const generalServices = allServices.filter(
     </details>
 
     <details class="footer__column" open>
-      <summary class="footer__column-title">Services</summary>
+      <summary class="footer__column-title">Pet Care</summary>
       <ul class="footer__link-list">
         {generalServices.map((service) => (
           <li><a href={`/services/${service.id}`}>{service.data.customName || service.data.name}</a></li>
         ))}
-        <li><a href="/services"><strong>All Services</strong></a></li>
+        <li><a href="/services"><strong>All Pet Care</strong></a></li>
       </ul>
     </details>
 
@@ -115,15 +117,28 @@ const generalServices = allServices.filter(
     )}
 
     <details class="footer__column" open>
-      <summary class="footer__column-title">Resources</summary>
+      <summary class="footer__column-title">Patient Resources</summary>
       <ul class="footer__link-list">
         <li><a href="/faq">FAQs</a></li>
-        <li><a href="/online-forms">Online Forms</a></li>
-        <li><a href={BLOG_BASE}>Our Blog</a></li>
+        <li><a href="/online-forms">New Patient Forms</a></li>
+        <li><a href={BLOG_BASE}>Blog</a></li>
+        <li><a href="https://lebanonsmallanimalclinic.covetruspharmacy.com" target="_blank" rel="noopener noreferrer">Pharmacy</a></li>
         <li><a href="/privacy-policy">Privacy Policy</a></li>
         <li><a href="/terms-of-use">Terms of Use</a></li>
       </ul>
     </details>
+    <div class="footer__column footer__column--visit">
+      <p class="footer__column-title">Visit Us</p>
+      <div class="footer__visit">
+        {site.address && (
+          <a class="footer__visit-line" href={site.addressLink || "/contact-us"} target="_blank" rel="noopener noreferrer">
+            {site.address}<br />{site.addressLine2}
+          </a>
+        )}
+        {site.phoneNumber && <a class="footer__visit-line footer__visit-phone" href={phoneHref(site)}>{site.phoneNumber}</a>}
+        {site.hours && <div class="footer__hours" set:html={site.hours} />}
+      </div>
+    </div>
   </div>
 
   <div class="footer__bottom">
@@ -135,35 +150,46 @@ const generalServices = allServices.filter(
 </footer>
 
 <style>
-  .footer { background: var(--footer-bg); color: var(--footer-text); padding-block-start: var(--space-xl); }
-  .footer__grid { max-width: var(--container-max); margin-inline: auto; padding-inline: var(--space-md); display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); gap: var(--space-lg); }
-  .footer__column { border-block-end: 1px solid var(--footer-border); padding-block-end: var(--space-sm); }
-  .footer__column-title { font-weight: 600; font-size: var(--font-size-md); color: var(--footer-heading); cursor: default; padding-block: var(--space-xs); }
+  /* Lebanon: deep-teal footer, two-tone logo (no white panel), no column dividers,
+     no link underlines — hover is an eased opacity change (agency QA rules). */
+  .footer { background: var(--footer-bg); color: var(--footer-text); padding-block-start: var(--space-2xl); }
+  .footer__grid { max-width: var(--container-max); margin-inline: auto; padding-inline: var(--space-md); display: grid; grid-template-columns: 1.3fr 1.3fr 1fr 1fr; gap: var(--space-xl); }
+  .footer__column { padding-block-end: var(--space-sm); }
+  .footer__column-title { margin: 0; font-family: var(--font-heading); font-weight: 600; font-size: var(--font-size-md); color: var(--footer-heading); cursor: default; padding-block: var(--space-xs); }
   .footer__link-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-xs); margin-block-start: var(--space-sm); }
-  .footer__link-list a, .footer__link-button { color: inherit; text-decoration: none; background: none; border: 0; font: inherit; padding: 0; text-align: start; cursor: pointer; }
-  .footer__link-list a:hover, .footer__link-button:hover { text-decoration: underline; }
+  .footer__link-list a, .footer__link-button, .footer__visit-line { color: inherit; text-decoration: none; background: none; border: 0; font: inherit; padding: 0; text-align: start; cursor: pointer; opacity: 0.85; transition: opacity var(--motion-duration-base) var(--motion-ease); }
+  .footer__link-list a:hover, .footer__link-button:hover, .footer__visit-line:hover { opacity: 1; }
 
-  .footer__about { display: flex; flex-direction: column; gap: var(--space-sm); margin-block-start: var(--space-sm); }
-  .footer__logo { max-width: 9rem; max-height: 3rem; width: auto; height: auto; object-fit: contain; }
-  .footer__logo-text { font-weight: 700; font-size: 1.1rem; color: var(--footer-heading); }
-  .footer__about-text { margin: 0; font-size: var(--font-size-sm); opacity: 0.85; line-height: 1.5; }
+  .footer__about { display: flex; flex-direction: column; gap: var(--space-md); margin-block-start: var(--space-sm); }
+  .footer__logo { width: 100%; max-width: 15rem; height: auto; object-fit: contain; }
+  .footer__logo-text { font-weight: 700; font-size: var(--font-size-lg); color: var(--footer-heading); }
+  .footer__about-text { margin: 0; font-size: var(--font-size-sm); opacity: 0.85; line-height: 1.6; max-width: 22rem; }
   .footer__about .footer__link-list { margin-block-start: 0; }
 
-  .footer__social-icons { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
-  .footer__social-icon { color: inherit; display: inline-flex; font-size: 1.4rem; opacity: 0.85; }
+  .footer__visit { display: flex; flex-direction: column; gap: var(--space-sm); margin-block-start: var(--space-sm); font-size: var(--font-size-sm); }
+  .footer__visit-phone { font-weight: 700; opacity: 1; font-size: var(--font-size-md); }
+  .footer__hours { opacity: 0.85; }
+  .footer__hours :global(p) { margin: 0; }
+
+  .footer__social-icons { display: flex; flex-wrap: wrap; gap: var(--space-md); }
+  .footer__social-icon { color: inherit; display: inline-flex; font-size: var(--font-size-lg); opacity: 0.85; text-decoration: none; transition: opacity var(--motion-duration-base) var(--motion-ease); }
   .footer__social-icon:hover { opacity: 1; }
 
-  .footer__bottom { max-width: var(--container-max); margin-inline: auto; padding: var(--space-lg) var(--space-md); margin-block-start: var(--space-lg); border-block-start: 1px solid var(--footer-border); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-sm); font-size: var(--font-size-sm); }
-  .footer__signature { color: inherit; opacity: 0.8; text-decoration: none; }
+  .footer__bottom { max-width: var(--container-max); margin-inline: auto; padding: var(--space-lg) var(--space-md); margin-block-start: var(--space-xl); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-sm); font-size: var(--font-size-sm); opacity: 0.85; }
+  .footer__signature { color: inherit; text-decoration: none; transition: opacity var(--motion-duration-base) var(--motion-ease); }
+  .footer__signature:hover { opacity: 0.7; }
 
   @media (min-width: 900px) {
-    .footer__column summary { pointer-events: none; }
+    .footer__column summary { pointer-events: none; list-style: none; }
     .footer__column summary::marker,
     .footer__column summary::-webkit-details-marker { display: none; content: ""; }
   }
 
+  @media (max-width: 1100px) {
+    .footer__grid { grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); }
+  }
   @media (max-width: 899px) {
-    .footer__grid { grid-template-columns: 1fr; }
+    .footer__grid { grid-template-columns: 1fr; gap: var(--space-md); }
     .footer__column-title { cursor: pointer; }
   }
 </style>

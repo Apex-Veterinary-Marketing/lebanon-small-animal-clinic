@@ -2,7 +2,7 @@
 name: "Surgical Care"
 customName: "Surgical Care"
 serviceIcon: "../../assets/icon-generic.png"
-pageHeaderImage: "../../assets/banner-generic.png"
+pageHeaderImage: "../../assets/services/surgery.jpg"
 contentBlocks:
   - body: "<h2>Safe, skilled care—when your pet needs it most</h2><p>When surgery is needed, you want a team that treats your pet like family. We provide surgical care with precision, respect, and a focus on safety, comfort, and recovery. From routine procedures to urgent needs, we’re here to guide you through every step.</p>"
     image: "../../assets/thumbnail-generic.png"

@@ -2,7 +2,7 @@
 name: "Testing & Diagnostics"
 customName: "Testing & Diagnostics"
 serviceIcon: "../../assets/icon-generic.png"
-pageHeaderImage: "../../assets/banner-generic.png"
+pageHeaderImage: "../../assets/services/testing.jpg"
 contentBlocks:
   - body: "<p>Your pet can’t always show how they’re feeling, and sometimes even when you’re loving and observant, it’s easy to miss early signs that something’s changing. That’s where diagnostics help.</p><p>Our team uses in-house testing and imaging to get a closer look at what’s happening beneath the surface.</p><p>Whether it’s part of a routine checkup, prep for a procedure, or a way to better understand a concern, these tools help us give your pet the care they deserve—with clarity and confidence.</p><h2>What’s Included in Annual Bloodwork</h2><p>Bloodwork is one of the simplest ways to catch changes early and understand what’s going on inside your pet’s body. Even when they seem perfectly healthy on the outside, blood panels help us stay one step ahead.</p><p>We typically recommend annual bloodwork that includes:</p><ul><li><strong>Complete Blood Count (CBC):</strong> Checks for signs of infection, inflammation, anemia, and how the immune system is doing</li><li><strong>Blood Chemistry Panel:</strong> Gives us insight into kidney, liver, and pancreas function, as well as blood sugar and protein levels</li><li><strong>Early Kidney Screen:</strong> Helps detect kidney changes before they become serious</li></ul><p>These results give us a clearer picture of your pet’s health and help us make thoughtful decisions about their ongoing care.</p>"
     image: "../../assets/thumbnail-generic.png"

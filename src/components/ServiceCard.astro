@@ -11,16 +11,29 @@ export interface Props {
 const { service } = Astro.props;
 ---
 
-<a class="service-card" href={`/services/${service.id}`}>
-  {service.data.serviceIcon && <Image src={service.data.serviceIcon} alt="" class="service-card__icon" />}
-  <h3 class="service-card__heading">{service.data.customName || service.data.name}</h3>
-  <span class="service-card__cta">Learn More</span>
+{/* Lebanon: photo cards (client's own photos via pageHeaderImage), every photo
+    the same 4:3 shape so the text areas in a row line up. Icon card fallback. */}
+<a class:list={["service-card", service.data.pageHeaderImage && "service-card--photo"]} href={`/services/${service.id}`}>
+  {service.data.pageHeaderImage ? (
+    <div class="service-card__media">
+      <Image src={service.data.pageHeaderImage} alt="" class="service-card__photo" widths={[480, 800]} sizes="(max-width: 767px) 100vw, 400px" />
+    </div>
+  ) : service.data.serviceIcon && <Image src={service.data.serviceIcon} alt="" class="service-card__icon" />}
+  <div class="service-card__body">
+    <h3 class="service-card__heading">{service.data.customName || service.data.name}</h3>
+    <span class="service-card__cta">Learn more <span aria-hidden="true">&rarr;</span></span>
+  </div>
 </a>
 
 <style>
-  .service-card { display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--space-sm); padding: var(--space-lg); background: var(--white); border-radius: var(--radius-md); box-shadow: var(--shadow-card); text-decoration: none; color: inherit; transition: transform var(--motion-duration-fast) var(--motion-ease); }
-  .service-card:hover { transform: translateY(-2px); }
-  .service-card__icon { width: 3.5rem; height: 3.5rem; object-fit: contain; }
-  .service-card__heading { margin: 0; font-size: var(--font-size-md); }
-  .service-card__cta { display: inline-block; margin-block-start: auto; padding: var(--space-xs) var(--space-md); border-radius: var(--radius-sm); background: var(--main); color: var(--on-main); font-size: var(--font-size-sm); font-weight: 600; }
+  .service-card { display: flex; flex-direction: column; background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); overflow: hidden; text-decoration: none; color: inherit; transition: transform var(--motion-duration-base) var(--motion-ease), box-shadow var(--motion-duration-base) var(--motion-ease); }
+  .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-float); }
+  .service-card__media { aspect-ratio: 4 / 3; overflow: hidden; }
+  .service-card__photo { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; transition: transform var(--motion-duration-slow) var(--motion-ease); }
+  .service-card:hover .service-card__photo { transform: scale(1.04); }
+  .service-card__icon { width: 3.5rem; height: 3.5rem; object-fit: contain; margin: var(--space-lg) auto 0; }
+  .service-card__body { display: flex; flex-direction: column; gap: var(--space-xs); padding: var(--space-md) var(--space-lg) var(--space-lg); flex: 1; }
+  .service-card:not(.service-card--photo) .service-card__body { align-items: center; text-align: center; }
+  .service-card__heading { margin: 0; font-size: var(--font-size-lg); }
+  .service-card__cta { margin-block-start: auto; color: var(--main); font-weight: 600; font-size: var(--font-size-sm); }
 </style>

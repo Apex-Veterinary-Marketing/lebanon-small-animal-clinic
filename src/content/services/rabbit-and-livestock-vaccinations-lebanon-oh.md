@@ -2,7 +2,7 @@
 name: "Rabbit and Livestock Vaccinations"
 customName: "Rabbit and Livestock Vaccinations"
 serviceIcon: "../../assets/icon-generic.png"
-pageHeaderImage: "../../assets/banner-generic.png"
+pageHeaderImage: "../../assets/services/rabbit.jpg"
 contentBlocks:
   - body: "<p>Protecting your animals through timely vaccinations is essential for their health and well-being. At Lebanon Small Animal Clinic, we offer tailored vaccination protocols for rabbits and various livestock species, ensuring each animal receives the care suited to its specific needs.</p><h3>Rabbit Vaccinations</h3><p>Rabbits benefit from preventive care to maintain optimal health. Our services for rabbits include:</p><ul><li><strong>Wellness Exams:</strong> Comprehensive health assessments to detect any underlying issues.</li><li><strong>Vaccination Guidance:</strong> Recommendations based on your rabbit's lifestyle and risk factors.</li><li><strong>Parasite Control:</strong> Screening and treatment for common parasites.</li></ul><p>Our team will work with you to determine the appropriate care plan for your rabbit.</p>"
     image: "../../assets/thumbnail-generic.png"

@@ -2,7 +2,7 @@
 name: "Dental Care"
 customName: "Dental Care"
 serviceIcon: "../../assets/icon-generic.png"
-pageHeaderImage: "../../assets/banner-generic.png"
+pageHeaderImage: "../../assets/site/cat-with-nurse.jpg"
 contentBlocks:
   - body: "<h2>Healthy teeth mean a healthier, happier pet</h2><p>Routine dental care helps your pet stay comfortable, active, and thriving. Cleanings and checkups can prevent painful conditions, spot concerns early, and lower the chances of needing surgery later in life.</p><h3>How Dental Health Impacts Wellness</h3><p>Plaque and tartar build up over time, leading to issues like:</p><ul><li>Bad breath</li><li>Gum disease (gingivitis)</li><li>Tooth decay and tooth loss</li><li>Oral infections</li><li>Pain or difficulty eating</li><li>Infections that can spread to the heart, liver, and kidneys</li></ul><p>Dental disease is one of the most common conditions we treat. Many pets show no obvious signs until the disease has progressed, which makes routine care even more important.</p>"
     image: "../../assets/thumbnail-generic.png"

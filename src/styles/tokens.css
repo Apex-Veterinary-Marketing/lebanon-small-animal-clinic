@@ -45,29 +45,30 @@
   /* --- Neutrals & text --------------------------------------------------- */
   --white: #ffffff; /* page/card surface; text on dark */
   --text: #333333; /* body copy */
-  --text-muted: #5c746f; /* captions, meta, placeholders — brand hue, always
+  --text-muted: #597574; /* captions, meta, placeholders — brand hue, always
                       visibly lighter than --text, AA on every light bg */
   --light-grey: #d1d1d1; /* neutral borders/dividers */
 
   /* --- Backgrounds (very soft, brand-tinted) ----------------------------- */
-  --solid-bg: #f3f7f6; /* soft section/card/hover background (opaque) */
-  --base-bg: #eaf0ef7a; /* same tint @48% — for layering over images/other bgs */
-  --alt-bg: #27453ecc; /* dark brand tint @80% — dark section over an image/pattern
+  --solid-bg: #f3f7f7; /* soft section/card/hover background (opaque) */
+  --base-bg: #eaf0f07a; /* same tint @48% — for layering over images/other bgs */
+  --alt-bg: #244746cc; /* dark brand tint @80% — dark section over an image/pattern
                           (white text stays AA even over a white page) */
 
   /* --- Brand ------------------------------------------------------------- */
-  --main: #417b6f; /* primary brand; headings, links, primary buttons */
-  --main-dark: #152824; /* darkest brand; footer bg, deep sections, hovers */
-  --main-light: #417b6f; /* lighter brand; accents, focus ring, link hover */
-  --main-soft: #6d9b92; /* muted brand; subtle fills, borders on dark */
-  --cta: #85bfb3; /* the action color: primary CTA buttons (white text is AA on it) */
-  --cta-hover: #a6d1c8; /* CTA hover/pressed */
+  --main: #3a7b7a; /* primary brand; headings, links, primary buttons */
+  --main-dark: #2c5f5e; /* darkest brand; footer bg, deep sections, hovers */
+  --main-light: #3a7b7a; /* lighter brand; accents, focus ring, link hover */
+  --main-soft: #659c9b; /* muted brand; subtle fills, borders on dark */
+  --cta: #e32652; /* the action color: primary CTA buttons (white text is AA on it) */
+  --cta-hover: #8c122e; /* CTA hover/pressed */
 
   /* --- Translucent siblings & effects ------------------------------------ */
   --white-o85: #ffffffd9; /* white @85% — text on dark, glass panels */
-  --main-o50: #417b6f80; /* --main @50% — image scrims, tinted overlays */
-  --main-soft-o50: #6d9b9280; /* --main-soft @50% */
+  --main-o50: #3a7b7a80; /* --main @50% — image scrims, tinted overlays */
+  --main-soft-o50: #659c9b80; /* --main-soft @50% */
   --overlay-color: #00000080; /* black @50% — modal/hero scrim */
+  --overlay-soft: #00000026; /* black @15% — light end of the hero gradient scrim */
   --shadow: #0000001a; /* black @10% — the shadow COLOR (see --shadow-* below) */
 
   /*
@@ -78,14 +79,14 @@
    * ---------------------------------------------------------------------- */
   --heading: var(--main); /* h1-h6 color */
   --on-main: var(--white); /* text/icons on --main surfaces */
-  --on-cta: var(--main-dark); /* text/icons on --cta buttons. The generator sets this
+  --on-cta: var(--white); /* text/icons on --cta buttons. The generator sets this
                             to --main-dark instead when the brand accent is too
                             light for white text. */
   --focus-ring: var(--main-light); /* :focus-visible outline color */
 
   /* Header state (JS toggles .is-scrolled; Header.astro re-points these) */
-  --header-bg: transparent;
-  --header-fg: var(--white);
+  --header-bg: var(--white);
+  --header-fg: var(--heading);
 
   /* Footer */
   --footer-bg: var(--main-dark);
@@ -105,21 +106,26 @@
   --space-lg: 1.5rem;
   --space-xl: 3rem;
   --space-2xl: 4rem;
+  --space-section: clamp(3.5rem, 7vw, 6rem); /* vertical padding of homepage sections */
 
   /* Type */
-  --font-body: "Inter", system-ui, sans-serif; /* loaded by styles/fonts.css — per-client: swap both, see that file */
-  --font-heading: var(--font-body);
+  --font-body: "Poppins", system-ui, sans-serif; /* loaded by styles/fonts.css — per-client: swap both, see that file */
+  --font-heading: "Parkinsans", "Poppins", system-ui, sans-serif;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-md: 1.1rem;
   --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem; /* card/section sub-headings */
+  --font-size-2xl: 1.875rem; /* section headings on phones */
   --font-size-3xl: 2.25rem;
   --font-size-4xl: 2.75rem;
+  --font-size-hero: clamp(2.5rem, 4.6vw, 4rem); /* homepage hero headline */
 
   /* Radius */
   --radius-sm: 3px;
   --radius-md: 6px;
-  --radius-lg: 10px;
+  --radius-lg: 8px; /* agency rule: large elements max 8px */
+  --radius-pill: 999px; /* buttons, tags and pills only */
 
   /* Shadows — all built from the Base --shadow color */
   --shadow-header: 0 1px 4px var(--shadow);
@@ -137,9 +143,9 @@
    * (Breakpoints can't be variables inside @media; they are the literals
    * 900px (nav/callbar switch) and 767px (narrow) — see AGENTS.md.)
    */
-  --header-height: 6.5rem; /* fixed header incl. utility bar; heroes pad by this */
+  --header-height: 7.25rem; /* fixed header incl. utility bar; heroes pad by this */
   --callbar-height: 5.5rem; /* mobile call bar; BaseLayout pads <main> by this */
-  --logo-height: 2.5rem;
+  --logo-height: 3.75rem;
   --page-header-height: 16rem; /* PageHeaderBanner min-height */
   --reviews-pill-left: 5.5em; /* ReviewsBand offset, sits right of the a11y button */
 
@@ -153,6 +159,7 @@
   --motion-duration-fast: 150ms; /* small state changes: color, opacity */
   --motion-duration-base: 200ms; /* hovers, toggles (the V2.5 default) */
   --motion-duration-slow: 300ms; /* larger hovers, menus, modals */
+  --motion-duration-hero: 1400ms; /* homepage hero photo crossfade */
   --motion-duration-reveal: 600ms; /* scroll-reveal entrance */
   --motion-ease: cubic-bezier(0.4, 0, 0.2, 1); /* in-out; state changes */
   --motion-ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* decelerate; entrances */
