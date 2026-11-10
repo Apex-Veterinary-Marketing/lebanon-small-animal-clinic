@@ -46,6 +46,19 @@
 // Leave a key out (or empty) and that form renders GravityFormEmbed's
 // placeholder instead — safe to fill these in one at a time during client
 // intake, never blocks a build.
+// Lebanon Small Animal Clinic forms on onboarding.apexveterinarymarketing.com, duplicated
+// 2026-11-09 from the [PRACTICE] templates (803-809) and audited. All notify tech@lebanonsac.com.
+//   831 How'd We Do? · 832 New Patient · 833 Appointment Request (unused: booking is Chckup)
+//   834 General Request · 835 Boarding Consent (unused: no boarding) · 836 Rx Refill & Food Order (unused)
+//   837 Careers
+const gfScript = `<script src="//onboarding.apexveterinarymarketing.com/wp-content/plugins/gravity-forms-iframe-master/assets/scripts/gfembed.min.js" type="text/javascript"></script>`;
 export const gravityFormEmbeds: Record<string, string> = {
-  // contact: `<iframe src="https://example.com/embed/contact-form/" title="Contact form" loading="lazy" style="width:100%;border:0;min-height:32rem;"></iframe>`,
+  // General Request Form (834) — /contact-us and the sitewide contact modal.
+  contact: `<iframe src="//onboarding.apexveterinarymarketing.com/gfembed/?f=834" title="Contact form" width="100%" height="500" frameBorder="0" class="gfiframe"></iframe>${gfScript}`,
+  // How'd We Do? (831) — ReputationWidget's negative-feedback stage.
+  "reputation-feedback": `<iframe src="//onboarding.apexveterinarymarketing.com/gfembed/?f=831" title="Feedback form" width="100%" height="500" frameBorder="0" class="gfiframe"></iframe>${gfScript}`,
+  // New Patient Form (832) — /online-forms.
+  "new-patient": `<iframe src="//onboarding.apexveterinarymarketing.com/gfembed/?f=832" title="New patient form" width="100%" height="500" frameBorder="0" class="gfiframe"></iframe>${gfScript}`,
+  // Careers Form (837) — /careers (the old site's "Apply Now" form).
+  careers: `<iframe src="//onboarding.apexveterinarymarketing.com/gfembed/?f=837" title="Career application form" width="100%" height="500" frameBorder="0" class="gfiframe"></iframe>${gfScript}`,
 };

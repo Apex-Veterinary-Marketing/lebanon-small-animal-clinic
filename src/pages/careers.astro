@@ -1,7 +1,7 @@
 ---
-// Old site: /careers/ (client copy, verbatim). The old page had an "Apply Now"
-// form; until its Gravity Form exists, applicants call or use the contact form.
+// Old site: /careers/ (client copy, verbatim) + its "Apply Now" form (Gravity Form 837).
 import ContentPage from "../layouts/ContentPage.astro";
+import GravityFormEmbed from "../components/GravityFormEmbed.astro";
 import html from "../data/pages/careers.html?raw";
 import banner from "../assets/site/team-group.jpg";
 import { getSiteInfo } from "../lib/data/site";
@@ -22,13 +22,17 @@ const site = await getSiteInfo();
 >
   <section class="careers-apply">
     <div class="careers-apply__inner">
-      <a class="btn btn--cta btn--lg" href={phoneHref(site)}>Call {site.phoneNumber}</a>
-      <a class="btn btn--outline btn--lg" href="/contact-us">Send us a message</a>
+      <div class="careers-apply__form">
+        <GravityFormEmbed formId="careers" context="general-info" heading="Apply now" />
+      </div>
+      <p class="careers-apply__alt">Prefer to talk first? Call us at <a href={phoneHref(site)}>{site.phoneNumber}</a>.</p>
     </div>
   </section>
 </ContentPage>
 
 <style>
   .careers-apply { padding-block-end: var(--space-section); }
-  .careers-apply__inner { max-width: var(--container-max-narrow); margin-inline: auto; padding-inline: var(--space-md); display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+  .careers-apply__inner { max-width: var(--container-max-narrow); margin-inline: auto; padding-inline: var(--space-md); }
+  .careers-apply__form { padding: var(--space-lg); background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); }
+  .careers-apply__alt { margin: var(--space-lg) 0 0; color: var(--text-muted); }
 </style>

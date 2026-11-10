@@ -21,6 +21,8 @@ import "../styles/tokens.css";
 import "../styles/icon-font.css";
 import "../styles/fonts.css";
 import type { ImageMetadata } from "astro";
+import GoogleTags from "../components/GoogleTags.astro";
+import ChckupChat from "../components/ChckupChat.astro";
 
 // Preload the two highest-impact font FILES (not just the stylesheet) for
 // the current typeface — the body-text weight (400) and the weight
@@ -147,6 +149,7 @@ const graph = normalizeIds(
     />
     <SchemaGraph graph={graph} />
     <MotionLayer />
+    <GoogleTags />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -219,5 +222,6 @@ const graph = normalizeIds(
       .skip-link { position: absolute; inset-inline-start: -999px; inset-block-start: 0; z-index: 200; background: var(--main); color: var(--on-main); padding: var(--space-sm) var(--space-md); }
       .skip-link:focus { inset-inline-start: 0; }
     </style>
+    <ChckupChat />
   </body>
 </html>

@@ -1,0 +1,13 @@
+---
+// Chckup (Chckvet) chat widget — the same embed the client's current site uses
+// (launch template: "Chckvet Chat Widget"). Widget id lives in site.ts.
+import { getSiteInfo } from "../lib/data/site";
+const site = await getSiteInfo();
+---
+
+{site.chckupWidgetId && (
+  <>
+    <div class="chckup_widget" data-widget-id={site.chckupWidgetId}></div>
+    <script is:inline src="https://storage.googleapis.com/chckup-server.appspot.com/widget/index.js" defer></script>
+  </>
+)}

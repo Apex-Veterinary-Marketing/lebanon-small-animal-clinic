@@ -74,6 +74,13 @@ export interface SiteInfo {
   // use e.g. ["LocalBusiness", "ProfessionalService"]. A mobile business
   // also sets mobileVet + serviceAreaOfCoverage (→ areaServed).
   businessSchemaType?: string | string[];
+  // Google tag IDs (gtag.js). Loaded only on trackingHosts, so local and
+  // preview visits never reach the client's analytics.
+  ga4Id?: string; // e.g. "G-XXXXXXXXXX"
+  googleAdsId?: string; // e.g. "AW-1234567890"
+  trackingHosts?: string[]; // hostnames that load the tags, e.g. ["example.com", "www.example.com"]
+  // Chckup (Chckvet) chat widget id from the client's current site.
+  chckupWidgetId?: string;
 }
 
 // Placeholder example data — replace during client intake. Kept non-empty
@@ -108,6 +115,10 @@ export const siteInfo: SiteInfo = {
   googleReviewsLink: "https://www.google.com/maps?cid=8531316001904538955",
   facebookReviewsLink: "https://www.facebook.com/LebanonSmallAnimalClinic/reviews",
   url: "https://www.lebanonsac.com", // confirm apex vs www before launch
+  // GA4 property from the client's current site (lebanonsac.com, read 2026-11-09).
+  ga4Id: "G-181W4YXPT3",
+  trackingHosts: ["lebanonsac.com", "www.lebanonsac.com"],
+  chckupWidgetId: "9b06768e-2842-4788-a71e-9636318c5ca8",
   logoWhite: "/logo-white.png",
   logoColor: "/logo-color.png",
 };
