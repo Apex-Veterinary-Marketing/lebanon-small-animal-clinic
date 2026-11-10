@@ -26,7 +26,7 @@ const { category } = Astro.props;
 const services = await getServicesByCategory(category.id);
 ---
 
-<BaseLayout title={category.data.name} description={`${category.data.name} services`}>
+<BaseLayout title={category.data.name} description={`${category.data.name} at Lebanon Small Animal Clinic in Lebanon, OH: Fear Free care for dogs, cats, exotics and farm animals. Call (513) 932-4189 to book.`}>
   <PageHeaderBanner heading={category.data.name} image={bannerGeneric} />
   <div class="services-layout">
     <div class="page-section">

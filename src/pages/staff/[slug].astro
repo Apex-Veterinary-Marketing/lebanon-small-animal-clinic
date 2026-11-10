@@ -30,7 +30,7 @@ const graph = [
 ];
 ---
 
-<BaseLayout title={heading} description={staffMember.data.position} schemaGraph={graph}>
+<BaseLayout title={heading} description={`Meet ${staffMember.data.name}${staffMember.data.position ? `, ${staffMember.data.position}` : ""} at Lebanon Small Animal Clinic in Lebanon, OH, part of the team caring for dogs, cats, exotics and farm animals.`} schemaGraph={graph}>
   <PageHeaderBanner heading={heading} />
 
   <div class="general-section">
