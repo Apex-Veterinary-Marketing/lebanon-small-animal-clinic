@@ -1,0 +1,98 @@
+---
+// Photo Gallery — the clinic's professional shoot (Sarah Mullins Creative, 2026).
+// Photos listed in src/data/gallery.ts; click opens a larger view (native <dialog>).
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import ContentPage from "../layouts/ContentPage.astro";
+import { galleryPhotos } from "../data/gallery";
+import banner from "../assets/gallery/team-hearts.jpg";
+
+const files = import.meta.glob<{ default: ImageMetadata }>("../assets/gallery/shoot-*.jpg", { eager: true });
+const photos = galleryPhotos
+  .map((name) => files[`../assets/gallery/${name}`]?.default)
+  .filter((img): img is ImageMetadata => Boolean(img));
+---
+
+<ContentPage
+  title="Photo Gallery"
+  description="Take a look inside Lebanon Small Animal Clinic in Lebanon, OH: our team, our patients, farm visits and the Fear Free spaces where we care for your pets."
+  heading="Photo gallery"
+  eyebrow="About us"
+  intro="Meet our team, our patients and the spaces where we care for them."
+  bannerImage={banner}
+  bannerAlt="The Lebanon Small Animal Clinic care team making heart shapes with their hands"
+  ctaHeading="Come meet us in person"
+  ctaText="Book a visit online or give us a call. We can't wait to meet you and your pet."
+>
+  <section class="gallery">
+    <ul class="gallery__grid">
+      {photos.map((img, i) => (
+        <li class="gallery__item">
+          <button type="button" class="gallery__button" data-gallery-open={i} aria-label={`Open photo ${i + 1} of ${photos.length}`}>
+            <Image src={img} alt="" widths={[400, 700]} sizes="(max-width: 767px) 50vw, 25vw" class="gallery__thumb" />
+          </button>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <dialog class="gallery__dialog" data-gallery-dialog aria-label="Photo viewer">
+    <button type="button" class="gallery__close" data-gallery-close aria-label="Close">&times;</button>
+    <button type="button" class="gallery__nav gallery__nav--prev" data-gallery-step="-1" aria-label="Previous photo">&lsaquo;</button>
+    <img class="gallery__full" data-gallery-full alt="" />
+    <button type="button" class="gallery__nav gallery__nav--next" data-gallery-step="1" aria-label="Next photo">&rsaquo;</button>
+  </dialog>
+  <script type="application/json" data-gallery-srcs set:html={JSON.stringify(photos.map((p) => p.src))} />
+</ContentPage>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>("[data-gallery-dialog]");
+  const full = document.querySelector<HTMLImageElement>("[data-gallery-full]");
+  const srcs: string[] = JSON.parse(document.querySelector("[data-gallery-srcs]")?.textContent || "[]");
+  let current = 0;
+  function show(i: number) {
+    if (!dialog || !full || !srcs.length) return;
+    current = (i + srcs.length) % srcs.length;
+    full.src = srcs[current];
+    full.alt = `Photo ${current + 1} of ${srcs.length}`;
+    if (!dialog.open) dialog.showModal();
+  }
+  document.querySelectorAll<HTMLButtonElement>("[data-gallery-open]").forEach((b) =>
+    b.addEventListener("click", () => show(Number(b.dataset.galleryOpen)))
+  );
+  document.querySelectorAll<HTMLButtonElement>("[data-gallery-step]").forEach((b) =>
+    b.addEventListener("click", () => show(current + Number(b.dataset.galleryStep)))
+  );
+  document.querySelector("[data-gallery-close]")?.addEventListener("click", () => dialog?.close());
+  dialog?.addEventListener("click", (e) => { if (e.target === dialog) dialog.close(); });
+  document.addEventListener("keydown", (e) => {
+    if (!dialog?.open) return;
+    if (e.key === "ArrowRight") show(current + 1);
+    if (e.key === "ArrowLeft") show(current - 1);
+  });
+</script>
+
+<style>
+  .gallery { padding-block: var(--space-section); }
+  .gallery__grid { max-width: var(--container-max); margin-inline: auto; padding: 0 var(--space-md); list-style: none; columns: 4 14rem; column-gap: var(--space-md); }
+  .gallery__item { break-inside: avoid; margin-block-end: var(--space-md); }
+  .gallery__button { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: var(--radius-lg); overflow: hidden; }
+  .gallery__thumb { display: block; width: 100%; height: auto; transition: transform var(--motion-duration-slow) var(--motion-ease); }
+  .gallery__button:hover .gallery__thumb, .gallery__button:focus-visible .gallery__thumb { transform: scale(1.03); }
+  .gallery__dialog { border: 0; padding: 0; background: transparent; max-width: 92vw; max-height: 92vh; overflow: visible; }
+  .gallery__dialog::backdrop { background: var(--overlay-color); }
+  .gallery__full { display: block; max-width: 92vw; max-height: 86vh; width: auto; height: auto; border-radius: var(--radius-lg); }
+  .gallery__close, .gallery__nav { position: absolute; display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border: 0; border-radius: var(--radius-pill); background: var(--white); color: var(--heading); font-size: var(--font-size-2xl); line-height: 1; cursor: pointer; box-shadow: var(--shadow-float); transition: background-color var(--motion-duration-base) var(--motion-ease), color var(--motion-duration-base) var(--motion-ease); }
+  .gallery__close:hover, .gallery__nav:hover { background: var(--cta); color: var(--on-cta); }
+  .gallery__close { inset-block-start: calc(-1 * var(--space-md)); inset-inline-end: calc(-1 * var(--space-md)); }
+  .gallery__nav { inset-block-start: 50%; transform: translateY(-50%); }
+  .gallery__nav--prev { inset-inline-start: calc(-1 * var(--space-lg)); }
+  .gallery__nav--next { inset-inline-end: calc(-1 * var(--space-lg)); }
+  @media (max-width: 767px) {
+    .gallery__grid { columns: 2; column-gap: var(--space-xs); }
+    .gallery__item { margin-block-end: var(--space-xs); }
+    .gallery__nav--prev { inset-inline-start: var(--space-xs); }
+    .gallery__nav--next { inset-inline-end: var(--space-xs); }
+    .gallery__close { inset-inline-end: var(--space-xs); inset-block-start: var(--space-xs); }
+  }
+</style>

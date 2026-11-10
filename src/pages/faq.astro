@@ -4,6 +4,8 @@
 import ContentPage from "../layouts/ContentPage.astro";
 import FaqAccordion from "../components/FaqAccordion.astro";
 import { getAllServices } from "../lib/data/services";
+import { getSiteInfo } from "../lib/data/site";
+import { withTrackingPhone } from "../lib/utils/phone";
 import faqHtml from "../data/pages/faq.html?raw";
 import banner from "../assets/gallery/fluffy-cat.jpg";
 
@@ -15,7 +17,9 @@ const clientFaqs = rest.map((chunk) => {
 });
 const services = await getAllServices();
 const serviceFaqs = services.flatMap((s) => s.data.faqs);
-const faqs = [...clientFaqs, ...serviceFaqs];
+// Service FAQ answers carry tel: links — route them through the tracking number like the service pages do.
+const site = await getSiteInfo();
+const faqs = await Promise.all([...clientFaqs, ...serviceFaqs].map(async (f) => ({ ...f, answer: await withTrackingPhone(f.answer, site) })));
 ---
 
 <ContentPage

@@ -89,6 +89,8 @@ export interface SiteInfo {
 export const siteInfo: SiteInfo = {
   practiceName: "Lebanon Small Animal Clinic",
   phoneNumber: "(513) 932-4189",
+  // Twilio call-tracking number (from the PM, 2026-11-10): every tel: link dials it; the shown number stays (513) 932-4189.
+  callTrackingNumber: "+15139353641",
   email: "LSAC@lebanonsac.com",
   address: "1196 Oregonia Rd",
   addressLine2: "Lebanon, OH 45036",
