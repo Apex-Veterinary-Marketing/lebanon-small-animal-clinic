@@ -24,6 +24,8 @@ import petCat from "../assets/site/pets-DSC02675.jpg";
 import petPocket from "../assets/site/hedgehog.jpg";
 import petFarm from "../assets/site/pets-DSC03361.jpg";
 import awardBadge from "../assets/site/award-businessrate-crystal.png";
+// Official logo from catvets.com (Feline Veterinary Medical Association); the old site says its vets are Feline/Cat Friendly certified.
+import catFriendlyBadge from "../assets/site/badge-cat-friendly-veterinarian.png";
 import logoCherry from "../assets/site/logo-cherry.png";
 import logoCareCredit from "../assets/site/logo-carecredit.jpg";
 
@@ -120,6 +122,7 @@ const doctorRoles: Record<string, string> = {
         <div class="welcome-actions">
           <a class="btn btn--main" href="/meet-the-team">Meet our care team</a>
           <Image src={awardBadge} alt="Best of 2026 BusinessRate award winner: Lebanon Small Animal Clinic, Veterinarian, Lebanon, Ohio" class="award-badge" height={150} />
+          <Image src={catFriendlyBadge} alt="Cat Friendly Veterinarian, Feline Veterinary Medical Association" class="cert-badge" height={90} />
         </div>
       </div>
     </div>
@@ -327,6 +330,7 @@ const doctorRoles: Record<string, string> = {
   .welcome-actions, .home-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-md); margin-block-start: var(--space-sm); }
   .welcome-actions .btn, .home-actions .btn { margin-block-start: 0; }
   .award-badge { width: auto; height: 9.5rem; }
+  .cert-badge { width: auto; height: 4.5rem; }
   .visit__note { margin: var(--space-xs) 0 0; color: var(--text-muted); }
   .visit__note a { color: var(--main); font-weight: 600; text-decoration: none; }
 
