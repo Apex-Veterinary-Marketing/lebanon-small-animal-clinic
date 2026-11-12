@@ -14,6 +14,9 @@ import banner from "../assets/gallery/team-hearts.jpg";
 const doctors = await getAllDoctors();
 const staff = await getAllStaff();
 
+// Plain-text teaser for the card; the full bio opens in the popup.
+const teaser = (html?: string) => (html || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+
 const doctorRoles: Record<string, string> = {
   "dr-halley-hassel": "Owner & Veterinarian",
   "dr-jonathan-tenenzapf": "Associate Veterinarian",
@@ -50,21 +53,25 @@ const clinicBlurbs = [
         <p class="eyebrow">Our veterinarians</p>
         <h2>Meet the doctors</h2>
       </div>
-      <div class="doctor-row">
+    </div>
+    <div class="doctor-container">
+      <div class={`doctor-row doctor-row--${Math.min(doctors.length, 3)}`}>
         {doctors.map((d) => (
           <article class="doctor" data-reveal>
             {d.data.mainImage && (
-              <Image src={d.data.mainImage} alt={d.data.imageAltText || d.data.name} class="doctor__photo" widths={[400, 700]} sizes="(max-width: 767px) 100vw, 300px" />
+              <Image src={d.data.mainImage} alt={d.data.imageAltText || d.data.name} class="doctor__photo" widths={[400, 700]} sizes="(max-width: 767px) 100vw, 420px" />
             )}
             <div class="doctor__body">
               <h3 class="doctor__name">{d.data.name}</h3>
               {doctorRoles[d.id] && <p class="doctor__role">{doctorRoles[d.id]}</p>}
               {d.data.bioShort && <div class="doctor__bio" set:html={d.data.bioShort} />}
-              <button type="button" class="btn btn--main doctor__btn" data-modal-target={`bio-${d.id}`}>Read full bio</button>
+              <button type="button" class="btn btn--main doctor__btn" data-modal-target={`bio-${d.id}`}>Read more</button>
             </div>
           </article>
         ))}
       </div>
+    </div>
+    <div class="team-container">
 
       <div class="team-intro team-intro--staff">
         <p class="eyebrow">Our support team</p>
@@ -79,7 +86,8 @@ const clinicBlurbs = [
             )}
             <h3 class="staff__name">{s.data.name}</h3>
             {s.data.position && <p class="staff__role">{s.data.position}</p>}
-            {s.data.bio && <button type="button" class="staff__btn" data-modal-target={`bio-${s.id}`}>Read full bio</button>}
+            {s.data.bio && <p class="staff__bio">{teaser(s.data.bio)}</p>}
+            {s.data.bio && <button type="button" class="staff__btn" data-modal-target={`bio-${s.id}`}>Read more</button>}
           </li>
         ))}
       </ul>
@@ -131,23 +139,27 @@ const clinicBlurbs = [
   .team-intro p:last-child { margin-block-end: 0; }
   .team-intro--staff { margin-block-start: var(--space-2xl); }
 
+  .doctor-container { max-width: var(--container-max-wide); margin-inline: auto; padding-inline: var(--space-md); }
   .doctor-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-xl); }
-  .doctor { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-float); overflow: hidden; }
-  .doctor__photo { width: 100%; height: 100%; min-height: 22rem; object-fit: cover; object-position: center 20%; }
-  .doctor__body { display: flex; flex-direction: column; padding: var(--space-xl) var(--space-lg); }
-  .doctor__name { margin: 0; font-size: var(--font-size-xl); }
+  .doctor-row--1 { grid-template-columns: minmax(0, 1fr); }
+  .doctor-row--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .doctor { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-float); overflow: hidden; }
+  .doctor__photo { width: 100%; height: 100%; min-height: 30rem; object-fit: cover; object-position: center 20%; }
+  .doctor__body { display: flex; flex-direction: column; padding: var(--space-2xl) var(--space-xl); }
+  .doctor__name { margin: 0; font-size: var(--font-size-2xl); }
   .doctor__role { margin: var(--space-2xs) 0 var(--space-md); color: var(--cta); font-weight: 600; font-size: var(--font-size-sm); }
-  .doctor__bio { color: var(--text-muted); font-size: var(--font-size-sm); }
-  .doctor__bio :global(p) { margin: 0; display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; }
+  .doctor__bio { color: var(--text-muted); }
+  .doctor__bio :global(p) { margin: 0; display: -webkit-box; -webkit-line-clamp: 8; -webkit-box-orient: vertical; overflow: hidden; }
   .doctor__btn { margin-block-start: auto; align-self: flex-start; }
   .doctor__bio + .doctor__btn { margin-block-start: var(--space-lg); }
 
   .staff-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-lg); }
   .staff { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2xs); }
+  .staff__bio { margin: var(--space-2xs) 0 0; color: var(--text-muted); font-size: var(--font-size-sm); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
   .staff__photo { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 25%; border-radius: var(--radius-lg); box-shadow: var(--shadow-card); margin-block-end: var(--space-xs); }
   .staff__name { margin: 0; font-size: var(--font-size-lg); }
   .staff__role { margin: 0; color: var(--text-muted); font-size: var(--font-size-sm); }
-  .staff__btn { margin-block-start: var(--space-2xs); padding: 0; background: none; border: 0; font: inherit; font-weight: 600; font-size: var(--font-size-sm); color: var(--main); cursor: pointer; transition: color var(--motion-duration-base) var(--motion-ease); }
+  .staff__btn { margin-block-start: auto; padding: var(--space-xs) 0 0; background: none; border: 0; font: inherit; font-weight: 600; font-size: var(--font-size-sm); color: var(--main); cursor: pointer; transition: color var(--motion-duration-base) var(--motion-ease); }
   .staff__btn:hover { color: var(--cta); }
 
   .blurbs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-lg); }
@@ -161,8 +173,11 @@ const clinicBlurbs = [
   .bio-modal__role { margin: var(--space-2xs) 0 0; color: var(--cta); font-weight: 600; font-size: var(--font-size-sm); }
   .bio-modal__bio { font-size: var(--font-size-md); }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1100px) {
     .doctor-row { grid-template-columns: 1fr; }
+    .doctor { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); }
+  }
+  @media (max-width: 1000px) {
     .staff-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   }
   @media (max-width: 767px) {
