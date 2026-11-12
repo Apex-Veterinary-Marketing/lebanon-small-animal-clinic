@@ -10,6 +10,7 @@ import CtaBand from "../components/CtaBand.astro";
 
 export interface Props {
   title: string;
+  titleTemplate?: "page" | "full";
   description: string;
   heading: string;
   eyebrow?: string;
@@ -25,14 +26,14 @@ export interface Props {
   webPage?: Record<string, unknown>;
 }
 const {
-  title, description, heading, eyebrow, intro, bannerImage, bannerAlt, bannerPosition,
+  title, titleTemplate, description, heading, eyebrow, intro, bannerImage, bannerAlt, bannerPosition,
   html, photo, photoAlt = "", ctaHeading = "Ready to schedule a visit?",
   ctaText = "Book online or give us a call. We'll find a time that works for you and your pet.",
   webPage,
 } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description} webPage={webPage}>
+<BaseLayout title={title} titleTemplate={titleTemplate} description={description} webPage={webPage}>
   <PageHeaderBanner heading={heading} eyebrow={eyebrow} intro={intro} image={bannerImage} imageAlt={bannerAlt} imagePosition={bannerPosition} />
 
   {html && (

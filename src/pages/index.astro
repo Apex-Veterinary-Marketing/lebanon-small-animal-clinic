@@ -64,9 +64,9 @@ const doctorRoles: Record<string, string> = {
 ---
 
 <BaseLayout
-  title={`${site.practiceName} | Veterinarian in Lebanon, OH`}
+  title="Fear-Free Pet Care & Vet | Lebanon Small Animal Clinic"
   titleTemplate="full"
-  description="Fear Free vet in Lebanon, OH: wellness exams, same-day urgent care, surgery and dentistry for dogs, cats, exotics and farm animals. Call (513) 932-4189."
+  description="Fear free veterinary care for dogs, cats, pocket pets, farm animals & exotics. Get the personalized care your pet deserves- in office or at home."
 >
   <!-- HERO: photo slider of the client's own team and patients -->
   <section class="home-hero" aria-label="Welcome">
@@ -351,6 +351,8 @@ const doctorRoles: Record<string, string> = {
   .home-hero__dots { position: absolute; z-index: 1; inset-block-end: var(--space-lg); inset-inline-end: var(--space-lg); display: flex; gap: var(--space-xs); }
   .home-hero__dot { width: 0.75rem; height: 0.75rem; border-radius: var(--radius-pill); border: 2px solid var(--white); background: transparent; padding: 0; cursor: pointer; transition: background-color var(--motion-duration-base) var(--motion-ease), width var(--motion-duration-base) var(--motion-ease); }
   .home-hero__dot.is-active { background: var(--white); width: 1.75rem; }
+  .home-hero__dot { position: relative; }
+  .home-hero__dot::after { content: ""; position: absolute; inset: calc(-1 * var(--space-sm)); }
 
   /* Pets */
   .pet-row { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); }

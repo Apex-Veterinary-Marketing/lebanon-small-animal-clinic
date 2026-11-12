@@ -10,7 +10,7 @@ import { getAllPosts } from "../../lib/data/blog";
 const posts = await getAllPosts();
 ---
 
-<BaseLayout title="Blog" description="Pet care tips, seasonal safety and clinic news from the Lebanon Small Animal Clinic team in Lebanon, Ohio.">
+<BaseLayout title="Blog | Lebanon Small Animal Clinic" titleTemplate="full" description="Looking for trusted pet care advice? Our blog offers practical tips, clinic updates & expert insights to help you keep your pet happy, healthy & thriving.">
   <PageHeaderBanner heading="Pet care tips & clinic news" eyebrow="Blog" image={blogBanner} imageAlt="A golden dog outdoors with the care team" />
   <div class="page-section">
     {posts.length > 0 ? (

@@ -1,9 +1,8 @@
 ---
 // Lebanon: the client's own FAQs from their current /patient-resources/faqs/
-// page (verbatim), followed by any FAQs written on the service pages.
+// page (verbatim). Service FAQs stay on each service page (175 of them made this page unusable on phones).
 import ContentPage from "../layouts/ContentPage.astro";
 import FaqAccordion from "../components/FaqAccordion.astro";
-import { getAllServices } from "../lib/data/services";
 import { getSiteInfo } from "../lib/data/site";
 import { withTrackingPhone } from "../lib/utils/phone";
 import faqHtml from "../data/pages/faq.html?raw";
@@ -15,16 +14,15 @@ const clientFaqs = rest.map((chunk) => {
   const [question, answer] = chunk.split("</h3>");
   return { question: question.replace(/<[^>]+>/g, "").trim(), answer: answer.trim() };
 });
-const services = await getAllServices();
-const serviceFaqs = services.flatMap((s) => s.data.faqs);
 // Service FAQ answers carry tel: links — route them through the tracking number like the service pages do.
 const site = await getSiteInfo();
-const faqs = await Promise.all([...clientFaqs, ...serviceFaqs].map(async (f) => ({ ...f, answer: await withTrackingPhone(f.answer, site) })));
+const faqs = await Promise.all([...clientFaqs].map(async (f) => ({ ...f, answer: await withTrackingPhone(f.answer, site) })));
 ---
 
 <ContentPage
-  title="FAQs"
-  description="Answers to common questions about visits, payment options, urgent care and Fear Free care at Lebanon Small Animal Clinic in Lebanon, Ohio."
+  title="Patient Resources - FAQs | Lebanon Small Animal Clinic"
+  titleTemplate="full"
+  description="Here are answers to some of the most common questions we hear—from appointment details to pet care tips—to help you feel confident & informed for your visit."
   heading="Frequently asked questions"
   eyebrow="Patient resources"
   bannerImage={banner}

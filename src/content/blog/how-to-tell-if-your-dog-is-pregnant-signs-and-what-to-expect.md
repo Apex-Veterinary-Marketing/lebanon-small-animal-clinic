@@ -1,5 +1,7 @@
 ---
 name: "How to Tell If Your Dog Is Pregnant: Signs & What to Expect"
+titleTag: "How to Tell If Your Dog Is Pregnant: Signs & What to Expect"
+metaDescription: "Lebanon Small Animal Clinic is located in the Cincinnati, Ohio area. Read our blog, How to Tell If Your Dog Is Pregnant: Signs & What to Expect. Contact us today to learn more!"
 pubDate: 2025-04-25
 postThumbnail: "../../assets/blog/how-to-tell-if-your-dog-is-pregnant-signs-and-what-to-expect.png"
 thumbnailAlt: "How to Tell If Your Dog Is Pregnant: Signs & What to Expect"
