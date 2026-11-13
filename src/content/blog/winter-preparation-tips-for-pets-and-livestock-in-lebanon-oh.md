@@ -25,7 +25,7 @@ Understanding when winter conditions are starting to affect your animals is the 
 
 Livestock face different challenges. Cattle, sheep, goats, and other farm animals may show signs of cold stress such as huddling together for warmth, standing in sheltered areas, shivering, or having rough, fluffed-up coats. Reduced feed intake, difficulty rising, or changes in behavior can also indicate that your animals are struggling with the weather. Calves and young animals are particularly vulnerable to hypothermia, especially during damp, windy November days.
 
-If you notice these signs, it's important to act promptly. For more insights on species-specific care, you can visit our [veterinary care resources and services for dogs](https://www.lebanonsac.com/pets/dogs/) or [veterinary care information and services for farm animals](https://www.lebanonsac.com/pets/farm-animals/).
+If you notice these signs, it's important to act promptly. For more insights on species-specific care, you can visit our [veterinary care resources and services for dogs](/pets-we-care-for/#dogs) or [veterinary care information and services for farm animals](/pets-we-care-for/#farm-animals).
 
 ## Why Winter Poses Health Challenges for Animals
 
@@ -39,11 +39,11 @@ Understanding these factors helps you take proactive steps to safeguard animal h
 
 At Lebanon Small Animal Clinic, our veterinary professionals offer a range of services to help keep both your pets and livestock healthy all winter long. For pets, a [routine veterinary examination and preventive care](/services/pet-wellness-exams-lebanon-oh/) before winter sets in can ensure your dog or cat is in good health and up-to-date on vaccines and parasite prevention. We check for underlying conditions that might make your pet more vulnerable to the cold, such as arthritis or heart disease, and provide guidance on diet and exercise for the winter months.
 
-For pocket pets and exotics, we recommend reviewing enclosure setups to ensure proper temperature regulation and humidity. Our team can advise on safe heating options and discuss dietary adjustments to help small animals thrive during colder periods. You can read more about [veterinary care for pocket pets and small companion animals](https://www.lebanonsac.com/pets/pocket-pets/) for tailored advice.
+For pocket pets and exotics, we recommend reviewing enclosure setups to ensure proper temperature regulation and humidity. Our team can advise on safe heating options and discuss dietary adjustments to help small animals thrive during colder periods. You can read more about [veterinary care for pocket pets and small companion animals](/pets-we-care-for/#exotics-and-pocket-pets) for tailored advice.
 
-Livestock benefit from herd health assessments before and during winter. Our veterinarians can evaluate body condition scores, check for signs of lameness or hoof issues, and ensure vaccination schedules are current. For operations with young or pregnant animals, we provide tailored nutrition plans and parasite control strategies to support healthy growth and calving outcomes. Explore our [vaccination services for rabbits and livestock](https://www.lebanonsac.com/pet-care/rabbit-and-livestock-vaccinations/) to keep your animals protected against seasonal diseases.
+Livestock benefit from herd health assessments before and during winter. Our veterinarians can evaluate body condition scores, check for signs of lameness or hoof issues, and ensure vaccination schedules are current. For operations with young or pregnant animals, we provide tailored nutrition plans and parasite control strategies to support healthy growth and calving outcomes. Explore our [vaccination services for rabbits and livestock](/services/exotic-farm-animal-medicine-lebanon-oh/) to keep your animals protected against seasonal diseases.
 
-If you need convenient care at your location, our team also provides [home visits and farm calls for convenient veterinary care at home or on the farm](https://www.lebanonsac.com/pet-care/home-visits-and-farm-calls/).
+If you need convenient care at your location, our team also provides [home visits and farm calls for convenient veterinary care at home or on the farm](/services/house-call-veterinary-services-lebanon-oh/).
 
 ## At-Home and On-Farm Steps for Winter Animal Care
 

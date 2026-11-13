@@ -120,7 +120,7 @@ export const siteInfo: SiteInfo = {
   googleReviewsLink: "https://search.google.com/local/writereview?placeid=ChIJObjz8vfzQIgRSzUg8LNSZXY",
   googleWidgetId: "ChIJObjz8vfzQIgRSzUg8LNSZXY",
   facebookReviewsLink: "https://www.facebook.com/LebanonSmallAnimalClinic/reviews",
-  url: "https://www.lebanonsac.com", // confirm apex vs www before launch
+  url: "https://lebanonsac.com", // final domain (apex; www and http 301 here on Cloudflare)
   // GA4 property from the client's current site (lebanonsac.com, read 2026-11-09).
   ga4Id: "G-181W4YXPT3",
   trackingHosts: ["lebanonsac.com", "www.lebanonsac.com"],
