@@ -47,6 +47,7 @@ export interface SiteInfo {
   afterHours?: string; // rich text/HTML
   mapEmbedLink?: string;
   googleReviewsLink?: string;
+  googleReviewsReadLink?: string; // Lebanon: page that LISTS the reviews (floating pill); googleReviewsLink stays the write-a-review link
   facebookReviewsLink?: string;
   yelpReviewLink?: string;
   googleRating?: number; // static fallback shown until googleWidgetId is configured
@@ -119,6 +120,7 @@ export const siteInfo: SiteInfo = {
   // Google Business Profile Place ID (from the PM, 2026-11-10): review link + reviews widget.
   googleReviewsLink: "https://search.google.com/local/writereview?placeid=ChIJObjz8vfzQIgRSzUg8LNSZXY",
   googleWidgetId: "ChIJObjz8vfzQIgRSzUg8LNSZXY",
+  googleReviewsReadLink: "https://search.google.com/local/reviews?placeid=ChIJObjz8vfzQIgRSzUg8LNSZXY",
   facebookReviewsLink: "https://www.facebook.com/LebanonSmallAnimalClinic/reviews",
   url: "https://lebanonsac.com", // final domain (apex; www and http 301 here on Cloudflare)
   // GA4 property from the client's current site (lebanonsac.com, read 2026-11-09).

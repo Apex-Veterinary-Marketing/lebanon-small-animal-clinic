@@ -1,6 +1,7 @@
 ---
 name: "Exotic and Farm Animal Medicine"
 customName: "Exotic & Farm Animal Medicine"
+cardName: "Exotic Medicine"
 serviceIcon: "../../assets/services/icons/bird.svg"
 pageHeaderImage: "../../assets/gallery/chickens-in-barn.jpg"
 pageHeaderImageAlt: "Chickens in a barn"

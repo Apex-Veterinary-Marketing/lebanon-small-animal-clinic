@@ -1,6 +1,7 @@
 ---
 name: "House Call Veterinary Services"
 customName: "House Calls"
+cardName: "Farm & House Calls"
 serviceIcon: "../../assets/services/icons/boarding.svg"
 pageHeaderImage: "../../assets/gallery/team-at-the-barn.jpg"
 pageHeaderImageAlt: "Team members walking dogs outside a barn"
@@ -15,7 +16,7 @@ contentBlocks:
   - body: "<h2>Schedule Your Pet's House Call Appointment Today</h2><p>Ready to bring quality veterinary care to your doorstep? Lebanon Small Animal Clinic is here to serve Lebanon and surrounding communities with convenient house call options. Call us at <a href=\"tel:5139324189\">(513) 932-4189</a> to book your appointment or visit our clinic at <a href=\"https://www.google.com/maps/search/?api=1&amp;query=1196+Oregonia+Rd%2C+Lebanon%2C+OH+45036%2C+Lebanon+Small+Animal+Clinic\" target=\"_blank\" rel=\"noopener noreferrer\">1196 Oregonia Rd, Lebanon, OH 45036</a>. We’re open Monday through Friday from 8 AM to 6 PM and select Saturdays by appointment. Our team is dedicated to making veterinary care accessible, stress-free, and tailored to your pet’s needs.</p>"
     style: "cta"
 serviceCategory: ["specialty"]
-featured: false
+featured: true
 showOnSidebarMenu: true
 metaTitle: "House Call Veterinary Services in Lebanon, OH"
 metaDescription: "House call veterinary services in Lebanon, OH. Compassionate, convenient care from Lebanon Small Animal Clinic, serving pets and families at home. Schedule a house call today."

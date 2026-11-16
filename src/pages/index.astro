@@ -32,7 +32,7 @@ import logoCherry from "../assets/site/logo-cherry.png";
 import logoCareCredit from "../assets/site/logo-carecredit.jpg";
 
 const site = await getSiteInfo();
-const featuredServices = (await getFeaturedServices()).slice(0, 6);
+const featuredServices = (await getFeaturedServices()).slice(0, 8);
 const doctors = await getHomeDoctors();
 const testimonials = await getAllTestimonials();
 
@@ -126,8 +126,8 @@ const doctorRoles: Record<string, string> = {
         <p class="eyebrow">Welcome to the family</p>
         <h2>Wellness starts here</h2>
         <p>At Lebanon Small Animal Clinic, we know your pet is family. Proud to be named <strong>2025 Best Veterinarian in Turtlecreek Township</strong> and a <strong>2026 Best of BusinessRate</strong> winner, we're committed to making proactive care easy to access and every visit as peaceful and reassuring as possible for both you and your pet.</p>
-        <p>You'll be welcomed by Care Companions who've worked together for over 20 years, providing expert care in medicine, surgery, and preventive wellness. As USDA-accredited veterinarians, we're equipped to offer advanced treatment when it's needed, without ever losing sight of your pet's comfort.</p>
-        <p>Our doctors and staff are <strong>Fear Free Certified</strong>, with veterinarians who are also <strong>Feline Friendly Certified</strong>. These certifications reflect our commitment to creating a calming environment for every pet, especially those who need a little extra reassurance. We've even created a dedicated space in the clinic just for cats to help reduce stress during their visits.</p>
+        <p>You'll be welcomed by a team that has worked together for over 20 years, providing expert care in medicine, surgery, and preventive wellness. As USDA-accredited veterinarians, we're equipped to offer advanced treatment when it's needed, without ever losing sight of your pet's comfort.</p>
+        <p>Our doctors and staff are <strong>Fear Free Certified</strong>, with veterinarians who are also <strong>Feline Friendly Certified</strong> and <strong>USDA certified</strong> to write travel and health certificates for large and small animals. USDA certification allows our doctors to protect animal health and public health, write health and travel certificates, and protect our community. These certifications reflect our commitment to creating a calming environment for every pet, especially those who need a little extra reassurance. We've even created a dedicated space in the clinic just for cats to help reduce stress during their visits.</p>
         <p>For pets who feel more comfortable at home, we also offer convenient house calls to bring care right to your door. Whether your pet comes to the clinic or we visit your home, every appointment is built around trust, comfort, and the kind of care that helps them feel safe and loved.</p>
         <div class="welcome-actions">
           <a class="btn btn--main" href="/meet-the-team">Meet our care team</a>
@@ -183,8 +183,8 @@ const doctorRoles: Record<string, string> = {
       <div class="home-split__copy" data-reveal="left">
         <p class="eyebrow eyebrow--light">PAWS wellness plans</p>
         <h2>Happy pets, healthy hearts</h2>
-        <p>We make it easier than ever to keep your pet healthy and happy. From online booking and an emergency hotline to in-home appointments, we offer care options that work for your life.</p>
-        <p>Our PAWS Plans give members access to comprehensive wellness care, including routine checkups, vaccinations, spay/neuter procedures, dental cleanings, and x-rays. These customizable memberships are designed to catch health concerns early, prevent illness, and reduce stress at every step.</p>
+        <p>We make it easier than ever to keep your pet healthy and happy. From online booking and same-day urgent care to in-home appointments, we offer care options that work for your life.</p>
+        <p>Our PAWS Plans give members access to comprehensive wellness care, including routine checkups, routine labwork, vaccinations, spay/neuter procedures, dental cleanings, and x-rays. These customizable memberships are designed to catch health concerns early, prevent illness, and reduce stress at every step.</p>
         <p>When your pet is thriving, so is your family. Schedule a visit for care that keeps tails wagging, whiskers twitching, and turns every vet visit into a treat.</p>
         <div class="home-actions">
           {site.bookingUrl && (

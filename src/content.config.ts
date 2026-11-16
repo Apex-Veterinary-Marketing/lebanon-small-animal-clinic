@@ -51,6 +51,7 @@ const services = defineCollection({
     z.object({
       name: z.string(),
       customName: z.string().optional(),
+      cardName: z.string().optional(), // Lebanon: shorter title for service cards only (page keeps customName)
       serviceIcon: image().optional(),
       pageHeaderImage: image().optional(),
       pageHeaderImageAlt: z.string().optional(), // Lebanon: alt text for the cover photo

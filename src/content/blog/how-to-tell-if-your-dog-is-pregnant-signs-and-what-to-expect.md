@@ -179,6 +179,6 @@ From the earliest signs to the moment you welcome a new litter, pregnancy is a b
 
 Whether you're noticing subtle changes or counting down the final days to whelping, having a trusted veterinary partner can make all the difference.
 
-At Lebanon Small Animal Clinic, our Care Companions are here to guide you through it all with expert advice, regular checkups, and a warm, compassionate approach. We’re proud to offer advanced care close to home—so you can focus on keeping your dog happy, healthy, and prepared for what’s next.
+At Lebanon Small Animal Clinic, our team is here to guide you through it all with expert advice, regular checkups, and a warm, compassionate approach. We’re proud to offer advanced care close to home—so you can focus on keeping your dog happy, healthy, and prepared for what’s next.
 
 Have questions or want to schedule a prenatal visit? [Give us a call](/contact-us/). We're here to help you feel confident and supported through every stage of your dog’s pregnancy.

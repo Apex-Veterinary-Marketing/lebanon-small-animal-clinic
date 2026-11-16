@@ -23,7 +23,7 @@ const { service } = Astro.props;
     </div>
   ) : service.data.serviceIcon && <Image src={service.data.serviceIcon} alt="" class="service-card__icon" />}
   <div class="service-card__body">
-    <h3 class="service-card__heading">{service.data.customName || service.data.name}</h3>
+    <h3 class="service-card__heading">{service.data.cardName || service.data.customName || service.data.name}</h3>
     <span class="service-card__cta">Learn more <span aria-hidden="true">&rarr;</span></span>
   </div>
 </a>

@@ -15,7 +15,7 @@ contentBlocks:
   - body: "<h2>Talk With Our Team</h2><p>If you're wondering whether it's time, or you'd like to plan an in-home visit, please call us at <a href=\"tel:5139324189\">(513) 932-4189</a>. We'll listen, answer your questions honestly and help you decide what's right for your pet and your family.</p>"
     style: "cta"
 serviceCategory: ["specialty"]
-featured: false
+featured: true
 showOnSidebarMenu: true
 metaTitle: "In-Home Euthanasia in Lebanon, OH"
 metaDescription: "Compassionate in-home euthanasia in Lebanon, OH. Lebanon Small Animal Clinic helps your pet pass peacefully at home, with comfort care and aftercare options."
