@@ -33,7 +33,7 @@ const testimonials = await getAllTestimonials();
           <li class="review-card">
             <p class="review-card__mark" aria-hidden="true">&ldquo;</p>
             <blockquote class="review-card__quote">{t.data.testimonial}</blockquote>
-            <p class="review-card__name">{t.data.name}</p>
+            {t.data.name && <p class="review-card__name">{t.data.name}</p>}
           </li>
         ))}
       </ul>

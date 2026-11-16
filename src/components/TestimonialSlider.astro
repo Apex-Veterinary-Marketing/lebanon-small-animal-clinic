@@ -24,7 +24,7 @@ const { testimonials } = Astro.props;
             <Image src={t.image} alt={t.imageAltText || t.name} class="testimonial-slider__image" />
           )}
           <p class="testimonial-slider__quote">&ldquo;{t.testimonial}&rdquo;</p>
-          <footer class="testimonial-slider__author">{t.name}</footer>
+          {t.name && <footer class="testimonial-slider__author">{t.name}</footer>}
         </blockquote>
       ))}
     </div>

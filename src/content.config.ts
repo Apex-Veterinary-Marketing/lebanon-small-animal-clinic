@@ -121,7 +121,7 @@ const testimonials = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx,json}", base: "./src/content/testimonials" }),
   schema: ({ image }) =>
     z.object({
-      name: z.string(),
+      name: z.string(), // Lebanon: "" for reviews with no known author (no name shown)
       testimonial: z.string(),
       image: image().optional(), // usage optional — slider/card render fine without one
       imageAltText: z.string().optional(),
