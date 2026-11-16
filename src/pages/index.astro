@@ -14,12 +14,12 @@ import { getSiteInfo } from "../lib/data/site";
 import { getAllTestimonials } from "../lib/data/testimonials";
 import { phoneHref } from "../lib/utils/phone";
 
-import heroTeam from "../assets/gallery/team-lobby.jpg";
-import heroOutdoors from "../assets/gallery/team-outdoors-with-dogs.jpg";
+import heroTeam from "../assets/gallery/shoot-246.jpg";
+import heroOutdoors from "../assets/gallery/shoot-063.jpg";
 import heroExam from "../assets/gallery/shoot-166.jpg";
 import heroHassel from "../assets/gallery/dr-hassel-with-chicken.jpg";
 import clinicExterior from "../assets/site/clinic-exterior.jpg";
-import calmingRoom from "../assets/gallery/calming-room-dog.jpg";
+import calmingRoom from "../assets/gallery/shoot-139.jpg";
 import ultrasound from "../assets/gallery/ultrasound-dr-t.jpg";
 import petDog from "../assets/gallery/dogs-on-walk.jpg";
 import petCat from "../assets/gallery/tech-with-cat.jpg";
@@ -30,6 +30,8 @@ import awardBadge from "../assets/site/award-businessrate-crystal.png";
 import catFriendlyBadge from "../assets/site/badge-cat-friendly-veterinarian.png";
 // Official badge from fearfree.com (Fear Free Certified Professional).
 import fearFreeBadge from "../assets/site/badge-fear-free-certified.webp";
+// USDA symbol from usda.gov (the clinic's vets are USDA-accredited).
+import usdaLogo from "../assets/site/logo-usda.svg";
 import logoCherry from "../assets/site/logo-cherry.png";
 import logoCareCredit from "../assets/site/logo-carecredit.jpg";
 
@@ -41,8 +43,8 @@ const testimonials = await getAllTestimonials();
 const heroSlides = [
   { src: heroHassel, alt: "Dr. Hassel holding a chicken on a farm visit", position: "70% 30%" },
   { src: heroExam, alt: "Dr. Tenenzapf holding a black cat in the clinic lobby", position: "60% 35%" },
-  { src: heroOutdoors, alt: "The care team outdoors with their dogs", position: "50% 60%" },
-  { src: heroTeam, alt: "The Lebanon Small Animal Clinic care team in the clinic lobby", position: "50% 35%" },
+  { src: heroOutdoors, alt: "A team member holding a young goat in a field", position: "60% 40%" },
+  { src: heroTeam, alt: "Dr. Hassel and Dr. Tenenzapf in the clinic lobby", position: "55% 30%" },
 ];
 
 const highlights = [
@@ -117,12 +119,13 @@ const doctorRoles: Record<string, string> = {
       <div class="welcome-media" data-reveal="left">
         <div class="welcome-stack">
           <Image src={clinicExterior} alt="Lebanon Small Animal Clinic on Oregonia Road, with the clinic's teal vintage truck parked out front" class="welcome-stack__main" widths={[600, 1000]} sizes="(max-width: 900px) 90vw, 480px" />
-          <Image src={calmingRoom} alt="Team member smiling with a French bulldog in the clinic's calm comfort room" class="welcome-stack__accent" widths={[400, 700]} sizes="(max-width: 900px) 50vw, 300px" />
+          <Image src={calmingRoom} alt="Sarah with her French bulldog in the clinic's calm comfort room" class="welcome-stack__accent" widths={[400, 700]} sizes="(max-width: 900px) 50vw, 300px" />
         </div>
         <div class="welcome-badges">
           <Image src={awardBadge} alt="Best of 2026 BusinessRate award winner: Lebanon Small Animal Clinic, Veterinarian, Lebanon, Ohio" class="award-badge" height={150} />
           <Image src={fearFreeBadge} alt="Fear Free Certified Professional" class="cert-badge" height={90} />
           <Image src={catFriendlyBadge} alt="Cat Friendly Veterinarian, Feline Veterinary Medical Association" class="cert-badge" height={90} />
+          <Image src={usdaLogo} alt="USDA accredited veterinarians" class="cert-badge" height={90} />
           <div class="welcome-badges__pay">
             <Image src={logoCherry} alt="Cherry payment plans" class="pay-logo" height={36} />
             <Image src={logoCareCredit} alt="CareCredit" class="pay-logo" height={30} />
@@ -349,9 +352,9 @@ const doctorRoles: Record<string, string> = {
   .welcome-stack { position: relative; flex: 1; min-height: 32rem; }
   .welcome-stack__main { position: absolute; inset: 0 18% 22% 0; width: 82%; height: 78%; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-card); }
   .welcome-stack__accent { position: absolute; inset-inline-end: 0; inset-block-end: 0; width: 50%; height: 58%; object-fit: cover; object-position: center 30%; border: 6px solid var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-float); }
-  .welcome-badges { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--space-lg) var(--space-xl); padding: var(--space-md); background: var(--solid-bg); border-radius: var(--radius-lg); }
-  .award-badge { width: auto; height: 8rem; }
-  .cert-badge { width: auto; height: 4.5rem; }
+  .welcome-badges { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--space-lg) var(--space-md); padding: var(--space-md); background: var(--solid-bg); border-radius: var(--radius-lg); }
+  .award-badge { width: auto; height: 7rem; }
+  .cert-badge { width: auto; height: 3.75rem; }
   .welcome-badges__pay { display: flex; flex-basis: 100%; align-items: center; justify-content: center; gap: var(--space-xl); padding-block-start: var(--space-md); border-block-start: 1px solid var(--light-grey); }
   .pay-logo { width: auto; height: 2.25rem; }
   .visit__note { margin: var(--space-xs) 0 0; color: var(--text-muted); }
