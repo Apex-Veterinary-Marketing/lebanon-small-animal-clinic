@@ -2,8 +2,8 @@
 name: "Electrocardiogram (ECG) for Pets"
 customName: "Electrocardiogram"
 serviceIcon: "../../assets/services/icons/electrocardiogram.svg"
-pageHeaderImage: "../../assets/services/stock/service-8-cover.jpg"
-pageHeaderImageAlt: "Gray-and-white cat looking out a window"
+pageHeaderImage: "../../assets/services/pexels-ecg-pomeranian.jpg"
+pageHeaderImageAlt: "Veterinarian listening to a Pomeranian's heart"
 contentBlocks:
   - body: "<h2>Electrocardiogram in Lebanon, OH</h2><p>At Lebanon Small Animal Clinic, our experienced veterinary team provides advanced electrocardiogram (ECG) services to help ensure your pet’s heart health at every stage of life.</p><h2>Understanding Electrocardiogram (ECG) for Pets</h2><p>An electrocardiogram, or ECG, is a non-invasive diagnostic tool used to measure the electrical activity of your pet’s heart. This test is essential for detecting abnormalities like arrhythmias, heart enlargement, and other cardiac issues that may not be evident through a physical exam alone.</p><p>ECGs are especially valuable because pets often hide symptoms of heart problems until the disease has progressed. An ECG allows our veterinarians to identify issues early, so we can recommend appropriate treatment or monitoring. Early detection of cardiac conditions can improve your pet’s quality of life and may even extend their lifespan.</p><p>At Lebanon Small Animal Clinic, we use ECGs for routine screening in at-risk breeds, pre-anesthetic evaluations, and when pets show concerning symptoms. Our veterinary professionals are trained to interpret ECG results with precision, ensuring your pet receives the best possible care. If your pet is experiencing fainting, coughing, or unusual lethargy, an ECG could provide crucial answers.</p>"
     image: "../../assets/gallery/shoot-215.jpg"
