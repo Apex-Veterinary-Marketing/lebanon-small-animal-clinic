@@ -2,8 +2,8 @@
 name: "Dermatology"
 customName: "Dermatology"
 serviceIcon: "../../assets/services/icons/dermatology.svg"
-pageHeaderImage: "../../assets/gallery/skin-check.jpg"
-pageHeaderImageAlt: "Veterinarian checking a dog's skin"
+pageHeaderImage: "../../assets/gallery/shoot-146.jpg"
+pageHeaderImageAlt: "Team member holding a fluffy black-and-white cat"
 contentBlocks:
   - body: "<h2>Dermatology in Lebanon, OH</h2><p>Trust your pet’s skin health to the experienced veterinary team at Lebanon Small Animal Clinic. We provide compassionate, comprehensive dermatology care for dogs, cats, and exotic pets.</p><h2>Understanding Dermatology for Pets</h2><p>Dermatology focuses on diagnosing and treating skin, coat, ear, and allergy issues in pets. From persistent itching to unexplained hair loss, skin problems can cause discomfort, disrupt daily life, and signal underlying health concerns. Early intervention is key to resolving these issues and preventing chronic discomfort or infections.</p><p>Our team is equipped to address a wide range of dermatological conditions, including allergies, hot spots, ear infections, fungal issues, and parasitic infestations. We take a thorough, individualized approach, combining advanced diagnostics, client education, and tailored treatment plans to help your pet feel comfortable and healthy again.</p><p>At Lebanon Small Animal Clinic, we believe that every pet deserves relief from itching, redness, and irritation. Our veterinarians listen to your concerns and partner with you on the path to improved skin health and overall wellness. If you notice changes in your pet’s skin, coat, or ears, prompt care can make all the difference.</p>"
     image: "../../assets/gallery/shoot-143.jpg"
