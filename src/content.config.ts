@@ -55,6 +55,7 @@ const services = defineCollection({
       serviceIcon: image().optional(),
       pageHeaderImage: image().optional(),
       pageHeaderImageAlt: z.string().optional(), // Lebanon: alt text for the cover photo
+      pageHeaderImagePosition: z.string().optional(), // Lebanon: CSS object-position for the cover photo (portrait photos)
       contentBlocks: z
         .array(
           z.object({

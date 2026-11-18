@@ -16,7 +16,7 @@ const { service } = Astro.props;
 <a class:list={["service-card", service.data.pageHeaderImage && "service-card--photo"]} href={`/services/${service.id}`}>
   {service.data.pageHeaderImage ? (
     <div class="service-card__media">
-      <Image src={service.data.pageHeaderImage} alt="" class="service-card__photo" widths={[480, 800]} sizes="(max-width: 767px) 100vw, 400px" />
+      <Image src={service.data.pageHeaderImage} alt="" class="service-card__photo" style={service.data.pageHeaderImagePosition ? `object-position: ${service.data.pageHeaderImagePosition}` : undefined} widths={[480, 800]} sizes="(max-width: 767px) 100vw, 400px" />
       {service.data.serviceIcon && (
         <span class="service-card__badge" aria-hidden="true"><Image src={service.data.serviceIcon} alt="" width={48} height={48} /></span>
       )}

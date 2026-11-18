@@ -2,8 +2,9 @@
 name: "Pet Wellness Exams"
 customName: "Wellness Exams"
 serviceIcon: "../../assets/services/icons/examinations.svg"
-pageHeaderImage: "../../assets/gallery/shoot-006.jpg"
-pageHeaderImageAlt: "A Cavalier King Charles spaniel sitting on the exam table"
+pageHeaderImage: "../../assets/gallery/front-desk-dalmatian-puppy.jpg"
+pageHeaderImageAlt: "A team member at the front desk with a Dalmatian puppy on her shoulder"
+pageHeaderImagePosition: "center 33%"
 contentBlocks:
   - body: "<h2>Pet Wellness Exams in Lebanon, OH</h2><p>Welcome to Lebanon Small Animal Clinic, your trusted partner for pet wellness exams in Lebanon. Our veterinary team is committed to supporting your pet’s lifelong health.</p><h2>Understanding Pet Wellness Exams</h2><p>Pet wellness exams are comprehensive, nose-to-tail checkups designed to catch health issues early and keep your pet feeling their best. At Lebanon Small Animal Clinic, our veterinary professionals use these visits to assess your pet’s overall health, monitor for changes, and discuss any concerns you may have.</p><p>These regular veterinary wellness exams in Lebanon help us detect subtle changes that might go unnoticed at home. From listening to your pet’s heart and lungs to evaluating weight, mobility, and dental health, each part of the exam is tailored to your pet’s age, lifestyle, and risk factors.</p><p>Vaccinations, bloodwork, and parasite prevention are often included, ensuring your pet is protected from common threats. Regular wellness visits also give you a chance to talk with our team about nutrition, behavior, and preventive care. By staying proactive, you help your pet enjoy a longer, healthier life.</p>"
     image: "../../assets/gallery/shoot-051.jpg"
