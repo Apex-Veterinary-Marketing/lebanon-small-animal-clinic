@@ -19,7 +19,6 @@ import heroOutdoors from "../assets/gallery/shoot-063.jpg";
 import heroExam from "../assets/gallery/shoot-166.jpg";
 import heroHassel from "../assets/gallery/dr-hassel-with-chicken.jpg";
 import clinicExterior from "../assets/site/clinic-exterior.jpg";
-import calmingRoom from "../assets/gallery/shoot-139.jpg";
 import ultrasound from "../assets/gallery/ultrasound-dr-t.jpg";
 import petDog from "../assets/gallery/dogs-on-walk.jpg";
 import petCat from "../assets/gallery/tech-with-cat.jpg";
@@ -118,8 +117,7 @@ const doctorRoles: Record<string, string> = {
     <div class="home-container home-split home-split--welcome">
       <div class="welcome-media" data-reveal="left">
         <div class="welcome-stack">
-          <Image src={clinicExterior} alt="Lebanon Small Animal Clinic on Oregonia Road, with the clinic's teal vintage truck parked out front" class="welcome-stack__main" widths={[600, 1000]} sizes="(max-width: 900px) 90vw, 480px" />
-          <Image src={calmingRoom} alt="Sarah with her French bulldog in the clinic's calm comfort room" class="welcome-stack__accent" widths={[400, 700]} sizes="(max-width: 900px) 50vw, 300px" />
+          <Image src={clinicExterior} alt="Lebanon Small Animal Clinic on Oregonia Road, with the clinic's teal vintage truck parked out front" class="welcome-stack__main" widths={[600, 1000]} sizes="(max-width: 900px) 90vw, 600px" />
         </div>
         <div class="welcome-badges">
           <Image src={awardBadge} alt="Best of 2026 BusinessRate award winner: Lebanon Small Animal Clinic, Veterinarian, Lebanon, Ohio" class="award-badge" height={150} />
@@ -350,8 +348,7 @@ const doctorRoles: Record<string, string> = {
   .home-split--welcome { align-items: stretch; }
   .welcome-media { display: flex; flex-direction: column; gap: var(--space-lg); }
   .welcome-stack { position: relative; flex: 1; min-height: 32rem; }
-  .welcome-stack__main { position: absolute; inset: 0 18% 22% 0; width: 82%; height: 78%; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-card); }
-  .welcome-stack__accent { position: absolute; inset-inline-end: 0; inset-block-end: 0; width: 50%; height: 58%; object-fit: cover; object-position: center 30%; border: 6px solid var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-float); }
+  .welcome-stack__main { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-card); }
   .welcome-badges { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--space-lg) var(--space-md); padding: var(--space-md); background: var(--solid-bg); border-radius: var(--radius-lg); }
   .award-badge { width: auto; height: 7rem; }
   .cert-badge { width: auto; height: 3.75rem; }
