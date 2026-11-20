@@ -1,0 +1,54 @@
+# Staging site on GitHub Pages. Every push to the `staging` branch builds the
+# site and publishes it at https://<org>.github.io/<repo>/ so the PM or client
+# can review changes before they go to main (production, Cloudflare).
+#
+# The build is a preview build: SITE_URL points canonicals/sitemap at the
+# staging address, which also makes every page noindex and robots.txt
+# disallow-all (see astro.config.mjs and BaseLayout.astro).
+#
+# One-time setup: repo Settings → Pages → Source: "GitHub Actions".
+name: Staging (GitHub Pages)
+
+on:
+  push:
+    branches: [staging]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: staging-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Build (preview mode)
+        run: npx astro build
+        env:
+          SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+      - name: Serve under /<repo>/
+        run: node scripts/pages-base-path.mjs /${{ github.event.repository.name }} dist
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
