@@ -9,6 +9,8 @@
 {
   "name": "lebanon-small-animal-clinic",
   "compatibility_date": "2026-09-24",
+  // Required by `wrangler preview` (Workers Builds preview branches). Empty = inherit everything.
+  "previews": {},
   "assets": {
     "directory": "./dist",
     "html_handling": "auto-trailing-slash",
