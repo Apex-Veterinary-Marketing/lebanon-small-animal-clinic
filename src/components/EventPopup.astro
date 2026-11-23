@@ -1,0 +1,70 @@
+---
+// Site-wide announcement popup for the next upcoming community event with
+// `popup: true` (src/data/events.ts). Opens a few seconds after the page
+// loads, once per visitor (closing it remembers that), never on the
+// Community Outreach page itself, and stops showing once the event is over
+// (checked in the browser, so it disappears on time even without a rebuild).
+import { Image } from "astro:assets";
+import Modal from "./Modal.astro";
+import { events, isPast } from "../data/events";
+
+const event = events
+  .filter((e) => e.popup && !isPast(e))
+  .sort((a, b) => a.start.localeCompare(b.start))[0];
+---
+
+{event && (
+  <>
+    <Modal id="event-popup">
+      <div class="event-popup" data-event-popup data-event-slug={event.slug} data-event-end={event.end}>
+        {event.image && (
+          <Image src={event.image} alt={event.imageAlt || event.title} class="event-popup__image" widths={[360, 640]} sizes="(max-width: 600px) 80vw, 300px" />
+        )}
+        <div class="event-popup__copy">
+          <p class="eyebrow">You're invited</p>
+          <h2 class="event-popup__title">{event.title}</h2>
+          {event.subtitle && <p class="event-popup__subtitle">{event.subtitle}</p>}
+          <p class="event-popup__when">{event.when}</p>
+          <p class="event-popup__summary">{event.popupText || event.summary}</p>
+          <a class="btn btn--cta" href={`/community-outreach#${event.slug}`} data-event-popup-cta>See event details</a>
+        </div>
+      </div>
+    </Modal>
+    <button type="button" class="event-popup__trigger" data-modal-target="event-popup" hidden aria-hidden="true" tabindex="-1"></button>
+  </>
+)}
+
+<style>
+  .event-popup { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: var(--space-lg); align-items: center; }
+  .event-popup__image { width: 100%; height: auto; border-radius: var(--radius-md); box-shadow: var(--shadow-card); }
+  .event-popup__title { margin: 0 0 var(--space-xs); font-size: var(--font-size-2xl); line-height: 1.15; }
+  .event-popup__subtitle { margin: 0 0 var(--space-xs); font-family: var(--font-heading); font-weight: 600; color: var(--main); }
+  .event-popup__when { margin: 0 0 var(--space-sm); font-weight: 700; color: var(--cta); }
+  .event-popup__summary { margin: 0 0 var(--space-md); color: var(--text-muted); }
+  .event-popup .eyebrow { margin-block-end: var(--space-2xs); }
+  :global(#event-popup .modal__dialog) { max-width: min(92vw, 46rem); }
+  @media (max-width: 600px) {
+    .event-popup { grid-template-columns: 1fr; text-align: center; }
+    .event-popup__image { max-width: 11rem; margin-inline: auto; }
+  }
+</style>
+
+<script>
+  const box = document.querySelector<HTMLElement>("[data-event-popup]");
+  if (box) {
+    const key = `lsac-event-popup-${box.dataset.eventSlug}`;
+    const over = new Date(box.dataset.eventEnd || "").getTime() < Date.now();
+    const onEventPage = location.pathname.replace(/\/$/, "").endsWith("/community-outreach");
+    let seen = false;
+    try { seen = localStorage.getItem(key) === "1"; } catch {}
+    const remember = () => { try { localStorage.setItem(key, "1"); } catch {} };
+    if (!over && !onEventPage && !seen) {
+      window.setTimeout(() => {
+        if (document.querySelector("[data-modal]:not([hidden])")) return; // don't stack on another open modal
+        document.querySelector<HTMLButtonElement>(".event-popup__trigger")?.click();
+        remember();
+      }, 2500);
+    }
+    document.querySelector("[data-event-popup-cta]")?.addEventListener("click", remember);
+  }
+</script>

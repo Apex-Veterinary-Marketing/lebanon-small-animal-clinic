@@ -23,6 +23,7 @@ import "../styles/fonts.css";
 import type { ImageMetadata } from "astro";
 import GoogleTags from "../components/GoogleTags.astro";
 import ChckupChat from "../components/ChckupChat.astro";
+import EventPopup from "../components/EventPopup.astro";
 
 // Preload the two highest-impact font FILES (not just the stylesheet) for
 // the current typeface — the body-text weight (400) and the weight
@@ -223,5 +224,6 @@ const graph = normalizeIds(
       .skip-link:focus { inset-inline-start: 0; }
     </style>
     <ChckupChat />
+    <EventPopup />
   </body>
 </html>
