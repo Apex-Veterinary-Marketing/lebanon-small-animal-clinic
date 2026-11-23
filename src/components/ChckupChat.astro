@@ -11,3 +11,18 @@ const site = await getSiteInfo();
     <script is:inline src="https://storage.googleapis.com/chckup-server.appspot.com/widget/index.js" defer></script>
   </>
 )}
+
+<style is:global>
+  /* Phones + tablets (≤900px, where MobileCallbar shows): Chckup's floating
+     bubble, its "Book Now" label and its chat panel are pinned 24px from the
+     bottom-right — the same spot as the callbar's reserved column, where the
+     UserWay button sits (AccessibilityWidget.astro). Lift the whole widget
+     above the callbar. `translate` (not `transform`) leaves Chckup's own
+     transforms/animations alone. Chckup's class names are hashed, so target
+     by structure: .chckup_widget > wrapper > fixed pieces. */
+  @media (max-width: 900px) {
+    .chckup_widget > div > div {
+      translate: 0 calc(-1 * var(--callbar-height));
+    }
+  }
+</style>
