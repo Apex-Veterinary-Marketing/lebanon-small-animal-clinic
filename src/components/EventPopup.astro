@@ -1,8 +1,7 @@
 ---
 // Site-wide announcement popup for the next upcoming community event with
-// `popup: true` (src/data/events.ts). Opens a few seconds after the page
-// loads, once per visitor (closing it remembers that), never on the
-// Community Outreach page itself, and stops showing once the event is over
+// `popup: true` (src/data/events.ts). Opens a few seconds after the
+// homepage loads, on every homepage visit, and stops showing once the event is over
 // (checked in the browser, so it disappears on time even without a rebuild).
 import { Image } from "astro:assets";
 import Modal from "./Modal.astro";
@@ -52,19 +51,13 @@ const event = events
 <script>
   const box = document.querySelector<HTMLElement>("[data-event-popup]");
   if (box) {
-    const key = `lsac-event-popup-${box.dataset.eventSlug}`;
     const over = new Date(box.dataset.eventEnd || "").getTime() < Date.now();
-    const onEventPage = location.pathname.replace(/\/$/, "").endsWith("/community-outreach");
-    let seen = false;
-    try { seen = localStorage.getItem(key) === "1"; } catch {}
-    const remember = () => { try { localStorage.setItem(key, "1"); } catch {} };
-    if (!over && !onEventPage && !seen) {
+    const onHome = location.pathname === "/" || location.pathname === "/index.html";
+    if (!over && onHome) {
       window.setTimeout(() => {
         if (document.querySelector("[data-modal]:not([hidden])")) return; // don't stack on another open modal
         document.querySelector<HTMLButtonElement>(".event-popup__trigger")?.click();
-        remember();
       }, 2500);
     }
-    document.querySelector("[data-event-popup-cta]")?.addEventListener("click", remember);
   }
 </script>
